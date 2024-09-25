@@ -159,7 +159,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domainName}", $payload, [
-            'quote' => $isQuote ? 'true' : 'false',
+            'quote' => $isQuote ? 'true' : 'false'
         ]);
 
         if ($isQuote) {
@@ -251,7 +251,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domainName}/update", $payload, [
-            'quote' => $isQuote,
+            'quote' => $isQuote ? 'true' : 'false'
         ]);
 
         if ($isQuote) {
@@ -334,7 +334,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domainName}/transfer", $payload, [
-            'quote' => $isQuote,
+            'quote' => $isQuote ? 'true' : 'false'
         ]);
 
         if ($isQuote) {
@@ -386,7 +386,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domain}/renew", $payload, is_null($isQuote) ? [] : [
-            'quote' => $isQuote,
+            'quote' => $isQuote ? 'true' : 'false'
         ]);
 
         if ($isQuote) {
@@ -422,7 +422,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domain}/restore", $payload, is_null($isQuote) ? [] : [
-            'quote' => $isQuote,
+            'quote' => $isQuote ? 'true' : 'false'
         ]);
 
         if ($isQuote) {
