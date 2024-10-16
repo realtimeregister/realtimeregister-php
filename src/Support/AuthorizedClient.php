@@ -116,7 +116,7 @@ class AuthorizedClient
         } elseif ($response->getStatusCode() === 400) {
             throw new BadRequestException('Bad Request: ' . $response->getBody());
         } elseif ($response->getStatusCode() === 401) {
-            throw new UnauthorizedException('Unauthorzied: ' . $response->getBody());
+            throw new UnauthorizedException('Unauthorized: ' . $response->getBody());
         } elseif ($response->getStatusCode() === 403) {
             throw new ForbiddenException('Forbidden:' . $response->getBody());
         } elseif ($response->getStatusCode() === 404) {
