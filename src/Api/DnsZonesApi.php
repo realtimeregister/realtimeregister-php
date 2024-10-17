@@ -1,15 +1,15 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
 use InvalidArgumentException;
-use SandwaveIo\RealtimeRegister\Domain\DnsZone;
-use SandwaveIo\RealtimeRegister\Domain\DnsZoneCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainZoneRecordCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainZoneStatistics;
-use SandwaveIo\RealtimeRegister\Domain\DomainZoneUpdate;
-use SandwaveIo\RealtimeRegister\Domain\Enum\ZoneServiceEnum;
-use SandwaveIo\RealtimeRegister\Domain\Zone;
+use RealtimeRegister\Domain\DnsZone;
+use RealtimeRegister\Domain\DnsZoneCollection;
+use RealtimeRegister\Domain\DomainZoneRecordCollection;
+use RealtimeRegister\Domain\DomainZoneStatistics;
+use RealtimeRegister\Domain\DomainZoneUpdate;
+use RealtimeRegister\Domain\Enum\ZoneServiceEnum;
+use RealtimeRegister\Domain\Zone;
 use Webmozart\Assert\Assert;
 
 final class DnsZonesApi extends AbstractApi

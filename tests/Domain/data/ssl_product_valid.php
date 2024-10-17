@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\CertificateTypeEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\FeatureEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\ValidationTypeEnum;
+use RealtimeRegister\Domain\Enum\CertificateTypeEnum;
+use RealtimeRegister\Domain\Enum\FeatureEnum;
+use RealtimeRegister\Domain\Enum\ValidationTypeEnum;
 
 return [
     'product' => 'ssl',

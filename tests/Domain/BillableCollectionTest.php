@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Billable;
-use SandwaveIo\RealtimeRegister\Domain\BillableCollection;
+use RealtimeRegister\Domain\Billable;
+use RealtimeRegister\Domain\BillableCollection;
 
 /**
  * This TestCase is used to test all Billable Object Collections.

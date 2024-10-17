@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
-use SandwaveIo\RealtimeRegister\Domain\DnsHost;
-use SandwaveIo\RealtimeRegister\Domain\DnsHostAddressCollection;
-use SandwaveIo\RealtimeRegister\Domain\DnsHostCollection;
-use SandwaveIo\RealtimeRegister\Exceptions\InvalidArgumentException;
+use RealtimeRegister\Domain\DnsHost;
+use RealtimeRegister\Domain\DnsHostAddressCollection;
+use RealtimeRegister\Domain\DnsHostCollection;
+use RealtimeRegister\Exceptions\InvalidArgumentException;
 
 final class HostsApi extends AbstractApi
 {

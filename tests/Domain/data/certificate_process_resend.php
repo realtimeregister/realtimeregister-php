@@ -5,12 +5,12 @@ return [
     'requiresAttention' => false,
     'certificateId' => 1,
     'validations' => [
-        'docs' => \SandwaveIo\RealtimeRegister\Domain\Enum\DcvStatusEnum::DCV_STATUS_VALIDATED,
+        'docs' => \RealtimeRegister\Domain\Enum\DcvStatusEnum::DCV_STATUS_VALIDATED,
         'dcv' => [
             [
                 'commonName' => 'v1.example.com',
-                'type' => \SandwaveIo\RealtimeRegister\Domain\Enum\DcvTypeEnum::LOCALE_DNS,
-                'status' => \SandwaveIo\RealtimeRegister\Domain\Enum\DcvStatusEnum::DCV_STATUS_VALIDATED,
+                'type' => \RealtimeRegister\Domain\Enum\DcvTypeEnum::LOCALE_DNS,
+                'status' => \RealtimeRegister\Domain\Enum\DcvStatusEnum::DCV_STATUS_VALIDATED,
                 'dnsRecord' => 'acme',
                 'dnsContents' => 'henkisalleenhenkisalleenhenkalserhenkinstaat.nl',
             ],

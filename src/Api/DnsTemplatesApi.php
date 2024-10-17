@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
 use InvalidArgumentException;
-use SandwaveIo\RealtimeRegister\Domain\DnsTemplate;
-use SandwaveIo\RealtimeRegister\Domain\DnsTemplateCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainZoneRecordCollection;
+use RealtimeRegister\Domain\DnsTemplate;
+use RealtimeRegister\Domain\DnsTemplateCollection;
+use RealtimeRegister\Domain\DomainZoneRecordCollection;
 use Webmozart\Assert\Assert;
 
 final class DnsTemplatesApi extends AbstractApi

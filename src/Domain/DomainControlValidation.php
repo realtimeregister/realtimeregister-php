@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\DcvDnsTypeRecordEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DcvStatusEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DcvTypeEnum;
+use RealtimeRegister\Domain\Enum\DcvDnsTypeRecordEnum;
+use RealtimeRegister\Domain\Enum\DcvStatusEnum;
+use RealtimeRegister\Domain\Enum\DcvTypeEnum;
 
 class DomainControlValidation implements DomainObjectInterface
 {

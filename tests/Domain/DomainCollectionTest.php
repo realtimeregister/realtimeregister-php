@@ -1,28 +1,28 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\AccountCollection;
-use SandwaveIo\RealtimeRegister\Domain\BillableCollection;
-use SandwaveIo\RealtimeRegister\Domain\BrandCollection;
-use SandwaveIo\RealtimeRegister\Domain\ContactCollection;
-use SandwaveIo\RealtimeRegister\Domain\ContactPropertyCollection;
-use SandwaveIo\RealtimeRegister\Domain\CountryCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainAvailabilityCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainContactCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainDetailsCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainObjectInterface;
-use SandwaveIo\RealtimeRegister\Domain\DowntimeCollection;
-use SandwaveIo\RealtimeRegister\Domain\DsDataCollection;
-use SandwaveIo\RealtimeRegister\Domain\KeyDataCollection;
-use SandwaveIo\RealtimeRegister\Domain\LaunchPhaseCollection;
-use SandwaveIo\RealtimeRegister\Domain\LogCollection;
-use SandwaveIo\RealtimeRegister\Domain\NotificationCollection;
-use SandwaveIo\RealtimeRegister\Domain\PriceCollection;
-use SandwaveIo\RealtimeRegister\Domain\ProcessCollection;
-use SandwaveIo\RealtimeRegister\Domain\ProviderCollection;
-use SandwaveIo\RealtimeRegister\Domain\TemplateCollection;
+use RealtimeRegister\Domain\AccountCollection;
+use RealtimeRegister\Domain\BillableCollection;
+use RealtimeRegister\Domain\BrandCollection;
+use RealtimeRegister\Domain\ContactCollection;
+use RealtimeRegister\Domain\ContactPropertyCollection;
+use RealtimeRegister\Domain\CountryCollection;
+use RealtimeRegister\Domain\DomainAvailabilityCollection;
+use RealtimeRegister\Domain\DomainContactCollection;
+use RealtimeRegister\Domain\DomainDetailsCollection;
+use RealtimeRegister\Domain\DomainObjectInterface;
+use RealtimeRegister\Domain\DowntimeCollection;
+use RealtimeRegister\Domain\DsDataCollection;
+use RealtimeRegister\Domain\KeyDataCollection;
+use RealtimeRegister\Domain\LaunchPhaseCollection;
+use RealtimeRegister\Domain\LogCollection;
+use RealtimeRegister\Domain\NotificationCollection;
+use RealtimeRegister\Domain\PriceCollection;
+use RealtimeRegister\Domain\ProcessCollection;
+use RealtimeRegister\Domain\ProviderCollection;
+use RealtimeRegister\Domain\TemplateCollection;
 
 /**
  * This TestCase is used to test all Domain Object Collections.

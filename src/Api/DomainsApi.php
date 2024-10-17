@@ -1,23 +1,23 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
 use DateTime;
 use Exception;
-use SandwaveIo\RealtimeRegister\Domain\BillableCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainAvailability;
-use SandwaveIo\RealtimeRegister\Domain\DomainContactCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainDetails;
-use SandwaveIo\RealtimeRegister\Domain\DomainDetailsCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainQuote;
-use SandwaveIo\RealtimeRegister\Domain\DomainRegistration;
-use SandwaveIo\RealtimeRegister\Domain\DomainTransferStatus;
-use SandwaveIo\RealtimeRegister\Domain\DomainZone;
-use SandwaveIo\RealtimeRegister\Domain\DomainZoneRecord;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainStatusEnum;
-use SandwaveIo\RealtimeRegister\Domain\KeyDataCollection;
-use SandwaveIo\RealtimeRegister\Domain\Zone;
+use RealtimeRegister\Domain\BillableCollection;
+use RealtimeRegister\Domain\DomainAvailability;
+use RealtimeRegister\Domain\DomainContactCollection;
+use RealtimeRegister\Domain\DomainDetails;
+use RealtimeRegister\Domain\DomainDetailsCollection;
+use RealtimeRegister\Domain\DomainQuote;
+use RealtimeRegister\Domain\DomainRegistration;
+use RealtimeRegister\Domain\DomainTransferStatus;
+use RealtimeRegister\Domain\DomainZone;
+use RealtimeRegister\Domain\DomainZoneRecord;
+use RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
+use RealtimeRegister\Domain\Enum\DomainStatusEnum;
+use RealtimeRegister\Domain\KeyDataCollection;
+use RealtimeRegister\Domain\Zone;
 
 final class DomainsApi extends AbstractApi
 {
@@ -159,7 +159,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domainName}", $payload, [
-            'quote' => $isQuote ? 'true' : 'false'
+            'quote' => $isQuote ? 'true' : 'false',
         ]);
 
         if ($isQuote) {
@@ -251,7 +251,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domainName}/update", $payload, [
-            'quote' => $isQuote ? 'true' : 'false'
+            'quote' => $isQuote ? 'true' : 'false',
         ]);
 
         if ($isQuote) {
@@ -334,7 +334,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domainName}/transfer", $payload, [
-            'quote' => $isQuote ? 'true' : 'false'
+            'quote' => $isQuote ? 'true' : 'false',
         ]);
 
         if ($isQuote) {
@@ -386,7 +386,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domain}/renew", $payload, is_null($isQuote) ? [] : [
-            'quote' => $isQuote ? 'true' : 'false'
+            'quote' => $isQuote ? 'true' : 'false',
         ]);
 
         if ($isQuote) {
@@ -422,7 +422,7 @@ final class DomainsApi extends AbstractApi
         }
 
         $response = $this->client->post("v2/domains/{$domain}/restore", $payload, is_null($isQuote) ? [] : [
-            'quote' => $isQuote ? 'true' : 'false'
+            'quote' => $isQuote ? 'true' : 'false',
         ]);
 
         if ($isQuote) {

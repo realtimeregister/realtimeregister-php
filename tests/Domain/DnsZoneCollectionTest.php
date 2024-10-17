@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\DnsZone;
-use SandwaveIo\RealtimeRegister\Domain\DnsZoneCollection;
+use RealtimeRegister\Domain\DnsZone;
+use RealtimeRegister\Domain\DnsZoneCollection;
 
 final class DnsZoneCollectionTest extends TestCase
 {

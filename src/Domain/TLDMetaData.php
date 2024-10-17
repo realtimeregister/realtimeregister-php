@@ -1,14 +1,15 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainFeatureEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainPossibleClientDomainStatusEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\WhoisExposureEnum;
+use RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
+use RealtimeRegister\Domain\Enum\DomainFeatureEnum;
+use RealtimeRegister\Domain\Enum\DomainPossibleClientDomainStatusEnum;
+use RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
+use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
+use RealtimeRegister\Domain\Enum\PremiumSupportEnum;
+use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
+use RealtimeRegister\Domain\Enum\WhoisExposureEnum;
 use Webmozart\Assert\Assert;
 
 final class TLDMetaData implements DomainObjectInterface
@@ -281,7 +282,7 @@ final class TLDMetaData implements DomainObjectInterface
             'billingContacts' => $this->billingContacts->toArray(),
             'techContacts' => $this->techContacts->toArray(),
             'contactProperties' => $this->contactProperties ? $this->contactProperties->toArray() : null,
-            'launchPhases' => $this->launchPhases ? $this->launchPhases->toArray() : null,
+            'launchPhases' => $this->launchPhases ? $this->launchPhases->toArray() : null
         ], function ($x) {
             return ! is_null($x);
         });

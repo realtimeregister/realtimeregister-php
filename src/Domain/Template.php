@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\TemplateNameEnum;
+use RealtimeRegister\Domain\Enum\TemplateNameEnum;
 
 final class Template implements DomainObjectInterface
 {

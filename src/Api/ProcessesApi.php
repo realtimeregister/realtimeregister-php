@@ -2,12 +2,12 @@
 
 declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
 use Exception;
-use SandwaveIo\RealtimeRegister\Domain\Process;
-use SandwaveIo\RealtimeRegister\Domain\ProcessCollection;
-use SandwaveIo\RealtimeRegister\Domain\ProcessInfo;
+use RealtimeRegister\Domain\Process;
+use RealtimeRegister\Domain\ProcessCollection;
+use RealtimeRegister\Domain\ProcessInfo;
 
 final class ProcessesApi extends AbstractApi
 {

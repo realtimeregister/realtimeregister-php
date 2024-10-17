@@ -33,7 +33,7 @@ composer require sandwave-io/realtimeregister-php
 ```php
 <?php
 
-use SandwaveIo\RealtimeRegister\RealtimeRegister;
+use RealtimeRegister\RealtimeRegister;
 
 $realtimeRegister = new RealtimeRegister('my-secret-api-key');
 
@@ -48,7 +48,7 @@ An example:
 ```php
 <?php
 
-use SandwaveIo\RealtimeRegister\IsProxy;
+use RealtimeRegister\IsProxy;
 
 $isProxy = new IsProxy('my-secret-api-key');
 
@@ -67,7 +67,7 @@ Or check multiple:
 ```php
 <?php
 
-use SandwaveIo\RealtimeRegister\IsProxy;
+use RealtimeRegister\IsProxy;
 
 $isProxy = new IsProxy('my-secret-api-key');
 

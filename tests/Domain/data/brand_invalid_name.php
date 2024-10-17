@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\LocaleEnum;
+use RealtimeRegister\Domain\Enum\LocaleEnum;
 
 return [
     'customer' => 1,

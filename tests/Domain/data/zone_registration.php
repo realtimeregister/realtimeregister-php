@@ -5,7 +5,7 @@ return [
     'customer' => 'example',
     'createdDate' => '2024-03-05T10:10:10Z',
     'managed' => true,
-    'service' => \SandwaveIo\RealtimeRegister\Domain\Enum\ZoneServiceEnum::BASIC,
+    'service' => \RealtimeRegister\Domain\Enum\ZoneServiceEnum::BASIC,
     'hostMaster' => 'hostmaster@example.com',
     'refresh' => 255,
     'retry' => 1,

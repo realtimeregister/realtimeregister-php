@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\DnsTemplate;
-use SandwaveIo\RealtimeRegister\Domain\DnsTemplateCollection;
+use RealtimeRegister\Domain\DnsTemplate;
+use RealtimeRegister\Domain\DnsTemplateCollection;
 
 final class DnsTemplateCollectionTest extends TestCase
 {

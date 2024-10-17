@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Certificate;
-use SandwaveIo\RealtimeRegister\Domain\CertificateCollection;
+use RealtimeRegister\Domain\Certificate;
+use RealtimeRegister\Domain\CertificateCollection;
 
 /**
  * This TestCase is used to test all Certificate Object Collections.

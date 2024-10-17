@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\DcvTypeEnum;
+use RealtimeRegister\Domain\Enum\DcvTypeEnum;
 
 class ResendDcv implements DomainObjectInterface
 {

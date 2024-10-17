@@ -1,20 +1,20 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests;
+namespace RealtimeRegister\Tests;
 
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerInterface;
-use SandwaveIo\RealtimeRegister\Exceptions\BadRequestException;
-use SandwaveIo\RealtimeRegister\Exceptions\ForbiddenException;
-use SandwaveIo\RealtimeRegister\Exceptions\NotFoundException;
-use SandwaveIo\RealtimeRegister\Exceptions\RealtimeRegisterClientException;
-use SandwaveIo\RealtimeRegister\Exceptions\UnauthorizedException;
-use SandwaveIo\RealtimeRegister\Support\AuthorizedClient;
-use SandwaveIo\RealtimeRegister\Tests\Helpers\MockedClientFactory;
+use RealtimeRegister\Exceptions\BadRequestException;
+use RealtimeRegister\Exceptions\ForbiddenException;
+use RealtimeRegister\Exceptions\NotFoundException;
+use RealtimeRegister\Exceptions\RealtimeRegisterClientException;
+use RealtimeRegister\Exceptions\UnauthorizedException;
+use RealtimeRegister\Support\AuthorizedClient;
+use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
-/** @covers \SandwaveIo\RealtimeRegister\Support\AuthorizedClient */
+/** @covers \RealtimeRegister\Support\AuthorizedClient */
 class AuthorizedClientTest extends TestCase
 {
     public function test_construct(): void

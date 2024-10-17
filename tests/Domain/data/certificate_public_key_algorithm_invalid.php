@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\CertificateTypeEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\StatusEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\ValidationTypeEnum;
+use RealtimeRegister\Domain\Enum\CertificateTypeEnum;
+use RealtimeRegister\Domain\Enum\StatusEnum;
+use RealtimeRegister\Domain\Enum\ValidationTypeEnum;
 
 return [
     'id' => 1234567,

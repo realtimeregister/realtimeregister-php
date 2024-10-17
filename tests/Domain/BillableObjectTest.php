@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Billable;
+use RealtimeRegister\Domain\Billable;
 use ValueError;
 
 /**

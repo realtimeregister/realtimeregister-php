@@ -1,13 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
-use Exception;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\AuthKey;
-use SandwaveIo\RealtimeRegister\Domain\Certificate;
-use SandwaveIo\RealtimeRegister\Domain\CertificateInfoProcess;
-use SandwaveIo\RealtimeRegister\Exceptions\InvalidArgumentException;
+use RealtimeRegister\Domain\AuthKey;
+use RealtimeRegister\Domain\Certificate;
+use RealtimeRegister\Domain\CertificateInfoProcess;
+use RealtimeRegister\Exceptions\InvalidArgumentException;
 
 /**
  * This TestCase is used to test all single Certificate Objects.

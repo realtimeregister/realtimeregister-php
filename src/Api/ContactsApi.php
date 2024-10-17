@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
 use InvalidArgumentException;
-use SandwaveIo\RealtimeRegister\Domain\Contact;
-use SandwaveIo\RealtimeRegister\Domain\ContactCollection;
-use SandwaveIo\RealtimeRegister\Domain\Country;
-use SandwaveIo\RealtimeRegister\Domain\CountryCollection;
+use RealtimeRegister\Domain\Contact;
+use RealtimeRegister\Domain\ContactCollection;
+use RealtimeRegister\Domain\Country;
+use RealtimeRegister\Domain\CountryCollection;
 
 final class ContactsApi extends AbstractApi
 {

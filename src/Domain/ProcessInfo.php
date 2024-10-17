@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 class ProcessInfo implements DomainObjectInterface
 {
