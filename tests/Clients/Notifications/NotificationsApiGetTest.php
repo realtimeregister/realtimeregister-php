@@ -12,7 +12,7 @@ class NotificationsApiGetTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/notification_valid.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/notifications/notification_valid.php'),
             MockedClientFactory::assertRoute('GET', 'v2/customers/johndoe/notifications/1', $this)
         );
 

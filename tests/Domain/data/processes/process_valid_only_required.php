@@ -13,10 +13,10 @@ return [
         'brand' => 'default',
         'city' => 'someplace',
         'country' => 'NL',
-        'email' => 'fake@sandwave.io',
+        'email' => 'fake@example.com',
         'fax' => '+31.101234567',
         'name' => 'department',
-        'organization' => 'Sandwave',
+        'organization' => 'Realtime Register',
         'addressLine' => [
             'streetname 1',
         ],

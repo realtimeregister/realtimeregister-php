@@ -21,7 +21,7 @@ class CertificateCollectionTest extends TestCase
          *  - Entity data.
          */
         $scenarios = [
-            'certificate collection' => [CertificateCollection::class, include __DIR__ . '/data/certificate_valid.php'],
+            'certificate collection' => [CertificateCollection::class, include __DIR__ . '/data/certificates/certificate_valid.php'],
         ];
         // For each type, create a flat and a pagination scenario.
         $dataset = [];

@@ -11,7 +11,7 @@ class CertificateApiGenerateAuthKeyTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/certificate_generate_auth_request_valid.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/certificates/certificate_generate_auth_request_valid.php'),
             MockedClientFactory::assertRoute('POST', '/v2/ssl/authkey', $this)
         );
 

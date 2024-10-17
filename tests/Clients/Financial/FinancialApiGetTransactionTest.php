@@ -13,7 +13,7 @@ class FinancialApiGetTransactionTest extends TestCase
     public function test_get_transaction(): void
     {
         /** @var string $responseBody */
-        $responseBody = json_encode(include __DIR__ . '/../../Domain/data/transaction_valid.php');
+        $responseBody = json_encode(include __DIR__ . '/../../Domain/data/financial/transaction_valid.php');
         Assert::string($responseBody);
         $sdk = MockedClientFactory::makeSdk(
             200,

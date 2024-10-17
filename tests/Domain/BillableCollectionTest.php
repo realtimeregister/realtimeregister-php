@@ -21,7 +21,7 @@ class BillableCollectionTest extends TestCase
          *  - Entity data.
          */
         $scenarios = [
-            'billable collection' => [BillableCollection::class, include __DIR__ . '/data/billable_valid.php'],
+            'billable collection' => [BillableCollection::class, include __DIR__ . '/data/financial/billable_valid.php'],
         ];
         // For each type, create a flat and a pagination scenario.
         $dataset = [];

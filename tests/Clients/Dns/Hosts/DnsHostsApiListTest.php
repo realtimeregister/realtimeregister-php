@@ -13,7 +13,7 @@ class DnsHostsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../../Domain/data/hosts.php',
+                    include __DIR__ . '/../../../Domain/data/dns/hosts/hosts.php',
                 ],
                 'pagination' => [
                     'total'  => 1,

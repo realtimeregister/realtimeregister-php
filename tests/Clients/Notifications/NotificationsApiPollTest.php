@@ -12,7 +12,7 @@ class NotificationsApiPollTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/notification_poll_valid.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/notifications/notification_poll_valid.php'),
             MockedClientFactory::assertRoute('GET', 'v2/customers/johndoe/notifications/poll', $this)
         );
 

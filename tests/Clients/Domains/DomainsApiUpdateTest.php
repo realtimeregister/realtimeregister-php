@@ -17,7 +17,7 @@ class DomainsApiUpdateTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_update_quote.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_update_quote.php'),
             MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/update', $this)
         );
 
@@ -32,10 +32,10 @@ class DomainsApiUpdateTest extends TestCase
             ns: [],
             statuses: ['OK'],
             designatedAgent: 'OLD',
-            zone: Zone::fromArray(include __DIR__ . '/../../Domain/data/zone_valid.php'),
-            contacts: DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/contact_handle_valid.php']),
+            zone: Zone::fromArray(include __DIR__ . '/../../Domain/data/dns/zones/zone_valid.php'),
+            contacts: DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/contacts/contact_handle_valid.php']),
             keyData: KeyDataCollection::fromArray([include __DIR__ . '/../../Domain/data/key_data_valid.php']),
-            billables: BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/billable_valid.php']),
+            billables: BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php']),
             isQuote: true,
         );
 
@@ -62,10 +62,10 @@ class DomainsApiUpdateTest extends TestCase
             [],
             ['OK'],
             'OLD',
-            Zone::fromArray(include __DIR__ . '/../../Domain/data/zone_valid.php'),
-            DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/contact_handle_valid.php']),
+            Zone::fromArray(include __DIR__ . '/../../Domain/data/dns/zones/zone_valid.php'),
+            DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/contacts/contact_handle_valid.php']),
             KeyDataCollection::fromArray([include __DIR__ . '/../../Domain/data/key_data_valid.php']),
-            BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/billable_valid.php'])
+            BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php'])
         );
     }
 }

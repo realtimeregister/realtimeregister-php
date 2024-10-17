@@ -11,7 +11,7 @@ class DomainsApiZoneTest extends TestCase
 {
     public function test_zone(): void
     {
-        $validDomainZoneDetails = include __DIR__ . '/../../Domain/data/domain_zone_details.php';
+        $validDomainZoneDetails = include __DIR__ . '/../../Domain/data/domains/domain_zone_details.php';
         $sdk = MockedClientFactory::makeSdk(
             200,
             json_encode($validDomainZoneDetails),

@@ -14,9 +14,9 @@ class NotificationsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -37,9 +37,9 @@ class NotificationsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -64,9 +64,9 @@ class NotificationsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
-                    include __DIR__ . '/../../Domain/data/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
+                    include __DIR__ . '/../../Domain/data/notifications/notification_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,

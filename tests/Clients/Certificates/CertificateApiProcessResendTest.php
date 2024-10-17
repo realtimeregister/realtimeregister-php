@@ -13,13 +13,13 @@ class CertificateApiProcessResendTest extends TestCase
         $certificateId = 1;
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/certificate_process_resend.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/certificates/certificate_process_resend.php'),
             MockedClientFactory::assertRoute('POST', '/v2/processes/' . $certificateId . '/resend', $this)
         );
 
         $sdk->certificates->resendDcv(
             1,
-            ResendDcvCollection::fromArray(include __DIR__ . '/../../Domain/data/domain_control_validation.php')
+            ResendDcvCollection::fromArray(include __DIR__ . '/../../Domain/data/domains/domain_control_validation.php')
         );
     }
 }

@@ -11,7 +11,7 @@ class DnsTemplatesApiGetTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../../Domain/data/dnstemplate_valid_with_records.php'),
+            json_encode(include __DIR__ . '/../../../Domain/data/dns/templates/dnstemplate_valid_with_records.php'),
             MockedClientFactory::assertRoute('GET', 'v2/customers/johndoe/dnstemplates/test', $this)
         );
 

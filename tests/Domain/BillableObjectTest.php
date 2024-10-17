@@ -23,15 +23,15 @@ class BillableObjectTest extends TestCase
         return [
             'valid billables' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_valid.php',
+                include __DIR__ . '/data/financial/billable_valid.php',
             ],
             'valid billables with nullables' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_valid_with_nullables.php',
+                include __DIR__ . '/data/financial/billable_valid_with_nullables.php',
             ],
             'invalid billable action' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_invalid_action.php',
+                include __DIR__ . '/data/financial/billable_invalid_action.php',
                 ValueError::class,
             ],
         ];

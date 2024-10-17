@@ -10,7 +10,7 @@ class DomainsApiGetTest extends TestCase
 {
     public function test_get(): void
     {
-        $validDomainDetails = include __DIR__ . '/../../Domain/data/domain_details_valid.php';
+        $validDomainDetails = include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php';
         $sdk = MockedClientFactory::makeSdk(
             200,
             json_encode($validDomainDetails),

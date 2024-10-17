@@ -12,7 +12,7 @@ class ContactsApiGetTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/contact_valid.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/contacts/contact_valid.php'),
             MockedClientFactory::assertRoute('GET', 'v2/customers/johndoe/contacts/test', $this)
         );
 

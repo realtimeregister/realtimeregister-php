@@ -13,7 +13,7 @@ class ProcessesApiGetTest extends TestCase
     public function test_get(): void
     {
         /** @var string $responseBody */
-        $responseBody = json_encode(include __DIR__ . '/../../Domain/data/process_valid.php');
+        $responseBody = json_encode(include __DIR__ . '/../../Domain/data/processes/process_valid.php');
         Assert::string($responseBody);
         $sdk = MockedClientFactory::makeSdk(
             200,

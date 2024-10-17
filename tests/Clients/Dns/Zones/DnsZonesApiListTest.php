@@ -13,9 +13,9 @@ class DnsZonesApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_with_records.php',
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_without_records.php',
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_with_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_with_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_without_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_with_records.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -36,9 +36,9 @@ class DnsZonesApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_with_records.php',
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_without_records.php',
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_with_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_with_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_without_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_with_records.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -68,9 +68,9 @@ class DnsZonesApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_with_records.php',
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_without_records.php',
-                    include __DIR__ . '/../../../Domain/data/dnszone_valid_with_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_with_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_without_records.php',
+                    include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_with_records.php',
                 ],
                 'pagination' => [
                     'total'  => 3,

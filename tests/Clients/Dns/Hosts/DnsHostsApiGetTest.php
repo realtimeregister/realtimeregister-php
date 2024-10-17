@@ -11,7 +11,7 @@ class DnsHostsApiGetTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../../Domain/data/hosts.php'),
+            json_encode(include __DIR__ . '/../../../Domain/data/dns/hosts/hosts.php'),
             MockedClientFactory::assertRoute('GET', 'v2/hosts/example.com', $this)
         );
 

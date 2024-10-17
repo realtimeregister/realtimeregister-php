@@ -15,9 +15,9 @@ class ProcessesApiListTest extends TestCase
         $responseBody = json_encode(
             [
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/process_valid.php',
-                    include __DIR__ . '/../../Domain/data/process_valid.php',
-                    include __DIR__ . '/../../Domain/data/process_valid.php',
+                    include __DIR__ . '/../../Domain/data/processes/process_valid.php',
+                    include __DIR__ . '/../../Domain/data/processes/process_valid.php',
+                    include __DIR__ . '/../../Domain/data/processes/process_valid.php',
                 ],
                 'pagination' => [
                     'total' => 3,
@@ -42,8 +42,8 @@ class ProcessesApiListTest extends TestCase
         $responseBody = json_encode(
             [
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/process_valid.php',
-                    include __DIR__ . '/../../Domain/data/process_valid.php',
+                    include __DIR__ . '/../../Domain/data/processes/process_valid.php',
+                    include __DIR__ . '/../../Domain/data/processes/process_valid.php',
                 ],
                 'pagination' => [
                     'total' => 2,
@@ -75,8 +75,8 @@ class ProcessesApiListTest extends TestCase
         $responseBody = json_encode(
             [
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/process_valid.php',
-                    include __DIR__ . '/../../Domain/data/process_valid.php',
+                    include __DIR__ . '/../../Domain/data/processes/process_valid.php',
+                    include __DIR__ . '/../../Domain/data/processes/process_valid.php',
                 ],
                 'pagination' => [
                     'total' => 2,

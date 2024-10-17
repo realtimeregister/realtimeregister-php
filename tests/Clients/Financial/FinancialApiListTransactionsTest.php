@@ -15,9 +15,9 @@ class FinancialApiListTransactionsTest extends TestCase
         $responseBody = json_encode(
             [
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/transaction_valid.php',
-                    include __DIR__ . '/../../Domain/data/transaction_valid.php',
-                    include __DIR__ . '/../../Domain/data/transaction_valid.php',
+                    include __DIR__ . '/../../Domain/data/financial/transaction_valid.php',
+                    include __DIR__ . '/../../Domain/data/financial/transaction_valid.php',
+                    include __DIR__ . '/../../Domain/data/financial/transaction_valid.php',
                 ],
                 'pagination' => [
                     'total' => 3,
@@ -42,8 +42,8 @@ class FinancialApiListTransactionsTest extends TestCase
         $responseBody = json_encode(
             [
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/transaction_valid.php',
-                    include __DIR__ . '/../../Domain/data/transaction_valid.php',
+                    include __DIR__ . '/../../Domain/data/financial/transaction_valid.php',
+                    include __DIR__ . '/../../Domain/data/financial/transaction_valid.php',
                 ],
                 'pagination' => [
                     'total' => 2,
@@ -74,8 +74,8 @@ class FinancialApiListTransactionsTest extends TestCase
         $responseBody = json_encode(
             [
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/transaction_valid.php',
-                    include __DIR__ . '/../../Domain/data/transaction_valid.php',
+                    include __DIR__ . '/../../Domain/data/financial/transaction_valid.php',
+                    include __DIR__ . '/../../Domain/data/financial/transaction_valid.php',
                 ],
                 'pagination' => [
                     'total' => 2,

@@ -15,7 +15,7 @@ class DomainsApiTransferInfoTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_transfer_status.php', JSON_THROW_ON_ERROR),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_transfer_status.php', JSON_THROW_ON_ERROR),
             MockedClientFactory::assertRoute('GET', 'v2/domains/example.com/transfer/1804892', $this)
         );
 
@@ -29,7 +29,7 @@ class DomainsApiTransferInfoTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_transfer_status.php', JSON_THROW_ON_ERROR),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_transfer_status.php', JSON_THROW_ON_ERROR),
             MockedClientFactory::assertRoute('GET', 'v2/domains/example.com/transfer', $this)
         );
 

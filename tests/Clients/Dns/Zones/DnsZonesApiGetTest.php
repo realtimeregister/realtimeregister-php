@@ -11,7 +11,7 @@ class DnsZonesApiGetTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../../Domain/data/dnszone_valid_with_records.php'),
+            json_encode(include __DIR__ . '/../../../Domain/data/dns/zones/dnszone_valid_with_records.php'),
             MockedClientFactory::assertRoute('GET', 'v2/dns/zones/1111111111', $this)
         );
 

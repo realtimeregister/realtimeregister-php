@@ -12,7 +12,7 @@ class DomainsApiCheckTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_availability_valid.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_availability_valid.php'),
             MockedClientFactory::assertRoute('GET', 'v2/domains/example.com/check', $this)
         );
 
@@ -24,7 +24,7 @@ class DomainsApiCheckTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_availability_valid.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_availability_valid.php'),
             MockedClientFactory::assertRoute('GET', 'v2/domains/example.com/check', $this)
         );
 

@@ -11,10 +11,10 @@ class CustomersApiCreditsTest extends TestCase
 {
     public function test_credits(): void
     {
-        $primary = include __DIR__ . '/../../Domain/data/account_valid.php';
+        $primary = include __DIR__ . '/../../Domain/data/customers/account_valid.php';
         $primary['primary'] = true;
 
-        $secondary = include __DIR__ . '/../../Domain/data/account_valid.php';
+        $secondary = include __DIR__ . '/../../Domain/data/customers/account_valid.php';
         $secondary['primary'] = false;
         $sdk = MockedClientFactory::makeSdk(
             200,

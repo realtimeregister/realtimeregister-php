@@ -16,9 +16,9 @@ class BrandsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -42,9 +42,9 @@ class BrandsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -72,9 +72,9 @@ class BrandsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
-                    include __DIR__ . '/../../Domain/data/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
+                    include __DIR__ . '/../../Domain/data/brands/brand_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,

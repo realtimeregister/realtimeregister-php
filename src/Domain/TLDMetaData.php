@@ -7,7 +7,6 @@ use RealtimeRegister\Domain\Enum\DomainFeatureEnum;
 use RealtimeRegister\Domain\Enum\DomainPossibleClientDomainStatusEnum;
 use RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
 use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
-use RealtimeRegister\Domain\Enum\PremiumSupportEnum;
 use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
 use RealtimeRegister\Domain\Enum\WhoisExposureEnum;
 use Webmozart\Assert\Assert;
@@ -282,7 +281,7 @@ final class TLDMetaData implements DomainObjectInterface
             'billingContacts' => $this->billingContacts->toArray(),
             'techContacts' => $this->techContacts->toArray(),
             'contactProperties' => $this->contactProperties ? $this->contactProperties->toArray() : null,
-            'launchPhases' => $this->launchPhases ? $this->launchPhases->toArray() : null
+            'launchPhases' => $this->launchPhases ? $this->launchPhases->toArray() : null,
         ], function ($x) {
             return ! is_null($x);
         });

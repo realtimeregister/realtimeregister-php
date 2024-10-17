@@ -4,7 +4,7 @@ return [
     'customer' => 'johndoe',
     'handle' => 'jdoe',
     'name' => 3.14,
-    'brand' => 'sandwave',
+    'brand' => 'realtimeregister',
     'addressLine' => [
         'Edisonweg 51D',
     ],

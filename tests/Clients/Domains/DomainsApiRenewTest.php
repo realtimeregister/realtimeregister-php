@@ -15,7 +15,7 @@ class DomainsApiRenewTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_renew_quote.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_renew_quote.php'),
             MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/renew', $this)
         );
 
@@ -23,8 +23,8 @@ class DomainsApiRenewTest extends TestCase
             domain: 'example.com',
             period: 12,
             billables: BillableCollection::fromArray([
-                include __DIR__ . '/../../Domain/data/billable_valid.php',
-                include __DIR__ . '/../../Domain/data/billable_valid.php',
+                include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
+                include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
             ]),
             isQuote: true
         );
@@ -42,8 +42,8 @@ class DomainsApiRenewTest extends TestCase
         );
 
         $expiry = $sdk->domains->renew('example.com', 12, BillableCollection::fromArray([
-            include __DIR__ . '/../../Domain/data/billable_valid.php',
-            include __DIR__ . '/../../Domain/data/billable_valid.php',
+            include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
+            include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
         ]));
 
         $this->assertInstanceOf(DateTime::class, $expiry);

@@ -18,7 +18,7 @@ class DomainsApiTransferTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_transfer_quote.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_transfer_quote.php'),
             MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/transfer', $this)
         );
 
@@ -33,10 +33,10 @@ class DomainsApiTransferTest extends TestCase
             ns: [],
             transferContacts: 'test',
             designatedAgent: 'OLD',
-            zone: Zone::fromArray(include __DIR__ . '/../../Domain/data/zone_valid.php'),
-            contacts: DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/domain_contact_valid.php']),
+            zone: Zone::fromArray(include __DIR__ . '/../../Domain/data/dns/zones/zone_valid.php'),
+            contacts: DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/domains/domain_contact_valid.php']),
             keyData: KeyDataCollection::fromArray([include __DIR__ . '/../../Domain/data/key_data_valid.php']),
-            billables: BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/billable_valid.php']),
+            billables: BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php']),
             isQuote: true,
         );
 
@@ -51,7 +51,7 @@ class DomainsApiTransferTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_transfer_valid.php', JSON_THROW_ON_ERROR),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_transfer_valid.php', JSON_THROW_ON_ERROR),
             MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/transfer', $this)
         );
 
@@ -66,10 +66,10 @@ class DomainsApiTransferTest extends TestCase
             [],
             'test',
             'OLD',
-            Zone::fromArray(include __DIR__ . '/../../Domain/data/zone_valid.php'),
-            DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/domain_contact_valid.php']),
+            Zone::fromArray(include __DIR__ . '/../../Domain/data/dns/zones/zone_valid.php'),
+            DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/domains/domain_contact_valid.php']),
             KeyDataCollection::fromArray([include __DIR__ . '/../../Domain/data/key_data_valid.php']),
-            BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/billable_valid.php'])
+            BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php'])
         );
     }
 }

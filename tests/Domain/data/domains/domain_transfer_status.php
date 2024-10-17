@@ -10,8 +10,8 @@ return [
     'type' => 'IN',
     'processId' => 5,
     'log' => [
-        include __DIR__ . '/log.php',
-        include __DIR__ . '/log.php',
-        include __DIR__ . '/log.php',
+        include __DIR__ . '/../log.php',
+        include __DIR__ . '/../log.php',
+        include __DIR__ . '/../log.php',
     ],
 ];

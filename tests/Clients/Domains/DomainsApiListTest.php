@@ -14,9 +14,9 @@ class DomainsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -37,9 +37,9 @@ class DomainsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,
@@ -64,9 +64,9 @@ class DomainsApiListTest extends TestCase
             200,
             json_encode([
                 'entities' => [
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
-                    include __DIR__ . '/../../Domain/data/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
+                    include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php',
                 ],
                 'pagination' => [
                     'total'  => 3,

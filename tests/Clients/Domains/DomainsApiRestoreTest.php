@@ -15,7 +15,7 @@ class DomainsApiRestoreTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_restore_quote.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_restore_quote.php'),
             MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/restore', $this)
         );
 
@@ -23,8 +23,8 @@ class DomainsApiRestoreTest extends TestCase
             domain: 'example.com',
             reason: 'just.. because!',
             billables: BillableCollection::fromArray([
-                include __DIR__ . '/../../Domain/data/billable_valid.php',
-                include __DIR__ . '/../../Domain/data/billable_valid.php',
+                include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
+                include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
             ]),
             isQuote: true
         );
@@ -42,8 +42,8 @@ class DomainsApiRestoreTest extends TestCase
         );
 
         $expiry = $sdk->domains->restore('example.com', 'just.. because!', BillableCollection::fromArray([
-            include __DIR__ . '/../../Domain/data/billable_valid.php',
-            include __DIR__ . '/../../Domain/data/billable_valid.php',
+            include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
+            include __DIR__ . '/../../Domain/data/financial/billable_valid.php',
         ]));
 
         $this->assertInstanceOf(DateTime::class, $expiry);

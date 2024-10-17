@@ -25,35 +25,35 @@ class CertificateObjectTest extends TestCase
         return [
             'valid certificate' => [
                 Certificate::class,
-                include __DIR__ . '/data/certificate_valid.php',
+                include __DIR__ . '/data/certificates/certificate_valid.php',
             ],
             'invalid certificate type' => [
                 Certificate::class,
-                include __DIR__ . '/data/certificate_type_invalid.php',
+                include __DIR__ . '/data/certificates/certificate_type_invalid.php',
                 InvalidArgumentException::class,
             ],
             'invalid validation_type' => [
                 Certificate::class,
-                include __DIR__ . '/data/certificate_validation_type_invalid.php',
+                include __DIR__ . '/data/certificates/certificate_validation_type_invalid.php',
                 InvalidArgumentException::class,
             ],
             'invalid status' => [
                 Certificate::class,
-                include __DIR__ . '/data/certificate_status_invalid.php',
+                include __DIR__ . '/data/certificates/certificate_status_invalid.php',
                 InvalidArgumentException::class,
             ],
             'invalid public key algorithm' => [
                 Certificate::class,
-                include __DIR__ . '/data/certificate_public_key_algorithm_invalid.php',
+                include __DIR__ . '/data/certificates/certificate_public_key_algorithm_invalid.php',
                 InvalidArgumentException::class,
             ],
             'valid generate certificate request' => [
                 AuthKey::class,
-                include __DIR__ . '/data/certificate_generate_auth_request_valid.php',
+                include __DIR__ . '/data/certificates/certificate_generate_auth_request_valid.php',
             ],
             'info process request' => [
                 CertificateInfoProcess::class,
-                include __DIR__ . '/data/certificate_info_process_dns.php',
+                include __DIR__ . '/data/certificates/certificate_info_process_dns.php',
             ],
         ];
     }

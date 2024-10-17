@@ -12,7 +12,7 @@ class CertificatesInfoTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/certificate_info_process_dns.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/certificates/certificate_info_process_dns.php'),
             MockedClientFactory::assertRoute('GET', '/v2/processes/1/info', $this)
         );
 
@@ -24,7 +24,7 @@ class CertificatesInfoTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/certificate_info_process_docs.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/certificates/certificate_info_process_docs.php'),
             MockedClientFactory::assertRoute('GET', '/v2/processes/1/info', $this)
         );
 
@@ -36,7 +36,7 @@ class CertificatesInfoTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/certificate_info_process_voice.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/certificates/certificate_info_process_voice.php'),
             MockedClientFactory::assertRoute('GET', '/v2/processes/1/info', $this)
         );
 
@@ -48,7 +48,7 @@ class CertificatesInfoTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/certificate_info_process_whois.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/certificates/certificate_info_process_whois.php'),
             MockedClientFactory::assertRoute('GET', '/v2/processes/1/info', $this)
         );
 

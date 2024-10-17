@@ -11,7 +11,7 @@ class DomainsApiDeleteTest extends TestCase
     {
         $sdk = MockedClientFactory::makeSdk(
             200,
-            json_encode(include __DIR__ . '/../../Domain/data/domain_details_valid.php'),
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_details_valid.php'),
             MockedClientFactory::assertRoute('DELETE', 'v2/domains/example.com', $this)
         );
 
