@@ -95,3 +95,6 @@ vendor/bin/phpunit --coverage-text
 ```
 
 These tools will also run in GitHub actions on PR's and pushes on master.
+
+## Attribution
+This project is an adaptation of the excellent work done by [sandwave.io](https://github.com/sandwave-io/realtimeregister-php)
