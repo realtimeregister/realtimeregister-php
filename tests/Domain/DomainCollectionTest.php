@@ -1,28 +1,28 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\AccountCollection;
-use SandwaveIo\RealtimeRegister\Domain\BillableCollection;
-use SandwaveIo\RealtimeRegister\Domain\BrandCollection;
-use SandwaveIo\RealtimeRegister\Domain\ContactCollection;
-use SandwaveIo\RealtimeRegister\Domain\ContactPropertyCollection;
-use SandwaveIo\RealtimeRegister\Domain\CountryCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainAvailabilityCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainContactCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainDetailsCollection;
-use SandwaveIo\RealtimeRegister\Domain\DomainObjectInterface;
-use SandwaveIo\RealtimeRegister\Domain\DowntimeCollection;
-use SandwaveIo\RealtimeRegister\Domain\DsDataCollection;
-use SandwaveIo\RealtimeRegister\Domain\KeyDataCollection;
-use SandwaveIo\RealtimeRegister\Domain\LaunchPhaseCollection;
-use SandwaveIo\RealtimeRegister\Domain\LogCollection;
-use SandwaveIo\RealtimeRegister\Domain\NotificationCollection;
-use SandwaveIo\RealtimeRegister\Domain\PriceCollection;
-use SandwaveIo\RealtimeRegister\Domain\ProcessCollection;
-use SandwaveIo\RealtimeRegister\Domain\ProviderCollection;
-use SandwaveIo\RealtimeRegister\Domain\TemplateCollection;
+use RealtimeRegister\Domain\AccountCollection;
+use RealtimeRegister\Domain\BillableCollection;
+use RealtimeRegister\Domain\BrandCollection;
+use RealtimeRegister\Domain\ContactCollection;
+use RealtimeRegister\Domain\ContactPropertyCollection;
+use RealtimeRegister\Domain\CountryCollection;
+use RealtimeRegister\Domain\DomainAvailabilityCollection;
+use RealtimeRegister\Domain\DomainContactCollection;
+use RealtimeRegister\Domain\DomainDetailsCollection;
+use RealtimeRegister\Domain\DomainObjectInterface;
+use RealtimeRegister\Domain\DowntimeCollection;
+use RealtimeRegister\Domain\DsDataCollection;
+use RealtimeRegister\Domain\KeyDataCollection;
+use RealtimeRegister\Domain\LaunchPhaseCollection;
+use RealtimeRegister\Domain\LogCollection;
+use RealtimeRegister\Domain\NotificationCollection;
+use RealtimeRegister\Domain\PriceCollection;
+use RealtimeRegister\Domain\ProcessCollection;
+use RealtimeRegister\Domain\ProviderCollection;
+use RealtimeRegister\Domain\TemplateCollection;
 
 /**
  * This TestCase is used to test all Domain Object Collections.
@@ -39,24 +39,24 @@ class DomainCollectionTest extends TestCase
          *  - Entity data.
          */
         $scenarios = [
-            'account collection' => [AccountCollection::class, include __DIR__ . '/data/account_valid.php'],
-            'billable collection' => [BillableCollection::class, include __DIR__ . '/data/billable_valid.php'],
+            'account collection' => [AccountCollection::class, include __DIR__ . '/data/customers/account_valid.php'],
+            'billable collection' => [BillableCollection::class, include __DIR__ . '/data/financial/billable_valid.php'],
             'country collection' => [CountryCollection::class, include __DIR__ . '/data/country_valid.php'],
-            'contact collection' => [ContactCollection::class, include __DIR__ . '/data/contact_valid.php'],
-            'domain availability collection' => [DomainAvailabilityCollection::class, include __DIR__ . '/data/domain_availability_valid.php'],
-            'domain contact collection' => [DomainContactCollection::class, include __DIR__ . '/data/domain_contact_valid.php'],
-            'domain details collection' => [DomainDetailsCollection::class, include __DIR__ . '/data/domain_details_valid.php'],
+            'contact collection' => [ContactCollection::class, include __DIR__ . '/data/contacts/contact_valid.php'],
+            'domain availability collection' => [DomainAvailabilityCollection::class, include __DIR__ . '/data/domains/domain_availability_valid.php'],
+            'domain contact collection' => [DomainContactCollection::class, include __DIR__ . '/data/domains/domain_contact_valid.php'],
+            'domain details collection' => [DomainDetailsCollection::class, include __DIR__ . '/data/domains/domain_details_valid.php'],
             'ds data collection' => [DsDataCollection::class, include __DIR__ . '/data/ds_data_valid.php'],
             'key data collection' => [KeyDataCollection::class, include __DIR__ . '/data/key_data_valid.php'],
             'price collection' => [PriceCollection::class, include __DIR__ . '/data/price_valid.php'],
-            'contact property collection' => [ContactPropertyCollection::class, include __DIR__ . '/data/contact_property_valid.php'],
+            'contact property collection' => [ContactPropertyCollection::class, include __DIR__ . '/data/contacts/contact_property_valid.php'],
             'launch phase collection' => [LaunchPhaseCollection::class, include __DIR__ . '/data/launch_phase.php'],
             'log collection' => [LogCollection::class, include __DIR__ . '/data/log.php'],
-            'notification collection' => [NotificationCollection::class, include __DIR__ . '/data/notification_valid.php'],
-            'process collection' => [ProcessCollection::class, include __DIR__ . '/data/process_valid_only_required.php'],
+            'notification collection' => [NotificationCollection::class, include __DIR__ . '/data/notifications/notification_valid.php'],
+            'process collection' => [ProcessCollection::class, include __DIR__ . '/data/processes/process_valid_only_required.php'],
             'provider collection' => [ProviderCollection::class, include __DIR__ . '/data/provider_valid.php'],
             'downtime collection' => [DowntimeCollection::class, include __DIR__ . '/data/downtime_valid.php'],
-            'brand collection' => [BrandCollection::class, include __DIR__ . '/data/brand_valid.php'],
+            'brand collection' => [BrandCollection::class, include __DIR__ . '/data/brands/brand_valid.php'],
             'template collection' => [TemplateCollection::class, include __DIR__ . '/data/template_valid.php'],
         ];
         // For each type, create a flat and a pagination scenario.

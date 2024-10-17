@@ -1,15 +1,15 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
 use DateTime;
-use SandwaveIo\RealtimeRegister\Domain\Brand;
-use SandwaveIo\RealtimeRegister\Domain\BrandCollection;
-use SandwaveIo\RealtimeRegister\Domain\Enum\TemplateNameEnum;
-use SandwaveIo\RealtimeRegister\Domain\Template;
-use SandwaveIo\RealtimeRegister\Domain\TemplateCollection;
-use SandwaveIo\RealtimeRegister\Domain\TemplatePreview;
-use SandwaveIo\RealtimeRegister\Exceptions\InvalidArgumentException;
+use RealtimeRegister\Domain\Brand;
+use RealtimeRegister\Domain\BrandCollection;
+use RealtimeRegister\Domain\Enum\TemplateNameEnum;
+use RealtimeRegister\Domain\Template;
+use RealtimeRegister\Domain\TemplateCollection;
+use RealtimeRegister\Domain\TemplatePreview;
+use RealtimeRegister\Exceptions\InvalidArgumentException;
 
 final class BrandsApi extends AbstractApi
 {

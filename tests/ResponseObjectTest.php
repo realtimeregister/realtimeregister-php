@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests;
+namespace RealtimeRegister\Tests;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Exceptions\UnexpectedValueException;
-use SandwaveIo\RealtimeRegister\Support\RealtimeRegisterResponse;
+use RealtimeRegister\Exceptions\UnexpectedValueException;
+use RealtimeRegister\Support\RealtimeRegisterResponse;
 
-/** @covers \SandwaveIo\RealtimeRegister\Support\RealtimeRegisterResponse */
+/** @covers \RealtimeRegister\Support\RealtimeRegisterResponse */
 class ResponseObjectTest extends TestCase
 {
     public function test_get_text(): void

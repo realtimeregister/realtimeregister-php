@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
-use SandwaveIo\RealtimeRegister\Domain\Downtime;
-use SandwaveIo\RealtimeRegister\Domain\DowntimeCollection;
-use SandwaveIo\RealtimeRegister\Domain\Provider;
-use SandwaveIo\RealtimeRegister\Domain\ProviderCollection;
+use RealtimeRegister\Domain\Downtime;
+use RealtimeRegister\Domain\DowntimeCollection;
+use RealtimeRegister\Domain\Provider;
+use RealtimeRegister\Domain\ProviderCollection;
 
 final class ProvidersApi extends AbstractApi
 {

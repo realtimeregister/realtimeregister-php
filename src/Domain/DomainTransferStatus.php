@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainTransferTypeEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\LogStatusEnum;
+use RealtimeRegister\Domain\Enum\DomainTransferTypeEnum;
+use RealtimeRegister\Domain\Enum\LogStatusEnum;
 
 final class DomainTransferStatus implements DomainObjectInterface
 {

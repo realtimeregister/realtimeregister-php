@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 use DateTime;
-use SandwaveIo\RealtimeRegister\Domain\Enum\CertificateTypeEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\PublicKeyAlgorithmEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\StatusEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\ValidationTypeEnum;
+use RealtimeRegister\Domain\Enum\CertificateTypeEnum;
+use RealtimeRegister\Domain\Enum\PublicKeyAlgorithmEnum;
+use RealtimeRegister\Domain\Enum\StatusEnum;
+use RealtimeRegister\Domain\Enum\ValidationTypeEnum;
 
 final class Certificate implements DomainObjectInterface
 {

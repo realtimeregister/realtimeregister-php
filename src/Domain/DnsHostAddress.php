@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\IpVersion;
+use RealtimeRegister\Domain\Enum\IpVersion;
 
 class DnsHostAddress implements DomainObjectInterface
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain\Enum;
+namespace RealtimeRegister\Domain\Enum;
 
 enum BillableActionEnum: string
 {

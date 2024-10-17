@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\LanguageCode;
-use SandwaveIo\RealtimeRegister\Domain\LanguageCodes;
+use RealtimeRegister\Domain\LanguageCode;
+use RealtimeRegister\Domain\LanguageCodes;
 
 final class LanguageCodesTest extends TestCase
 {

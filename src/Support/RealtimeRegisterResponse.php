@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Support;
+namespace RealtimeRegister\Support;
 
-use SandwaveIo\RealtimeRegister\Exceptions\UnexpectedValueException;
+use RealtimeRegister\Exceptions\UnexpectedValueException;
 
 class RealtimeRegisterResponse
 {

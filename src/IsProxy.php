@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister;
+namespace RealtimeRegister;
 
-use SandwaveIo\RealtimeRegister\Domain\IsProxyDomain;
-use SandwaveIo\RealtimeRegister\Exceptions\IsProxyConnectionException;
-use SandwaveIo\RealtimeRegister\Support\IsProxyConnection;
+use RealtimeRegister\Domain\IsProxyDomain;
+use RealtimeRegister\Exceptions\IsProxyConnectionException;
+use RealtimeRegister\Support\IsProxyConnection;
 
 final class IsProxy
 {

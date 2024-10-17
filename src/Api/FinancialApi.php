@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
-use SandwaveIo\RealtimeRegister\Domain\ExchangeRates;
-use SandwaveIo\RealtimeRegister\Domain\Transaction;
-use SandwaveIo\RealtimeRegister\Domain\TransactionCollection;
+use RealtimeRegister\Domain\ExchangeRates;
+use RealtimeRegister\Domain\Transaction;
+use RealtimeRegister\Domain\TransactionCollection;
 
 final class FinancialApi extends AbstractApi
 {

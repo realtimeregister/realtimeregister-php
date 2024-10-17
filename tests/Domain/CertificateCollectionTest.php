@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Certificate;
-use SandwaveIo\RealtimeRegister\Domain\CertificateCollection;
+use RealtimeRegister\Domain\Certificate;
+use RealtimeRegister\Domain\CertificateCollection;
 
 /**
  * This TestCase is used to test all Certificate Object Collections.
@@ -21,7 +21,7 @@ class CertificateCollectionTest extends TestCase
          *  - Entity data.
          */
         $scenarios = [
-            'certificate collection' => [CertificateCollection::class, include __DIR__ . '/data/certificate_valid.php'],
+            'certificate collection' => [CertificateCollection::class, include __DIR__ . '/data/certificates/certificate_valid.php'],
         ];
         // For each type, create a flat and a pagination scenario.
         $dataset = [];

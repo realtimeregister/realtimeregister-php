@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\KeyDataFlagEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\KeyDataProtocolEnum;
-use SandwaveIo\RealtimeRegister\Exceptions\InvalidArgumentException;
+use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
+use RealtimeRegister\Domain\Enum\KeyDataFlagEnum;
+use RealtimeRegister\Domain\Enum\KeyDataProtocolEnum;
+use RealtimeRegister\Exceptions\InvalidArgumentException;
 
 final class KeyData implements DomainObjectInterface
 {

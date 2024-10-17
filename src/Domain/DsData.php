@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\DsDataAlgorithmEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DsDataDigestTypeEnum;
+use RealtimeRegister\Domain\Enum\DsDataAlgorithmEnum;
+use RealtimeRegister\Domain\Enum\DsDataDigestTypeEnum;
 
 final class DsData implements DomainObjectInterface
 {

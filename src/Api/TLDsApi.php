@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
-use SandwaveIo\RealtimeRegister\Domain\TLDInfo;
+use RealtimeRegister\Domain\TLDInfo;
 
 final class TLDsApi extends AbstractApi
 {

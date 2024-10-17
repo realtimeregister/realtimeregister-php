@@ -1,17 +1,17 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\DnsZone;
-use SandwaveIo\RealtimeRegister\Domain\DnsZoneCollection;
+use RealtimeRegister\Domain\DnsZone;
+use RealtimeRegister\Domain\DnsZoneCollection;
 
 final class DnsZoneCollectionTest extends TestCase
 {
     public function test_from_array(): void
     {
-        $dnsZoneCollectionData = include __DIR__ . '/data/dnszonecollection_valid.php';
+        $dnsZoneCollectionData = include __DIR__ . '/data/dns/zones/dnszonecollection_valid.php';
 
         $dnsZoneCollection = DnsZoneCollection::fromArray($dnsZoneCollectionData);
 
@@ -27,7 +27,7 @@ final class DnsZoneCollectionTest extends TestCase
 
     public function test_from_and_to_array(): void
     {
-        $dnsZoneCollectionData = include __DIR__ . '/data/dnszonecollection_valid.php';
+        $dnsZoneCollectionData = include __DIR__ . '/data/dns/zones/dnszonecollection_valid.php';
 
         $dnsZoneCollection = DnsZoneCollection::fromArray($dnsZoneCollectionData);
 
@@ -36,7 +36,7 @@ final class DnsZoneCollectionTest extends TestCase
 
     public function test_set_unset_exists(): void
     {
-        $dnsZoneCollectionData = include __DIR__ . '/data/dnszonecollection_valid.php';
+        $dnsZoneCollectionData = include __DIR__ . '/data/dns/zones/dnszonecollection_valid.php';
 
         $dnsZoneCollection = DnsZoneCollection::fromArray($dnsZoneCollectionData);
         $dnsZoneCollection->offsetSet(

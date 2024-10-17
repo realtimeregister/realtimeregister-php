@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Helpers;
+namespace RealtimeRegister\Tests\Helpers;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Support\IsProxyConnection;
+use RealtimeRegister\Support\IsProxyConnection;
 
 class MockedIsProxyConnection extends IsProxyConnection
 {
