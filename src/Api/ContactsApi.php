@@ -36,6 +36,14 @@ final class ContactsApi extends AbstractApi
         return ContactCollection::fromArray($response->json());
     }
 
+    public function export(string $customer, array $parameters = []): array
+    {
+        $query = $parameters;
+        $query['export'] = 'true';
+        $response = $this->client->get("v2/customers/{$customer}/contacts", $query);
+        return $response->json()['entities'];
+    }
+
     /* @see https://dm.realtimeregister.com/docs/api/contacts/get */
     public function get(string $customer, string $handle): Contact
     {
