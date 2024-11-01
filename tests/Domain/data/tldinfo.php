@@ -50,7 +50,7 @@ return [
         'whoisExposure' => 'NONE',
         'gdprCategory' => 'EU_BASED',
         'premiumSupport' => 'REGULAR',
-        'domainSyntax' => include __DIR__ . '/domain_syntax.php',
+        'domainSyntax' => include __DIR__ . '/domains/domain_syntax.php',
         'nameservers' => include __DIR__ . '/nameservers.php',
         'registrant' => include __DIR__ . '/registrant.php',
         'adminContacts' => include __DIR__ . '/contacts/contacts_constraint.php',
