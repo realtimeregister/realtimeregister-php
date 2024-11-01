@@ -77,6 +77,7 @@ final class TLDMetaData implements DomainObjectInterface
     public string $whoisExposure;
 
     public string $gdprCategory;
+
     public string $premiumSupport;
 
     public DomainSyntax $domainSyntax;
@@ -280,6 +281,7 @@ final class TLDMetaData implements DomainObjectInterface
             'privacyPolicy' => $this->privacyPolicy,
             'whoisExposure' => $this->whoisExposure,
             'gdprCategory' => $this->gdprCategory,
+            'premiumSupport' => $this->premiumSupport,
             'domainSyntax' => $this->domainSyntax->toArray(),
             'nameservers' => $this->nameservers->toArray(),
             'registrant' => $this->registrant->toArray(),
@@ -288,7 +290,6 @@ final class TLDMetaData implements DomainObjectInterface
             'techContacts' => $this->techContacts->toArray(),
             'contactProperties' => $this->contactProperties ? $this->contactProperties->toArray() : null,
             'launchPhases' => $this->launchPhases ? $this->launchPhases->toArray() : null,
-            'premiumSupport' => $this->premiumSupport
         ], function ($x) {
             return ! is_null($x);
         });
