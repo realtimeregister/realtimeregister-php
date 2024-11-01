@@ -9,7 +9,7 @@ use RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
 use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
 use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
 use RealtimeRegister\Domain\Enum\WhoisExposureEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\PremiumSupportEnum;
+use RealtimeRegister\Domain\Enum\PremiumSupportEnum;
 use Webmozart\Assert\Assert;
 
 final class TLDMetaData implements DomainObjectInterface
