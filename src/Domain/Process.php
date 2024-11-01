@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
-use SandwaveIo\RealtimeRegister\Domain\Enum\ProcessStatusEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\ResumeTypeEnum;
+use RealtimeRegister\Domain\Enum\ProcessStatusEnum;
+use RealtimeRegister\Domain\Enum\ResumeTypeEnum;
 use Webmozart\Assert\Assert;
 
 final class Process implements DomainObjectInterface

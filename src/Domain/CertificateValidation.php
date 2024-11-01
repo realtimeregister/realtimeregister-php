@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\DocsEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\OrganizationEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\VoiceEnum;
-use SandwaveIo\RealtimeRegister\Domain\Enum\WhoisEnum;
+use RealtimeRegister\Domain\Enum\DocsEnum;
+use RealtimeRegister\Domain\Enum\OrganizationEnum;
+use RealtimeRegister\Domain\Enum\VoiceEnum;
+use RealtimeRegister\Domain\Enum\WhoisEnum;
 
 class CertificateValidation implements DomainObjectInterface
 {
@@ -47,10 +47,10 @@ class CertificateValidation implements DomainObjectInterface
         }
 
         return new CertificateValidation(
-            $json['organization'],
-            $json['docs'],
-            $json['voice'],
-            $json['whois'],
+            $json['organization'] ?? null,
+            $json['docs'] ?? null,
+            $json['voice'] ?? null,
+            $json['whois'] ?? null,
             $json['dcv'] ? DomainControlValidationCollection::fromArray($json['dcv']) : null,
         );
     }

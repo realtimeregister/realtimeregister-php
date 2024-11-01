@@ -1,21 +1,19 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainZoneServiceEnum;
+use RealtimeRegister\Domain\Enum\ZoneServiceEnum;
 
 final class Zone implements DomainObjectInterface
 {
-    private function __construct(public readonly string $service, public ?string $template, public ?bool $link)
+    private function __construct(public readonly ZoneServiceEnum $service, public ?string $template, public ?bool $link)
     {
     }
 
     public static function fromArray(array $json): self
     {
-        DomainZoneServiceEnum::validate($json['service']);
-
         return new self(
-            $json['service'],
+            ZoneServiceEnum::from($json['service']),
             $json['template'] ?? null,
             $json['link'] ?? null
         );
@@ -24,7 +22,7 @@ final class Zone implements DomainObjectInterface
     public function toArray(): array
     {
         return array_filter([
-            'service' => $this->service,
+            'service' => $this->service->value,
             'template' => $this->template,
             'link' => $this->link,
         ], static function ($x) {

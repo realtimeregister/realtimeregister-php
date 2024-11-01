@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainContactRoleEnum;
+use RealtimeRegister\Domain\Enum\DomainContactRoleEnum;
 
 final class DomainContact implements DomainObjectInterface
 {

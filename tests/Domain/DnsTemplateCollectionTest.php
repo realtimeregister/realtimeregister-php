@@ -1,17 +1,17 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\DnsTemplate;
-use SandwaveIo\RealtimeRegister\Domain\DnsTemplateCollection;
+use RealtimeRegister\Domain\DnsTemplate;
+use RealtimeRegister\Domain\DnsTemplateCollection;
 
 final class DnsTemplateCollectionTest extends TestCase
 {
     public function test_from_array(): void
     {
-        $dnsTemplateCollectionData = include __DIR__ . '/data/dnstemplatecollection_valid.php';
+        $dnsTemplateCollectionData = include __DIR__ . '/data/dns/templates/dnstemplatecollection_valid.php';
 
         $dnsTemplateCollection = DnsTemplateCollection::fromArray($dnsTemplateCollectionData);
 
@@ -34,7 +34,7 @@ final class DnsTemplateCollectionTest extends TestCase
 
     public function test_from_and_to_array(): void
     {
-        $dnsTemplateCollectionData = include __DIR__ . '/data/dnstemplatecollection_valid.php';
+        $dnsTemplateCollectionData = include __DIR__ . '/data/dns/templates/dnstemplatecollection_valid.php';
 
         $dnsTemplateCollection = DnsTemplateCollection::fromArray($dnsTemplateCollectionData);
 
@@ -43,7 +43,7 @@ final class DnsTemplateCollectionTest extends TestCase
 
     public function test_set_unset_exists(): void
     {
-        $dnsTemplateCollectionData = include __DIR__ . '/data/dnstemplatecollection_valid.php';
+        $dnsTemplateCollectionData = include __DIR__ . '/data/dns/templates/dnstemplatecollection_valid.php';
 
         $dnsTemplateCollection = DnsTemplateCollection::fromArray($dnsTemplateCollectionData);
         $dnsTemplateCollection->offsetSet(

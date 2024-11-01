@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain\Enum;
+namespace RealtimeRegister\Domain\Enum;
 
-use SandwaveIo\RealtimeRegister\Exceptions\InvalidArgumentException;
+use RealtimeRegister\Exceptions\InvalidArgumentException;
 
 abstract class AbstractEnum
 {

@@ -1,15 +1,15 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
 use DateTimeImmutable;
-use SandwaveIo\RealtimeRegister\Domain\Certificate;
-use SandwaveIo\RealtimeRegister\Domain\CertificateCollection;
-use SandwaveIo\RealtimeRegister\Domain\CertificateInfoProcess;
-use SandwaveIo\RealtimeRegister\Domain\DomainControlValidationCollection;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DownloadFormatEnum;
-use SandwaveIo\RealtimeRegister\Domain\Product;
-use SandwaveIo\RealtimeRegister\Domain\ProductCollection;
+use RealtimeRegister\Domain\Certificate;
+use RealtimeRegister\Domain\CertificateCollection;
+use RealtimeRegister\Domain\CertificateInfoProcess;
+use RealtimeRegister\Domain\Enum\DownloadFormatEnum;
+use RealtimeRegister\Domain\Product;
+use RealtimeRegister\Domain\ProductCollection;
+use RealtimeRegister\Domain\ResendDcvCollection;
 
 final class CertificatesApi extends AbstractApi
 {
@@ -477,14 +477,16 @@ final class CertificatesApi extends AbstractApi
     }
 
     /** @see https://dm.yoursrs-ote.com/docs/api/ssl/resenddcv */
-    public function resendDcv(int $processId, DomainControlValidationCollection $domainControlValidationCollection): array
+    public function resendDcv(int $processId, ResendDcvCollection $resendDcvCollection): ?array
     {
-        $payload = [
-            'dcv' => $domainControlValidationCollection,
-        ];
+        $response = $this->client->post('/v2/processes/' . $processId . '/resend', $resendDcvCollection->toArray());
 
-        $response = $this->client->post('/v2/processes/' . $processId . '/resend', $payload);
-
-        return $response->json();
+        if (
+            is_array($response->headers()) && array_key_exists('content-type', $response->headers())
+            && str_contains($response->headers()['content-type'][0], 'application/json')
+        ) {
+            return $response->json();
+        }
+        return null;
     }
 }

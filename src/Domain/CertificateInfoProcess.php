@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 class CertificateInfoProcess implements DomainObjectInterface
 {
@@ -32,8 +32,8 @@ class CertificateInfoProcess implements DomainObjectInterface
     {
         return new CertificateInfoProcess(
             $json['commonName'],
-            $json['requiresAttention'],
-            $json['certificateId'],
+            $json['requiresAttention'] ?? false,
+            $json['certificateId'] ?? null,
             CertificateValidation::fromArray($json['validations']),
             array_key_exists('headers', $json) ? self::getProcessId($json['headers']) : null
         );

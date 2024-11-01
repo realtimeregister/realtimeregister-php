@@ -1,22 +1,22 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister;
+namespace RealtimeRegister;
 
 use Psr\Log\LoggerInterface;
-use SandwaveIo\RealtimeRegister\Api\BrandsApi;
-use SandwaveIo\RealtimeRegister\Api\CertificatesApi;
-use SandwaveIo\RealtimeRegister\Api\ContactsApi;
-use SandwaveIo\RealtimeRegister\Api\CustomersApi;
-use SandwaveIo\RealtimeRegister\Api\DnsTemplatesApi;
-use SandwaveIo\RealtimeRegister\Api\DnsZonesApi;
-use SandwaveIo\RealtimeRegister\Api\DomainsApi;
-use SandwaveIo\RealtimeRegister\Api\FinancialApi;
-use SandwaveIo\RealtimeRegister\Api\HostsApi;
-use SandwaveIo\RealtimeRegister\Api\NotificationsApi;
-use SandwaveIo\RealtimeRegister\Api\ProcessesApi;
-use SandwaveIo\RealtimeRegister\Api\ProvidersApi;
-use SandwaveIo\RealtimeRegister\Api\TLDsApi;
-use SandwaveIo\RealtimeRegister\Support\AuthorizedClient;
+use RealtimeRegister\Api\BrandsApi;
+use RealtimeRegister\Api\CertificatesApi;
+use RealtimeRegister\Api\ContactsApi;
+use RealtimeRegister\Api\CustomersApi;
+use RealtimeRegister\Api\DnsTemplatesApi;
+use RealtimeRegister\Api\DnsZonesApi;
+use RealtimeRegister\Api\DomainsApi;
+use RealtimeRegister\Api\FinancialApi;
+use RealtimeRegister\Api\HostsApi;
+use RealtimeRegister\Api\NotificationsApi;
+use RealtimeRegister\Api\ProcessesApi;
+use RealtimeRegister\Api\ProvidersApi;
+use RealtimeRegister\Api\TLDsApi;
+use RealtimeRegister\Support\AuthorizedClient;
 
 final class RealtimeRegister
 {

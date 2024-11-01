@@ -1,41 +1,41 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Account;
-use SandwaveIo\RealtimeRegister\Domain\Billable;
-use SandwaveIo\RealtimeRegister\Domain\Brand;
-use SandwaveIo\RealtimeRegister\Domain\Contact;
-use SandwaveIo\RealtimeRegister\Domain\ContactProperty;
-use SandwaveIo\RealtimeRegister\Domain\ContactsConstraint;
-use SandwaveIo\RealtimeRegister\Domain\Country;
-use SandwaveIo\RealtimeRegister\Domain\DomainAvailability;
-use SandwaveIo\RealtimeRegister\Domain\DomainContact;
-use SandwaveIo\RealtimeRegister\Domain\DomainDetails;
-use SandwaveIo\RealtimeRegister\Domain\DomainRegistration;
-use SandwaveIo\RealtimeRegister\Domain\DomainSyntax;
-use SandwaveIo\RealtimeRegister\Domain\DomainTransferStatus;
-use SandwaveIo\RealtimeRegister\Domain\Downtime;
-use SandwaveIo\RealtimeRegister\Domain\DsData;
-use SandwaveIo\RealtimeRegister\Domain\KeyData;
-use SandwaveIo\RealtimeRegister\Domain\LanguageCode;
-use SandwaveIo\RealtimeRegister\Domain\LaunchPhase;
-use SandwaveIo\RealtimeRegister\Domain\Log;
-use SandwaveIo\RealtimeRegister\Domain\Nameservers;
-use SandwaveIo\RealtimeRegister\Domain\Notification;
-use SandwaveIo\RealtimeRegister\Domain\NotificationPoll;
-use SandwaveIo\RealtimeRegister\Domain\Price;
-use SandwaveIo\RealtimeRegister\Domain\Process;
-use SandwaveIo\RealtimeRegister\Domain\ProcessInfo;
-use SandwaveIo\RealtimeRegister\Domain\Provider;
-use SandwaveIo\RealtimeRegister\Domain\Registrant;
-use SandwaveIo\RealtimeRegister\Domain\Template;
-use SandwaveIo\RealtimeRegister\Domain\TemplatePreview;
-use SandwaveIo\RealtimeRegister\Domain\TLDInfo;
-use SandwaveIo\RealtimeRegister\Domain\Zone;
-use SandwaveIo\RealtimeRegister\Exceptions\InvalidArgumentException;
+use RealtimeRegister\Domain\Account;
+use RealtimeRegister\Domain\Billable;
+use RealtimeRegister\Domain\Brand;
+use RealtimeRegister\Domain\Contact;
+use RealtimeRegister\Domain\ContactProperty;
+use RealtimeRegister\Domain\ContactsConstraint;
+use RealtimeRegister\Domain\Country;
+use RealtimeRegister\Domain\DomainAvailability;
+use RealtimeRegister\Domain\DomainContact;
+use RealtimeRegister\Domain\DomainDetails;
+use RealtimeRegister\Domain\DomainRegistration;
+use RealtimeRegister\Domain\DomainSyntax;
+use RealtimeRegister\Domain\DomainTransferStatus;
+use RealtimeRegister\Domain\Downtime;
+use RealtimeRegister\Domain\DsData;
+use RealtimeRegister\Domain\KeyData;
+use RealtimeRegister\Domain\LanguageCode;
+use RealtimeRegister\Domain\LaunchPhase;
+use RealtimeRegister\Domain\Log;
+use RealtimeRegister\Domain\Nameservers;
+use RealtimeRegister\Domain\Notification;
+use RealtimeRegister\Domain\NotificationPoll;
+use RealtimeRegister\Domain\Price;
+use RealtimeRegister\Domain\Process;
+use RealtimeRegister\Domain\ProcessInfo;
+use RealtimeRegister\Domain\Provider;
+use RealtimeRegister\Domain\Registrant;
+use RealtimeRegister\Domain\Template;
+use RealtimeRegister\Domain\TemplatePreview;
+use RealtimeRegister\Domain\TLDInfo;
+use RealtimeRegister\Domain\Zone;
+use RealtimeRegister\Exceptions\InvalidArgumentException;
 use TypeError;
 use ValueError;
 
@@ -56,33 +56,33 @@ class DomainObjectTest extends TestCase
         return [
             'valid account' => [
                 Account::class,
-                include __DIR__ . '/data/account_valid.php',
+                include __DIR__ . '/data/customers/account_valid.php',
             ],
             'invalid account (balance)' => [
                 Account::class,
-                include __DIR__ . '/data/account_invalid_balance.php',
+                include __DIR__ . '/data/customers/account_invalid_balance.php',
                 TypeError::class,
             ],
             'valid billable' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_valid.php',
+                include __DIR__ . '/data/financial/billable_valid.php',
             ],
             'invalid billable (action)' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_invalid_action.php',
+                include __DIR__ . '/data/financial/billable_invalid_action.php',
                 ValueError::class,
             ],
             'valid contact (all fields)' => [
                 Contact::class,
-                include __DIR__ . '/data/contact_valid.php',
+                include __DIR__ . '/data/contacts/contact_valid.php',
             ],
             'valid contact (only required fields)' => [
                 Contact::class,
-                include __DIR__ . '/data/contact_valid_only_required.php',
+                include __DIR__ . '/data/contacts/contact_valid_only_required.php',
             ],
             'invalid contact (name)' => [
                 Contact::class,
-                include __DIR__ . '/data/contact_invalid_name.php',
+                include __DIR__ . '/data/contacts/contact_invalid_name.php',
                 TypeError::class,
             ],
             'valid country (all fields)' => [
@@ -100,56 +100,56 @@ class DomainObjectTest extends TestCase
             ],
             'valid domain availability (all fields)' => [
                 DomainAvailability::class,
-                include __DIR__ . '/data/domain_availability_valid.php',
+                include __DIR__ . '/data/domains/domain_availability_valid.php',
             ],
             'valid domain availability (only required)' => [
                 DomainAvailability::class,
-                include __DIR__ . '/data/domain_availability_only_required.php',
+                include __DIR__ . '/data/domains/domain_availability_only_required.php',
             ],
             'invalid domain availability (name)' => [
                 DomainAvailability::class,
-                include __DIR__ . '/data/domain_availability_invalid_price.php',
+                include __DIR__ . '/data/domains/domain_availability_invalid_price.php',
                 TypeError::class,
             ],
             'valid domain contact (all fields)' => [
                 DomainContact::class,
-                include __DIR__ . '/data/domain_contact_valid.php',
+                include __DIR__ . '/data/domains/domain_contact_valid.php',
             ],
             'invalid domain contact (handle)' => [
                 DomainContact::class,
-                include __DIR__ . '/data/domain_contact_invalid_handle.php',
+                include __DIR__ . '/data/domains/domain_contact_invalid_handle.php',
                 TypeError::class,
             ],
             'invalid domain contact (role)' => [
                 DomainContact::class,
-                include __DIR__ . '/data/domain_contact_invalid_role.php',
+                include __DIR__ . '/data/domains/domain_contact_invalid_role.php',
                 InvalidArgumentException::class,
             ],
             'valid domain details (all fields)' => [
                 DomainDetails::class,
-                include __DIR__ . '/data/domain_details_valid.php',
+                include __DIR__ . '/data/domains/domain_details_valid.php',
             ],
             'valid domain details (only required)' => [
                 DomainDetails::class,
-                include __DIR__ . '/data/domain_details_valid_only_required.php',
+                include __DIR__ . '/data/domains/domain_details_valid_only_required.php',
             ],
             'invalid domain details' => [
                 DomainDetails::class,
-                include __DIR__ . '/data/domain_details_invalid.php',
+                include __DIR__ . '/data/domains/domain_details_invalid.php',
                 InvalidArgumentException::class,
             ],
             'valid domain registration (all fields)' => [
                 DomainRegistration::class,
-                include __DIR__ . '/data/domain_registration_valid.php',
+                include __DIR__ . '/data/domains/domain_registration_valid.php',
             ],
             'invalid domain registration (name)' => [
                 DomainRegistration::class,
-                include __DIR__ . '/data/domain_registration_invalid_name.php',
+                include __DIR__ . '/data/domains/domain_registration_invalid_name.php',
                 TypeError::class,
             ],
             'invalid domain registration (expire)' => [
                 DomainRegistration::class,
-                include __DIR__ . '/data/domain_registration_invalid_date.php',
+                include __DIR__ . '/data/domains/domain_registration_invalid_date.php',
                 Exception::class,
             ],
             'valid ds data (all fields)' => [
@@ -196,19 +196,19 @@ class DomainObjectTest extends TestCase
             ],
             'valid zone (all fields)' => [
                 Zone::class,
-                include __DIR__ . '/data/zone_valid.php',
+                include __DIR__ . '/data/dns/zones/zone_valid.php',
             ],
             'valid contact property' => [
                 ContactProperty::class,
-                include __DIR__ . '/data/contact_property_valid.php',
+                include __DIR__ . '/data/contacts/contact_property_valid.php',
             ],
             'valid contact constraint' => [
                 ContactsConstraint::class,
-                include __DIR__ . '/data/contacts_constraint.php',
+                include __DIR__ . '/data/contacts/contacts_constraint.php',
             ],
             'valid domain syntax' => [
                 DomainSyntax::class,
-                include __DIR__ . '/data/domain_syntax.php',
+                include __DIR__ . '/data/domains/domain_syntax.php',
             ],
             'valid language code (all fields)' => [
                 LanguageCode::class,
@@ -240,50 +240,50 @@ class DomainObjectTest extends TestCase
             ],
             'domain transfer status' => [
                 DomainTransferStatus::class,
-                include __DIR__ . '/data/domain_transfer_status.php',
+                include __DIR__ . '/data/domains/domain_transfer_status.php',
             ],
             'valid notification (all fields)' => [
                 Notification::class,
-                include __DIR__ . '/data/notification_valid.php',
+                include __DIR__ . '/data/notifications/notification_valid.php',
             ],
             'valid notification (only required)' => [
                 Notification::class,
-                include __DIR__ . '/data/notification_valid_only_required.php',
+                include __DIR__ . '/data/notifications/notification_valid_only_required.php',
             ],
             'invalid notification (id)' => [
                 Notification::class,
-                include __DIR__ . '/data/notification_invalid_id.php',
+                include __DIR__ . '/data/notifications/notification_invalid_id.php',
                 TypeError::class,
             ],
             'valid notification poll (all fields)' => [
                 NotificationPoll::class,
-                include __DIR__ . '/data/notification_poll_valid.php',
+                include __DIR__ . '/data/notifications/notification_poll_valid.php',
             ],
             'valid notification poll (only required)' => [
                 NotificationPoll::class,
-                include __DIR__ . '/data/notification_poll_valid_only_required.php',
+                include __DIR__ . '/data/notifications/notification_poll_valid_only_required.php',
             ],
             'invalid notification poll (count)' => [
                 NotificationPoll::class,
-                include __DIR__ . '/data/notification_poll_invalid_count.php',
+                include __DIR__ . '/data/notifications/notification_poll_invalid_count.php',
                 TypeError::class,
             ],
             'valid process (all fields)' => [
                 Process::class,
-                include __DIR__ . '/data/process_valid.php',
+                include __DIR__ . '/data/processes/process_valid.php',
             ],
             'valid process (only required)' => [
                 Process::class,
-                include __DIR__ . '/data/process_valid_only_required.php',
+                include __DIR__ . '/data/processes/process_valid_only_required.php',
             ],
             'valid process (status)' => [
                 Process::class,
-                include __DIR__ . '/data/process_invalid_status.php',
+                include __DIR__ . '/data/processes/process_invalid_status.php',
                 InvalidArgumentException::class,
             ],
             'valid process info' => [
                 ProcessInfo::class,
-                include __DIR__ . '/data/process_info_valid.php',
+                include __DIR__ . '/data/processes/process_info_valid.php',
             ],
             'valid provider (all fields)' => [
                 Provider::class,
@@ -328,15 +328,15 @@ class DomainObjectTest extends TestCase
             ],
             'valid brand (all fields)' => [
                 Brand::class,
-                include __DIR__ . '/data/brand_valid.php',
+                include __DIR__ . '/data/brands/brand_valid.php',
             ],
             'valid brand (only required)' => [
                 Brand::class,
-                include __DIR__ . '/data/brand_valid_only_required.php',
+                include __DIR__ . '/data/brands/brand_valid_only_required.php',
             ],
             'invalid brand (name)' => [
                 Brand::class,
-                include __DIR__ . '/data/brand_invalid_name.php',
+                include __DIR__ . '/data/brands/brand_invalid_name.php',
                 TypeError::class,
             ],
             'valid template (all fields)' => [

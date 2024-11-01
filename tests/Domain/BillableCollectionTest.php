@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Billable;
-use SandwaveIo\RealtimeRegister\Domain\BillableCollection;
+use RealtimeRegister\Domain\Billable;
+use RealtimeRegister\Domain\BillableCollection;
 
 /**
  * This TestCase is used to test all Billable Object Collections.
@@ -21,7 +21,7 @@ class BillableCollectionTest extends TestCase
          *  - Entity data.
          */
         $scenarios = [
-            'billable collection' => [BillableCollection::class, include __DIR__ . '/data/billable_valid.php'],
+            'billable collection' => [BillableCollection::class, include __DIR__ . '/data/financial/billable_valid.php'],
         ];
         // For each type, create a flat and a pagination scenario.
         $dataset = [];

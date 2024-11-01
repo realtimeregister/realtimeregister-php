@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Support;
+namespace RealtimeRegister\Support;
 
 /** @codeCoverageIgnore */
 class IsProxyConnection

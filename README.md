@@ -1,12 +1,10 @@
-[![](https://user-images.githubusercontent.com/60096509/91668964-54ecd500-eb11-11ea-9c35-e8f0b20b277a.png)](https://sandwave.io)
-
 # Realtime Register RESTful API - PHP SDK
 
-[![Codecov](https://codecov.io/gh/sandwave-io/realtimeregister-php/branch/master/graph/badge.svg?token=CWWIFWRKZC)](https://packagist.org/packages/sandwave-io/realtimeregister-php)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/sandwave-io/realtimeregister-php/ci.yml?branch=main)](https://packagist.org/packages/sandwave-io/realtimeregister-php)
-[![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/sandwave-io/realtimeregister-php)](https://packagist.org/packages/sandwave-io/realtimeregister-php)
-[![Packagist PHP Version Support](https://img.shields.io/packagist/v/sandwave-io/realtimeregister-php)](https://packagist.org/packages/sandwave-io/realtimeregister-php)
-[![Packagist Downloads](https://img.shields.io/packagist/dt/sandwave-io/realtimeregister-php)](https://packagist.org/packages/sandwave-io/realtimeregister-php)
+[![Codecov](https://codecov.io/gh/realtimeregister/realtimeregister-php/branch/master/graph/badge.svg?token=CWWIFWRKZC)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/realtimeregister/realtimeregister-php/ci.yml?branch=master)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
+[![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/realtimeregister/realtimeregister-php)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
+[![Packagist PHP Version Support](https://img.shields.io/packagist/v/realtimeregister/realtimeregister-php)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/realtimeregister/realtimeregister-php)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
 
 ## Supported APIs
 
@@ -27,13 +25,13 @@ Are you missing functionality? Feel free to create an issue, or hit us up with a
 ## How to use (REST API)
 
 ```bash
-composer require sandwave-io/realtimeregister-php
+composer require realtimeregister/realtimeregister-php
 ```
 
 ```php
 <?php
 
-use SandwaveIo\RealtimeRegister\RealtimeRegister;
+use RealtimeRegister\RealtimeRegister;
 
 $realtimeRegister = new RealtimeRegister('my-secret-api-key');
 
@@ -48,7 +46,7 @@ An example:
 ```php
 <?php
 
-use SandwaveIo\RealtimeRegister\IsProxy;
+use RealtimeRegister\IsProxy;
 
 $isProxy = new IsProxy('my-secret-api-key');
 
@@ -67,7 +65,7 @@ Or check multiple:
 ```php
 <?php
 
-use SandwaveIo\RealtimeRegister\IsProxy;
+use RealtimeRegister\IsProxy;
 
 $isProxy = new IsProxy('my-secret-api-key');
 
@@ -97,3 +95,6 @@ vendor/bin/phpunit --coverage-text
 ```
 
 These tools will also run in GitHub actions on PR's and pushes on master.
+
+## Attribution
+This project is an adaptation of the excellent work done by [sandwave.io](https://github.com/sandwave-io/realtimeregister-php)

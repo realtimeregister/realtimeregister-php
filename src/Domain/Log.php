@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 use DateTime;
-use SandwaveIo\RealtimeRegister\Domain\Enum\LogStatusEnum;
+use RealtimeRegister\Domain\Enum\LogStatusEnum;
 
 final class Log implements DomainObjectInterface
 {

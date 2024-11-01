@@ -1,18 +1,18 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests;
+namespace RealtimeRegister\Tests;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Api\ContactsApi;
-use SandwaveIo\RealtimeRegister\Api\CustomersApi;
-use SandwaveIo\RealtimeRegister\Api\DomainsApi;
-use SandwaveIo\RealtimeRegister\Api\NotificationsApi;
-use SandwaveIo\RealtimeRegister\Api\ProcessesApi;
-use SandwaveIo\RealtimeRegister\Api\ProvidersApi;
-use SandwaveIo\RealtimeRegister\RealtimeRegister;
-use SandwaveIo\RealtimeRegister\Support\AuthorizedClient;
+use RealtimeRegister\Api\ContactsApi;
+use RealtimeRegister\Api\CustomersApi;
+use RealtimeRegister\Api\DomainsApi;
+use RealtimeRegister\Api\NotificationsApi;
+use RealtimeRegister\Api\ProcessesApi;
+use RealtimeRegister\Api\ProvidersApi;
+use RealtimeRegister\RealtimeRegister;
+use RealtimeRegister\Support\AuthorizedClient;
 
-/** @covers \SandwaveIo\RealtimeRegister\RealtimeRegister */
+/** @covers \RealtimeRegister\RealtimeRegister */
 class RealtimeRegisterClientTest extends TestCase
 {
     public function test_construct(): void

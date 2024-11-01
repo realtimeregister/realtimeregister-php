@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
-use SandwaveIo\RealtimeRegister\Domain\AccountCollection;
-use SandwaveIo\RealtimeRegister\Domain\PriceCollection;
-use SandwaveIo\RealtimeRegister\Domain\PromoCollection;
+use RealtimeRegister\Domain\AccountCollection;
+use RealtimeRegister\Domain\PriceCollection;
+use RealtimeRegister\Domain\PromoCollection;
 
 final class CustomersApi extends AbstractApi
 {

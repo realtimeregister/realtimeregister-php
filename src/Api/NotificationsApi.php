@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
-use SandwaveIo\RealtimeRegister\Domain\Notification;
-use SandwaveIo\RealtimeRegister\Domain\NotificationCollection;
-use SandwaveIo\RealtimeRegister\Domain\NotificationPoll;
+use RealtimeRegister\Domain\Notification;
+use RealtimeRegister\Domain\NotificationCollection;
+use RealtimeRegister\Domain\NotificationPoll;
 
 final class NotificationsApi extends AbstractApi
 {

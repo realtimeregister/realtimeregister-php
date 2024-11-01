@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 class DomainControlValidationCollection extends AbstractCollection
 {

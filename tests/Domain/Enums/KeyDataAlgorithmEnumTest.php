@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain\Enums;
+namespace RealtimeRegister\Tests\Domain\Enums;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
-use SandwaveIo\RealtimeRegister\Exceptions\InvalidArgumentException;
+use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
+use RealtimeRegister\Exceptions\InvalidArgumentException;
 
 class KeyDataAlgorithmEnumTest extends TestCase
 {

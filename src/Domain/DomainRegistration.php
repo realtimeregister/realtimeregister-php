@@ -1,21 +1,21 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 use DateTime;
-use SandwaveIo\RealtimeRegister\Domain\Enum\DomainStatusEnum;
+use RealtimeRegister\Domain\Enum\DomainStatusEnum;
 
 class DomainRegistration implements DomainObjectInterface
 {
     public string $domainName;
 
-    public DateTime $expiryDate;
+    public ?DateTime $expiryDate;
 
     public ?array $status;
 
     private function __construct(
         string $domainName,
-        DateTime $expiryDate,
+        ?DateTime $expiryDate,
         ?array $status,
     ) {
         $this->domainName = $domainName;
@@ -34,7 +34,7 @@ class DomainRegistration implements DomainObjectInterface
 
         return new DomainRegistration(
             $json['domainName'],
-            new DateTime($json['expiryDate']),
+            $json['expiryDate'] ? new DateTime($json['expiryDate']) : null,
             $json['status'] ?? null,
         );
     }
@@ -43,7 +43,7 @@ class DomainRegistration implements DomainObjectInterface
     {
         return [
             'domainName' => $this->domainName,
-            'expiryDate' => $this->expiryDate->format('Y-m-d\TH:i:s\Z'),
+            'expiryDate' => $this->expiryDate?->format('Y-m-d\TH:i:s\Z'),
             'status' => $this->status,
         ];
     }

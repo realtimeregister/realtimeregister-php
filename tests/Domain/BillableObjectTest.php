@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\Billable;
+use RealtimeRegister\Domain\Billable;
 use ValueError;
 
 /**
@@ -23,15 +23,15 @@ class BillableObjectTest extends TestCase
         return [
             'valid billables' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_valid.php',
+                include __DIR__ . '/data/financial/billable_valid.php',
             ],
             'valid billables with nullables' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_valid_with_nullables.php',
+                include __DIR__ . '/data/financial/billable_valid_with_nullables.php',
             ],
             'invalid billable action' => [
                 Billable::class,
-                include __DIR__ . '/data/billable_invalid_action.php',
+                include __DIR__ . '/data/financial/billable_invalid_action.php',
                 ValueError::class,
             ],
         ];

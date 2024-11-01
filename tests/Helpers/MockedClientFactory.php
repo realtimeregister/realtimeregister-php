@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Helpers;
+namespace RealtimeRegister\Tests\Helpers;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
@@ -9,8 +9,8 @@ use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerInterface;
-use SandwaveIo\RealtimeRegister\RealtimeRegister;
-use SandwaveIo\RealtimeRegister\Support\AuthorizedClient;
+use RealtimeRegister\RealtimeRegister;
+use RealtimeRegister\Support\AuthorizedClient;
 
 class MockedClientFactory
 {

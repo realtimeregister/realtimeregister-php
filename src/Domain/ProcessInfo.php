@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
 class ProcessInfo implements DomainObjectInterface
 {
@@ -40,7 +40,7 @@ class ProcessInfo implements DomainObjectInterface
     {
         return new self(
             $json['commonName'],
-            $json['requiresAttention'],
+            $json['requiresAttention'] ?? false,
             $json['validations'] ?? null,
             $json['notes'] ?? null
         );

@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests;
+namespace RealtimeRegister\Tests;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\IsProxyDomain;
-use SandwaveIo\RealtimeRegister\Exceptions\IsProxyConnectionException;
-use SandwaveIo\RealtimeRegister\IsProxy;
-use SandwaveIo\RealtimeRegister\Tests\Helpers\MockedIsProxyConnection;
+use RealtimeRegister\Domain\IsProxyDomain;
+use RealtimeRegister\Exceptions\IsProxyConnectionException;
+use RealtimeRegister\IsProxy;
+use RealtimeRegister\Tests\Helpers\MockedIsProxyConnection;
 
 class IsProxyConnectionTest extends TestCase
 {

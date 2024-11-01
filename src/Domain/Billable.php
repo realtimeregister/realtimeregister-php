@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Domain;
+namespace RealtimeRegister\Domain;
 
-use SandwaveIo\RealtimeRegister\Domain\Enum\BillableActionEnum;
+use RealtimeRegister\Domain\Enum\BillableActionEnum;
 
 final class Billable implements DomainObjectInterface
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Tests\Domain;
+namespace RealtimeRegister\Tests\Domain;
 
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\RealtimeRegister\Domain\DnsTemplate;
+use RealtimeRegister\Domain\DnsTemplate;
 
 class DnsTemplateObjectTest extends TestCase
 {
@@ -18,11 +18,11 @@ class DnsTemplateObjectTest extends TestCase
         return [
             'valid dnstemplate with records' => [
                 DnsTemplate::class,
-                include __DIR__ . '/data/dnstemplate_valid_with_records.php',
+                include __DIR__ . '/data/dns/templates/dnstemplate_valid_with_records.php',
             ],
             'valid dnstemplate without records' => [
                 DnsTemplate::class,
-                include __DIR__ . '/data/dnstemplate_valid_without_records.php',
+                include __DIR__ . '/data/dns/templates/dnstemplate_valid_without_records.php',
             ],
         ];
     }

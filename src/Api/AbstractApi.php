@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\RealtimeRegister\Api;
+namespace RealtimeRegister\Api;
 
-use SandwaveIo\RealtimeRegister\Support\AuthorizedClient;
+use RealtimeRegister\Support\AuthorizedClient;
 
 abstract class AbstractApi
 {
