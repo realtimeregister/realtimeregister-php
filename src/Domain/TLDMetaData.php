@@ -7,6 +7,7 @@ use RealtimeRegister\Domain\Enum\DomainFeatureEnum;
 use RealtimeRegister\Domain\Enum\DomainPossibleClientDomainStatusEnum;
 use RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
 use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
+use RealtimeRegister\Domain\Enum\PremiumSupportEnum;
 use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
 use RealtimeRegister\Domain\Enum\WhoisExposureEnum;
 use Webmozart\Assert\Assert;
@@ -77,6 +78,8 @@ final class TLDMetaData implements DomainObjectInterface
 
     public string $gdprCategory;
 
+    public string $premiumSupport;
+
     public DomainSyntax $domainSyntax;
 
     public Nameservers $nameservers;
@@ -131,7 +134,8 @@ final class TLDMetaData implements DomainObjectInterface
         ?string $allowDesignatedAgent,
         ?string $jurisdiction,
         ?string $termsOfService,
-        ?string $privacyPolicy
+        ?string $privacyPolicy,
+        string $premiumSupport
     ) {
         $this->createDomainPeriods = $createDomainPeriods;
         $this->renewDomainPeriods = $renewDomainPeriods;
@@ -171,6 +175,7 @@ final class TLDMetaData implements DomainObjectInterface
         $this->jurisdiction = $jurisdiction;
         $this->termsOfService = $termsOfService;
         $this->privacyPolicy = $privacyPolicy;
+        $this->premiumSupport = $premiumSupport;
     }
 
     public static function fromArray(array $data): TLDMetaData
@@ -198,6 +203,7 @@ final class TLDMetaData implements DomainObjectInterface
         }
         WhoisExposureEnum::validate($data['whoisExposure']);
         GDPRCategoryEnum::validate($data['gdprCategory']);
+        PremiumSupportEnum::validate($data['premiumSupport']);
 
         return new TLDMetaData(
             $data['createDomainPeriods'],
@@ -237,7 +243,8 @@ final class TLDMetaData implements DomainObjectInterface
             $data['allowDesignatedAgent'] ?? null,
             $data['jurisdiction'] ?? null,
             $data['termsOfService'] ?? null,
-            $data['privacyPolicy'] ?? null
+            $data['privacyPolicy'] ?? null,
+            $data['premiumSupport']
         );
     }
 
@@ -274,6 +281,7 @@ final class TLDMetaData implements DomainObjectInterface
             'privacyPolicy' => $this->privacyPolicy,
             'whoisExposure' => $this->whoisExposure,
             'gdprCategory' => $this->gdprCategory,
+            'premiumSupport' => $this->premiumSupport,
             'domainSyntax' => $this->domainSyntax->toArray(),
             'nameservers' => $this->nameservers->toArray(),
             'registrant' => $this->registrant->toArray(),
