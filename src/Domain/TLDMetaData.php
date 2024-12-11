@@ -6,7 +6,6 @@ use RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
 use RealtimeRegister\Domain\Enum\DomainFeatureEnum;
 use RealtimeRegister\Domain\Enum\DomainPossibleClientDomainStatusEnum;
 use RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
-use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
 use RealtimeRegister\Domain\Enum\PremiumSupportEnum;
 use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
 use RealtimeRegister\Domain\Enum\WhoisExposureEnum;
@@ -184,12 +183,6 @@ final class TLDMetaData implements DomainObjectInterface
             Assert::isArray($data['possibleClientDomainStatuses']);
             foreach ($data['possibleClientDomainStatuses'] as $status) {
                 DomainPossibleClientDomainStatusEnum::validate($status);
-            }
-        }
-        if (isset($data['allowedDnssecAlgorithms'])) {
-            Assert::isArray($data['allowedDnssecAlgorithms']);
-            foreach ($data['allowedDnssecAlgorithms'] as $algo) {
-                KeyDataAlgorithmEnum::validate($algo);
             }
         }
         if (isset($data['validationCategory'])) {

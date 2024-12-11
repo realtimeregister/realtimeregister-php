@@ -2,7 +2,6 @@
 
 namespace RealtimeRegister\Domain;
 
-use RealtimeRegister\Domain\Enum\KeyDataAlgorithmEnum;
 use RealtimeRegister\Domain\Enum\KeyDataFlagEnum;
 use RealtimeRegister\Domain\Enum\KeyDataProtocolEnum;
 use RealtimeRegister\Exceptions\InvalidArgumentException;
@@ -29,7 +28,6 @@ final class KeyData implements DomainObjectInterface
     {
         KeyDataProtocolEnum::validate($json['protocol']);
         KeyDataFlagEnum::validate($json['flags']);
-        KeyDataAlgorithmEnum::validate($json['algorithm']);
 
         $decodedKey = base64_decode($json['publicKey']);
         $cleanKey = preg_replace('/\s+/', '', $json['publicKey']);
