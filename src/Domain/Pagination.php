@@ -20,7 +20,7 @@ final class Pagination
     public static function fromArray(array $json): Pagination
     {
         return new Pagination(
-            $json['limit'],
+            $json['limit'] ?? 10,
             $json['offset'],
             $json['total'] ?? null
         );
