@@ -11,6 +11,7 @@ class DomainFeatureEnum extends AbstractEnum
     const FEATURE_UPDATE = 'UPDATE';
     const FEATURE_PRIVACY_PROTECT = 'PRIVACY_PROTECT';
     const FEATURE_PUSH_TRANSFER = 'PUSH_TRANSFER';
+    const FEATURE_LOCAL_CONTACT = 'LOCAL_CONTACT';
 
     protected static array $values = [
         DomainFeatureEnum::FEATURE_CREATE,
@@ -20,6 +21,7 @@ class DomainFeatureEnum extends AbstractEnum
         DomainFeatureEnum::FEATURE_UPDATE,
         DomainFeatureEnum::FEATURE_PRIVACY_PROTECT,
         DomainFeatureEnum::FEATURE_PUSH_TRANSFER,
+        DomainFeatureEnum::FEATURE_LOCAL_CONTACT,
     ];
 
     /** @param string $value */
