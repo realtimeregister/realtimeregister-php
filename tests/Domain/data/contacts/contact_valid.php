@@ -30,7 +30,7 @@ return [
         [
             'validatedOn'=> '2025-01-06T15:25:25Z',
             'version' => 1,
-            'category' => 'General'
+            'category' => 'General',
         ],
         [
             'validatedOn'=> '2025-01-06T15:25:25Z',
