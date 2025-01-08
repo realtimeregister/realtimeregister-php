@@ -24,7 +24,7 @@ final class DomainsApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/domains/get */
     public function get(string $domainName): DomainDetails
     {
-        $response = $this->client->get("v2/domains/{$domainName}");
+        $response = $this->client->get(sprintf('v2/domains/%s', urlencode($domainName)));
         return DomainDetails::fromArray($response->json());
     }
 
@@ -57,14 +57,14 @@ final class DomainsApi extends AbstractApi
             $query['languageCode'] = $languageCode;
         }
 
-        $response = $this->client->get("v2/domains/{$domainName}/check", $query);
+        $response = $this->client->get(sprintf('v2/domains/%s/check', urlencode($domainName)), $query);
         return DomainAvailability::fromArray($response->json());
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/domains/zoneinfo */
     public function zone(string $domainName): DomainZone
     {
-        $response = $this->client->get("v2/domains/{$domainName}/zone");
+        $response = $this->client->get(sprintf('v2/domains/%s/zone', urlencode($domainName)));
         return DomainZone::fromArray($response->json());
     }
 
@@ -87,7 +87,7 @@ final class DomainsApi extends AbstractApi
             $data['records'] = $records;
         }
 
-        $this->client->post("v2/domains/{$domainName}/zone/update", $data);
+        $this->client->post(sprintf('v2/domains/%s/zone/update', urlencode($domainName)), $data);
     }
 
     /**
@@ -145,7 +145,7 @@ final class DomainsApi extends AbstractApi
             $payload['billables'] = $billables->toArray();
         }
 
-        $response = $this->client->post("v2/domains/{$domainName}", $payload, [
+        $response = $this->client->post(sprintf('v2/domains/%s', urlencode($domainName)), $payload, [
             'quote' => $isQuote ? 'true' : 'false',
         ]);
 
@@ -237,7 +237,7 @@ final class DomainsApi extends AbstractApi
             $payload['billables'] = $billables->toArray();
         }
 
-        $response = $this->client->post("v2/domains/{$domainName}/update", $payload, [
+        $response = $this->client->post(sprintf('v2/domains/%s/update', urlencode($domainName)), $payload, [
             'quote' => $isQuote ? 'true' : 'false',
         ]);
 
@@ -320,7 +320,7 @@ final class DomainsApi extends AbstractApi
             $payload['billables'] = $billables->toArray();
         }
 
-        $response = $this->client->post("v2/domains/{$domainName}/transfer", $payload, [
+        $response = $this->client->post(sprintf('v2/domains/%s/transfer', urlencode($domainName)), $payload, [
             'quote' => $isQuote ? 'true' : 'false',
         ]);
 
@@ -334,7 +334,7 @@ final class DomainsApi extends AbstractApi
     /** @see https://dm.realtimeregister.com/docs/api/domains/pushtransfer */
     public function pushTransfer(string $domain, string $recipient): void
     {
-        $this->client->post("v2/domains/{$domain}/transfer/push", [
+        $this->client->post(sprintf('v2/domains/%s/transfer/push', urlencode($domain)), [
             'recipient' => $recipient,
         ]);
     }
@@ -372,7 +372,7 @@ final class DomainsApi extends AbstractApi
             $payload['billables'] = $billables->toArray();
         }
 
-        $response = $this->client->post("v2/domains/{$domain}/renew", $payload, is_null($isQuote) ? [] : [
+        $response = $this->client->post(sprintf('v2/domains/%s/renew', urlencode($domain)), $payload, is_null($isQuote) ? [] : [
             'quote' => $isQuote ? 'true' : 'false',
         ]);
 
@@ -386,7 +386,7 @@ final class DomainsApi extends AbstractApi
     /** @see https://dm.realtimeregister.com/docs/api/domains/delete */
     public function delete(string $domain): void
     {
-        $this->client->delete("v2/domains/{$domain}");
+        $this->client->delete(sprintf('v2/domains/%s', urlencode($domain)));
     }
 
     /**
@@ -408,7 +408,7 @@ final class DomainsApi extends AbstractApi
             $payload['billables'] = $billables->toArray();
         }
 
-        $response = $this->client->post("v2/domains/{$domain}/restore", $payload, is_null($isQuote) ? [] : [
+        $response = $this->client->post(sprintf('v2/domains/%s/restore', urlencode($domain)), $payload, is_null($isQuote) ? [] : [
             'quote' => $isQuote ? 'true' : 'false',
         ]);
 

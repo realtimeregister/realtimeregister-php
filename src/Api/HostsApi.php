@@ -33,6 +33,14 @@ final class HostsApi extends AbstractApi
         return DnsHostCollection::fromArray($response->json());
     }
 
+    public function export(array $parameters = []): array
+    {
+        $query = $parameters;
+        $query['export'] = 'true';
+        $response = $this->client->get('v2/hosts', $query);
+        return $response->json()['entities'];
+    }
+
     /**
      * @see https://dm.realtimeregister.com/docs/api/hosts/get
      *

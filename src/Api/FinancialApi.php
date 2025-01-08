@@ -46,10 +46,18 @@ final class FinancialApi extends AbstractApi
         return TransactionCollection::fromArray($response->json());
     }
 
+    public function export(array $parameters = []): array
+    {
+        $query = $parameters;
+        $query['export'] = 'true';
+        $response = $this->client->get('v2/billing/financialtransactions', $query);
+        return $response->json()['entities'];
+    }
+
     /* @see https://dm.realtimeregister.com/docs/api/exchangerates */
     public function exchangeRates(string $currency): ExchangeRates
     {
-        $response = $this->client->get("v2/exchangerates/{$currency}");
+        $response = $this->client->get(sprintf('v2/exchangerates/%s', urlencode($currency)));
         return ExchangeRates::fromArray($response->json());
     }
 }

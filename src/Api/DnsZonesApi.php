@@ -38,6 +38,14 @@ final class DnsZonesApi extends AbstractApi
         return DnsZoneCollection::fromArray($response->json());
     }
 
+    public function export(array $parameters = []): array
+    {
+        $query = $parameters;
+        $query['export'] = 'true';
+        $response = $this->client->get('v2/dns/zones', $query);
+        return $response->json()['entities'];
+    }
+
     /**
      * @see https://dm.realtimeregister.com/docs/api/dns/zones/get
      *
@@ -208,7 +216,7 @@ final class DnsZonesApi extends AbstractApi
     /** @see https://dm.realtimeregister.com/docs/api/dns/zones/stats */
     public function statistics(int $zoneId): DomainZoneStatistics
     {
-        $result = $this->client->get("v2/dns/zones/{$zoneId}/stats");
+        $result = $this->client->get(sprintf('v2/dns/zones/%s/stats', $zoneId));
 
         return DomainZoneStatistics::fromArray($result->json());
     }
@@ -216,19 +224,19 @@ final class DnsZonesApi extends AbstractApi
     /** @see https://dm.realtimeregister.com/docs/api/dns/zones/retrieve */
     public function retrieve(int $zoneId): void
     {
-        $this->client->post("v2/dns/zones/{$zoneId}/retrieve");
+        $this->client->post(sprintf('v2/dns/zones/%s/retrieve', $zoneId));
     }
 
     /** @see https://dm.realtimeregister.com/docs/api/dns/zones/key-rollover */
     public function keyRollover(int $zoneId): void
     {
-        $this->client->post("v2/dns/zones/{$zoneId}/key-rollover");
+        $this->client->post(sprintf('v2/dns/zones/%s/key-rollover', $zoneId));
     }
 
     /** @see https://dm.realtimeregister.com/docs/api/dns/ack-ds-update */
     public function ackDSUpdate(int $processId): void
     {
-        $this->client->post("v2/processes/{$processId}/ack-ds-update");
+        $this->client->post(sprintf('v2/processes/%s/ack-ds-update', $processId));
     }
 
     /**
