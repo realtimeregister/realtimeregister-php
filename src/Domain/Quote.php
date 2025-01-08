@@ -5,9 +5,9 @@ namespace RealtimeRegister\Domain;
 final class Quote implements DomainObjectInterface
 {
     public function __construct(
-        public readonly string $currency,
+        public readonly ?string $currency,
         public readonly int $total,
-        public readonly BillableCollection $billables
+        public readonly ?BillableCollection $billables
     ) {
     }
 
@@ -16,16 +16,16 @@ final class Quote implements DomainObjectInterface
         return [
             'currency' => $this->currency,
             'total' => $this->total,
-            'billables' => $this->billables->toArray(),
+            'billables' => $this->billables?->toArray(),
         ];
     }
 
     public static function fromArray(array $json): Quote
     {
         return new Quote(
-            currency: $json['currency'],
+            currency: $json['currency'] ?? null,
             total: $json['total'],
-            billables: BillableCollection::fromArray($json['billables'])
+            billables: (array_key_exists('billables', $json) && $json['billables']) ? BillableCollection::fromArray($json['billables']) : null,
         );
     }
 }
