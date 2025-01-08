@@ -239,7 +239,6 @@ final class ContactsApi extends AbstractApi
         ]);
     }
 
-
     /* @see https://dm.realtimeregister.com/docs/api/countries/get */
     public function getCountry(string $country): Country
     {
