@@ -31,19 +31,7 @@ final class DnsTemplatesApi extends AbstractApi
         ?array $parameters = null
     ): DnsTemplateCollection {
         $this->validateCustomerHandle($customer);
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get(
             sprintf('v2/customers/%s/dnstemplates', urlencode($customer)),

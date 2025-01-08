@@ -35,20 +35,7 @@ final class DomainsApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): DomainDetailsCollection {
-        $query = [];
-
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/domains', $query);
         return DomainDetailsCollection::fromArray($response->json());

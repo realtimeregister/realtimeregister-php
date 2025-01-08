@@ -32,19 +32,7 @@ final class DnsZonesApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): DnsZoneCollection {
-        $query = [];
-        if ($limit !== null) {
-            $query['limit'] = $limit;
-        }
-        if ($offset !== null) {
-            $query['offset'] = $offset;
-        }
-        if ($search !== null) {
-            $query['q'] = $search;
-        }
-        if ($parameters !== null) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/dns/zones', $query);
         return DnsZoneCollection::fromArray($response->json());

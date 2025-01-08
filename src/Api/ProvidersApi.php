@@ -23,19 +23,7 @@ final class ProvidersApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): ProviderCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/providers', $query);
         return ProviderCollection::fromArray($response->json());
@@ -62,19 +50,7 @@ final class ProvidersApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): DowntimeCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/providers/downtime', $query);
         return DowntimeCollection::fromArray($response->json());

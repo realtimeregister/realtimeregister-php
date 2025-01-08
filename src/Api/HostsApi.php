@@ -27,19 +27,7 @@ final class HostsApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): DnsHostCollection {
-        $query = [];
-        if ($limit !== null) {
-            $query['limit'] = $limit;
-        }
-        if ($offset !== null) {
-            $query['offset'] = $offset;
-        }
-        if ($search !== null) {
-            $query['q'] = $search;
-        }
-        if ($parameters !== null) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/hosts', $query);
         return DnsHostCollection::fromArray($response->json());
