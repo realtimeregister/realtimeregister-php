@@ -235,9 +235,10 @@ final class ContactsApi extends AbstractApi
     public function updateProperties(string $customer, string $handle, string $registry, array $properties): void
     {
         $this->client->post("v2/customers/{$customer}/contacts/{$handle}/{$registry}/update", [
-            'properties' => $properties,
+            'properties' => empty($properties) ? null : $properties,
         ]);
     }
+
 
     /* @see https://dm.realtimeregister.com/docs/api/countries/get */
     public function getCountry(string $country): Country
