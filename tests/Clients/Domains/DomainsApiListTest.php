@@ -62,7 +62,7 @@ class DomainsApiListTest extends TestCase
             MockedClientFactory::assertRoute('GET', 'v2/domains', $this)
         );
         $this->expectException(\InvalidArgumentException::class);
-        $sdk->domains->list(3, 0, 'john', ['export' => true]);
+        $sdk->domains->list(3, 0, 'john', ['export' => true, 'fields' => ['domain']]);
     }
 
     public function test_list_with_search_and_parameters(): void
