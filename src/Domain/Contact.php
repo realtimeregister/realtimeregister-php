@@ -43,6 +43,8 @@ final class Contact implements DomainObjectInterface
 
     public ?Datetime $updatedDate;
 
+    public ?ValidationCollection $validations;
+
     private function __construct(
         string $customer,
         string $handle,
@@ -60,7 +62,8 @@ final class Contact implements DomainObjectInterface
         ?array $registries,
         ?array $properties,
         DateTime $createdDate,
-        ?DateTime $updatedDate
+        ?DateTime $updatedDate,
+        ?ValidationCollection $validations
     ) {
         $this->customer = $customer;
         $this->handle = $handle;
@@ -79,6 +82,7 @@ final class Contact implements DomainObjectInterface
         $this->properties = $properties;
         $this->createdDate = $createdDate;
         $this->updatedDate = $updatedDate;
+        $this->validations = $validations;
     }
 
     public static function fromArray(array $data): Contact
@@ -101,7 +105,8 @@ final class Contact implements DomainObjectInterface
             $data['registries'] ?? null,
             $data['properties'] ?? null,
             new DateTime($data['createdDate']),
-            $updatedDate
+            $updatedDate,
+            (isset($data['validations']) && is_array($data['validations'])) ? ValidationCollection::fromArray($data['validations']) : null
         );
     }
 
@@ -125,6 +130,7 @@ final class Contact implements DomainObjectInterface
             'properties' => $this->properties,
             'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
             'updatedDate' => $this->updatedDate ? $this->updatedDate->format('Y-m-d\TH:i:s\Z') : null,
+            'validations' => $this->validations?->toArray(),
         ], function ($x) {
             return ! is_null($x);
         });
