@@ -36,6 +36,31 @@ class ProcessesApiListTest extends TestCase
         $sdk->processes->list();
     }
 
+    public function test_process_without_identifier()
+    {
+        /** @var string $responseBody */
+        $responseBody = json_encode(
+            [
+                'entities' => [
+                    include __DIR__ . '/../../Domain/data/processes/process_without_identifier.php',
+                ],
+                'pagination' => [
+                    'total' => 1,
+                    'offset' => 0,
+                    'limit' => 10,
+                ],
+            ]
+        );
+        Assert::string($responseBody);
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            $responseBody,
+            MockedClientFactory::assertRoute('GET', 'v2/processes', $this)
+        );
+
+        $sdk->processes->list();
+    }
+
     public function test_list_with_queries(): void
     {
         /** @var string $responseBody */
