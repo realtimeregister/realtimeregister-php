@@ -29,7 +29,7 @@ final class Process implements DomainObjectInterface
 
     public string $type;
 
-    public string $identifier;
+    public ?string $identifier;
 
     public string $action;
 
@@ -67,7 +67,7 @@ final class Process implements DomainObjectInterface
         string $status,
         DateTimeInterface $createdDate,
         string $type,
-        string $identifier,
+        ?string $identifier,
         string $action,
         array $command,
         ?DateTimeInterface $updatedDate,
@@ -147,7 +147,7 @@ final class Process implements DomainObjectInterface
             $json['status'],
             new DateTimeImmutable($json['createdDate']),
             $json['type'],
-            $json['identifier'],
+            $json['identifier'] ?? null,
             $json['action'],
             $json['command'],
             isset($json['updatedDate']) ? new DateTimeImmutable($json['updatedDate']) : null,

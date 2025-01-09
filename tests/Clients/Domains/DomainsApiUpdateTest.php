@@ -68,4 +68,22 @@ class DomainsApiUpdateTest extends TestCase
             BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php'])
         );
     }
+
+    public function test_free_update(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            json_encode(include __DIR__ . '/../../Domain/data/domains/domain_free_update_quote.php'),
+            MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/update', $this)
+        );
+
+        $response = $sdk->domains->update(
+            domainName: 'example.com',
+            isQuote: true
+        );
+
+        $this->assertInstanceOf(DomainQuote::class, $response);
+        $this->assertNull($response->quote->currency);
+        $this->assertNull($response->quote->billables);
+    }
 }

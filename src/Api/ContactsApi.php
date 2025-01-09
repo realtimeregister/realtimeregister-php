@@ -223,7 +223,7 @@ final class ContactsApi extends AbstractApi
     public function updateProperties(string $customer, string $handle, string $registry, array $properties): void
     {
         $this->client->post(sprintf('v2/customers/%s/contacts/%s/%s/update', urlencode($customer), urlencode($handle), urlencode($registry)), [
-            'properties' => $properties,
+            'properties' => empty($properties) ? null : $properties,
         ]);
     }
 
