@@ -51,7 +51,7 @@ class CertificatesApiReissueCertificateTest extends TestCase
             'Amsterdam',
             '12345678',
             null,
-            'NL',
+            null,
             'en',
             [
                 'commonName' => 'www.example.com',

@@ -216,7 +216,7 @@ final class CertificatesApi extends AbstractApi
         ?string $coc = null,
         ?string $saEmail = null,
         ?array $approver = null,
-        ?string $country = null,
+        ?string $country = null, // TODO This field isn't used
         ?string $language = null,
         ?array $dcv = null,
         ?string $domainName = null,
@@ -242,7 +242,7 @@ final class CertificatesApi extends AbstractApi
         }
 
         if (! is_null($country)) {
-            $payload['country'] = $country;
+            trigger_error('Country field is not used in this call and will be removed in a future version');
         }
 
         if (! is_null($address)) {
@@ -310,7 +310,7 @@ final class CertificatesApi extends AbstractApi
         ?string $city = null,
         ?string $coc = null,
         ?array $approver = null,
-        ?string $country = null,
+        ?string $country = null, // TODO This field isn't used
         ?string $language = null,
         ?array $dcv = null,
         ?string $domainName = null,
@@ -334,7 +334,7 @@ final class CertificatesApi extends AbstractApi
         }
 
         if (! is_null($country)) {
-            $payload['country'] = $country;
+            trigger_error('Country field is not used in this call and will be removed in a future version');
         }
 
         if (! is_null($address)) {

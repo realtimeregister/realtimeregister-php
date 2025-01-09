@@ -53,7 +53,7 @@ class CertificatesApiRenewCertificateTest extends TestCase
             '12345678',
             'example@mail.com',
             ['example@mail.com'],
-            'en',
+            null,
             'NL',
             [
                 'commonName' => 'CommonName',
