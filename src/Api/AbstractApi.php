@@ -40,7 +40,7 @@ abstract class AbstractApi
         if (! is_null($parameters)) {
             // Remove this special parameter, if it's used. It should only be used for the export calls
             if (
-                array_key_exists('export', $parameters) && (array_key_exists('fields', $parameters) && ! empty($parameters['fields']))
+                array_key_exists('export', $parameters) && ($parameters['export'] !== false && $parameters['export'] !== null)
             ) {
                 throw new InvalidArgumentException('Export parameter not allowed for this request, use the "export" request.');
             }
