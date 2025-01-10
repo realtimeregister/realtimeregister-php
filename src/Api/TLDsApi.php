@@ -9,7 +9,7 @@ final class TLDsApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/tlds/info */
     public function info(string $tld): TLDInfo
     {
-        $response = $this->client->get("v2/tlds/{$tld}/info");
+        $response = $this->client->get(sprintf('v2/tlds/%s/info', urlencode($tld)));
         return TLDInfo::fromArray($response->json());
     }
 }

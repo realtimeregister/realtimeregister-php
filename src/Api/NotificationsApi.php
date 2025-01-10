@@ -11,7 +11,7 @@ final class NotificationsApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/notifications/get */
     public function get(string $customer, int $notificationId): Notification
     {
-        $response = $this->client->get("v2/customers/{$customer}/notifications/{$notificationId}");
+        $response = $this->client->get(sprintf('v2/customers/%s/notifications/%s', urlencode($customer), $notificationId));
         return Notification::fromArray($response->json());
     }
 
@@ -23,34 +23,30 @@ final class NotificationsApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): NotificationCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
-        $response = $this->client->get("v2/customers/{$customer}/notifications", $query);
+        $response = $this->client->get(sprintf('v2/customers/%s/notifications', urlencode($customer)), $query);
         return NotificationCollection::fromArray($response->json());
+    }
+
+    public function export(string $customer, array $parameters = []): array
+    {
+        $query = $parameters;
+        $query['export'] = 'true';
+        $response = $this->client->get(sprintf('v2/customers/%s/notifications', urlencode($customer)), $query);
+        return $response->json()['entities'];
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/notifications/poll */
     public function poll(string $customer): NotificationPoll
     {
-        $response = $this->client->get("v2/customers/{$customer}/notifications/poll");
+        $response = $this->client->get(sprintf('v2/customers/%s/notifications/poll', urlencode($customer)));
         return NotificationPoll::fromArray($response->json());
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/notifications/ack */
     public function ack(string $customer, int $notificationId): void
     {
-        $this->client->post("v2/customers/{$customer}/notifications/{$notificationId}/ack");
+        $this->client->post(sprintf('v2/customers/%s/notifications/%s/ack', urlencode($customer), $notificationId));
     }
 }

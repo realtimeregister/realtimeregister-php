@@ -12,7 +12,7 @@ final class ProvidersApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/providers/get */
     public function get(string $name): Provider
     {
-        $response = $this->client->get("/v2/providers/REGISTRY/{$name}");
+        $response = $this->client->get(sprintf('/v2/providers/REGISTRY/%s', urlencode($name)));
         return Provider::fromArray($response->json());
     }
 
@@ -23,19 +23,7 @@ final class ProvidersApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): ProviderCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/providers', $query);
         return ProviderCollection::fromArray($response->json());
@@ -52,7 +40,7 @@ final class ProvidersApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/providers/downtime/get */
     public function getDowntime(int $id): Downtime
     {
-        return Downtime::fromArray($this->client->get("/v2/providers/downtime/{$id}")->json());
+        return Downtime::fromArray($this->client->get(sprintf('/v2/providers/downtime/%s', $id))->json());
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/providers/downtime/list */
@@ -62,19 +50,7 @@ final class ProvidersApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): DowntimeCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/providers/downtime', $query);
         return DowntimeCollection::fromArray($response->json());
