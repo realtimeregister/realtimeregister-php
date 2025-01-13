@@ -48,19 +48,7 @@ final class ProcessesApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): ProcessCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/processes', $query);
         return ProcessCollection::fromArray($response->json());

@@ -18,21 +18,9 @@ final class ContactsApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): ContactCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
-        $response = $this->client->get("v2/customers/{$customer}/contacts", $query);
+        $response = $this->client->get(sprintf('v2/customers/%s/contacts', urlencode($customer)), $query);
         return ContactCollection::fromArray($response->json());
     }
 
@@ -40,14 +28,14 @@ final class ContactsApi extends AbstractApi
     {
         $query = $parameters;
         $query['export'] = 'true';
-        $response = $this->client->get("v2/customers/{$customer}/contacts", $query);
+        $response = $this->client->get(sprintf('v2/customers/%s/contacts', urlencode($customer)), $query);
         return $response->json()['entities'];
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/contacts/get */
     public function get(string $customer, string $handle): Contact
     {
-        $response = $this->client->get("v2/customers/{$customer}/contacts/{$handle}");
+        $response = $this->client->get(sprintf('v2/customers/%s/contacts/%s', urlencode($customer), urlencode($handle)));
         return Contact::fromArray($response->json());
     }
 
@@ -95,7 +83,7 @@ final class ContactsApi extends AbstractApi
             $payload['fax'] = $fax;
         }
 
-        $this->client->post("v2/customers/{$customer}/contacts/$handle", $payload);
+        $this->client->post(sprintf('v2/customers/%s/contacts/%s', urlencode($customer), urlencode($handle)), $payload);
     }
 
     /**
@@ -157,7 +145,7 @@ final class ContactsApi extends AbstractApi
             $payload['fax'] = $fax;
         }
 
-        $this->client->post("v2/customers/{$customer}/contacts/{$handle}/update", $payload);
+        $this->client->post(sprintf('v2/customers/%s/contacts/%s/update', urlencode($customer), urlencode($handle)), $payload);
     }
 
     /**
@@ -176,7 +164,7 @@ final class ContactsApi extends AbstractApi
             }
         }
 
-        $this->client->post("v2/customers/{$customer}/contacts/{$handle}/validate", [
+        $this->client->post(sprintf('v2/customers/%s/contacts/%s/validate', urlencode($customer), urlencode($handle)), [
             'categories' => $categories,
         ]);
     }
@@ -194,7 +182,7 @@ final class ContactsApi extends AbstractApi
             $payload['registries'] = $registries;
         }
 
-        $this->client->post("v2/customers/{$customer}/contacts/{$handle}/split", $payload);
+        $this->client->post(sprintf('v2/customers/%s/contacts/%s/split', urlencode($customer), urlencode($handle)), $payload);
     }
 
     /**
@@ -202,7 +190,7 @@ final class ContactsApi extends AbstractApi
      */
     public function delete(string $customer, string $handle): void
     {
-        $this->client->delete("v2/customers/{$customer}/contacts/{$handle}");
+        $this->client->delete(sprintf('v2/customers/%s/contacts/%s', urlencode($customer), urlencode($handle)));
     }
 
     /**
@@ -224,7 +212,7 @@ final class ContactsApi extends AbstractApi
 
             $payload['intendedUsage'] = $intendedUsage;
         }
-        $this->client->post("v2/customers/{$customer}/contacts/{$handle}/{$registry}", $payload);
+        $this->client->post(sprintf('v2/customers/%s/contacts/%s/%s', urlencode($customer), urlencode($handle), urlencode($registry)), $payload);
     }
 
     /**
@@ -234,7 +222,7 @@ final class ContactsApi extends AbstractApi
      */
     public function updateProperties(string $customer, string $handle, string $registry, array $properties): void
     {
-        $this->client->post("v2/customers/{$customer}/contacts/{$handle}/{$registry}/update", [
+        $this->client->post(sprintf('v2/customers/%s/contacts/%s/%s/update', urlencode($customer), urlencode($handle), urlencode($registry)), [
             'properties' => empty($properties) ? null : $properties,
         ]);
     }
@@ -242,7 +230,7 @@ final class ContactsApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/countries/get */
     public function getCountry(string $country): Country
     {
-        return Country::fromArray($this->client->get("v2/countries/{$country}")->json());
+        return Country::fromArray($this->client->get(sprintf('v2/countries/%s', urlencode($country)))->json());
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/contacts/list */
@@ -252,19 +240,7 @@ final class ContactsApi extends AbstractApi
         ?string $search = null,
         ?array $parameters = null
     ): CountryCollection {
-        $query = [];
-        if (! is_null($limit)) {
-            $query['limit'] = $limit;
-        }
-        if (! is_null($offset)) {
-            $query['offset'] = $offset;
-        }
-        if (! is_null($search)) {
-            $query['q'] = $search;
-        }
-        if (! is_null($parameters)) {
-            $query = array_merge($parameters, $query);
-        }
+        $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
         $response = $this->client->get('v2/countries', $query);
         return CountryCollection::fromArray($response->json());
