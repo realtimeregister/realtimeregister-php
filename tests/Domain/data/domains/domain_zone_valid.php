@@ -7,6 +7,7 @@ return [
     'refresh' => 3600,
     'retry' => 3600,
     'expire' => 1209600,
+    'dnssec' => false,
     'ttl' => 3600,
     'defaultRecords' => [
         [

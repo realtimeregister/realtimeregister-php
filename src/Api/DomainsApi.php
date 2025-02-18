@@ -12,8 +12,6 @@ use RealtimeRegister\Domain\DomainDetailsCollection;
 use RealtimeRegister\Domain\DomainQuote;
 use RealtimeRegister\Domain\DomainRegistration;
 use RealtimeRegister\Domain\DomainTransferStatus;
-use RealtimeRegister\Domain\DomainZone;
-use RealtimeRegister\Domain\DomainZoneRecord;
 use RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
 use RealtimeRegister\Domain\Enum\DomainStatusEnum;
 use RealtimeRegister\Domain\KeyDataCollection;
@@ -59,35 +57,6 @@ final class DomainsApi extends AbstractApi
 
         $response = $this->client->get(sprintf('v2/domains/%s/check', urlencode($domainName)), $query);
         return DomainAvailability::fromArray($response->json());
-    }
-
-    /* @see https://dm.realtimeregister.com/docs/api/domains/zoneinfo */
-    public function zone(string $domainName): DomainZone
-    {
-        $response = $this->client->get(sprintf('v2/domains/%s/zone', urlencode($domainName)));
-        return DomainZone::fromArray($response->json());
-    }
-
-    /**
-     * @see https://dm.realtimeregister.com/docs/api/domains/zoneupdate
-     *
-     * @param DomainZoneRecord[] $records
-     */
-    public function zoneUpdate(string $domainName, string $hostMaster, int $refresh, int $retry, int $expire, int $ttl, ?array $records = null): void
-    {
-        $data = [
-            'hostMaster' => $hostMaster,
-            'refresh' => $refresh,
-            'retry' => $retry,
-            'expire' => $expire,
-            'ttl' => $ttl,
-        ];
-
-        if ($records !== null) {
-            $data['records'] = $records;
-        }
-
-        $this->client->post(sprintf('v2/domains/%s/zone/update', urlencode($domainName)), $data);
     }
 
     /**
