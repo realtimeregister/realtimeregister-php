@@ -21,7 +21,7 @@ final class Zone implements DomainObjectInterface
     {
         return new self(
             $json['id'],
-            ZoneServiceEnum::from($json['service']),
+            ZoneServiceEnum::from($json['service']) ?? ZoneServiceEnum::BASIC,
             $json['template'] ?? null,
             $json['dnssec'],
             $json['link'] ?? null,
