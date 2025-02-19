@@ -7,7 +7,6 @@ use RealtimeRegister\Domain\DnsZone;
 use RealtimeRegister\Domain\DnsZoneCollection;
 use RealtimeRegister\Domain\DomainZoneRecordCollection;
 use RealtimeRegister\Domain\DomainZoneStatistics;
-use RealtimeRegister\Domain\DomainZoneUpdate;
 use RealtimeRegister\Domain\Enum\ZoneServiceEnum;
 use RealtimeRegister\Domain\Zone;
 use Webmozart\Assert\Assert;

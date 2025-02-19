@@ -3,7 +3,6 @@
 namespace RealtimeRegister\Tests\Clients\Dns\Zones;
 
 use PHPUnit\Framework\TestCase;
-use RealtimeRegister\Domain\DnsZoneCollection;
 use RealtimeRegister\Domain\DomainZoneRecordCollection;
 use RealtimeRegister\Domain\Enum\ZoneServiceEnum;
 use RealtimeRegister\Tests\Helpers\MockedClientFactory;
