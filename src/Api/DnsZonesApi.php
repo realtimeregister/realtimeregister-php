@@ -150,7 +150,7 @@ final class DnsZonesApi extends AbstractApi
         ?int $expire = null,
         ?int $ttl = null,
         ?DomainZoneRecordCollection $records = null,
-    ): DomainZoneUpdate {
+    ): void {
         $payload = [];
         if ($name !== null) {
             $this->validateZoneName($name);
@@ -193,12 +193,10 @@ final class DnsZonesApi extends AbstractApi
             $payload['records'] = $records->toArray();
         }
 
-        $result = $this->client->post(
+        $this->client->post(
             sprintf('v2/dns/zones/%s/update', $id),
             $payload,
         );
-
-        return DomainZoneUpdate::fromArray($result->json());
     }
 
     /**
