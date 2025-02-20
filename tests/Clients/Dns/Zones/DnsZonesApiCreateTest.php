@@ -22,7 +22,7 @@ class DnsZonesApiCreateTest extends TestCase
             ZoneServiceEnum::BASIC,
             'magazine',
             false,
-            'master',
+            '192.168.1.1',
             ['ns1.donaldduck.nl', 'ns2.donaldduck.nl'],
             false,
             'movies@ducktown.disney.com',
