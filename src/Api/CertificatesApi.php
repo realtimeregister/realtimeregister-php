@@ -370,7 +370,7 @@ final class CertificatesApi extends AbstractApi
         $this->client->delete(sprintf('/v2/ssl/certificates/%s', $certificateId), $payload);
     }
 
-    public function sendSubscriberAgreement(int $processId, string $email, ?string $language): void
+    public function sendSubscriberAgreement(int $processId, string $email, ?string $language = null): void
     {
         $payload = [
             'email' => $email,
@@ -413,7 +413,7 @@ final class CertificatesApi extends AbstractApi
     }
 
     /** @see https://dm.realtimeregister.com/docs/api/ssl/import */
-    public function importCertificate(string $customer, string $certificate, ?string $csr, ?string $coc): void
+    public function importCertificate(string $customer, string $certificate, ?string $csr = null, ?string $coc = null): void
     {
         $payload = [
             'customer' => $customer,

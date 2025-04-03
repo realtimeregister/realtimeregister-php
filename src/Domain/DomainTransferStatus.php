@@ -35,11 +35,11 @@ final class DomainTransferStatus implements DomainObjectInterface
         string $status,
         DateTimeInterface $requestedDate,
         string $type,
-        ?int $processId,
-        ?DateTimeInterface $actionDate,
-        ?DateTimeInterface $expiryDate,
-        ?string $registrar,
-        ?LogCollection $log
+        ?int $processId = null,
+        ?DateTimeInterface $actionDate = null,
+        ?DateTimeInterface $expiryDate = null,
+        ?string $registrar = null,
+        ?LogCollection $log = null
     ) {
         $this->domainName = $domainName;
         $this->registrar = $registrar;

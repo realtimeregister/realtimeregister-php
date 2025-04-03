@@ -9,9 +9,9 @@ class CertificateInfoProcess implements DomainObjectInterface
     public function __construct(
         public string $commonName,
         public bool $requiresAttention,
-        public ?int $certificateId,
-        public ?CertificateValidation $validations,
-        public ?int $processId
+        public ?int $certificateId = null,
+        public ?CertificateValidation $validations = null,
+        public ?int $processId = null
     ) {
     }
 

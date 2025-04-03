@@ -21,7 +21,7 @@ final class DomainZoneRecord implements DomainObjectInterface
         string $type,
         string $content,
         int $ttl,
-        ?int $prio
+        ?int $prio = null
     ) {
         $this->name = $name;
         $this->type = $type;

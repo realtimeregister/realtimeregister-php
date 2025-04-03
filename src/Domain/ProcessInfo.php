@@ -17,8 +17,8 @@ class ProcessInfo implements DomainObjectInterface
     public function __construct(
         string $commonName,
         bool $requiresAttention,
-        ?array $validations,
-        ?array $notes
+        ?array $validations = null,
+        ?array $notes = null
     ) {
         $this->commonName = $commonName;
         $this->requiresAttention = $requiresAttention;

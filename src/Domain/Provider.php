@@ -10,7 +10,7 @@ final class Provider implements DomainObjectInterface
 
     private function __construct(
         string $name,
-        ?array $tlds
+        ?array $tlds = null
     ) {
         $this->name = $name;
         $this->tlds = $tlds;

@@ -68,10 +68,10 @@ final class DomainDetails implements DomainObjectInterface
         ?DateTime $updatedDate,
         DateTime $expiryDate,
         bool $premium,
-        ?Zone $zone,
-        ?DomainContactCollection $contacts,
-        ?KeyDataCollection $keyData,
-        ?DsDataCollection $dsData
+        ?Zone $zone = null,
+        ?DomainContactCollection $contacts = null,
+        ?KeyDataCollection $keyData = null,
+        ?DsDataCollection $dsData = null
     ) {
         $this->domainName = $domainName;
         $this->registry = $registry;

@@ -62,8 +62,8 @@ final class Contact implements DomainObjectInterface
         ?array $registries,
         ?array $properties,
         DateTime $createdDate,
-        ?DateTime $updatedDate,
-        ?ValidationCollection $validations
+        ?DateTime $updatedDate = null,
+        ?ValidationCollection $validations = null
     ) {
         $this->customer = $customer;
         $this->handle = $handle;

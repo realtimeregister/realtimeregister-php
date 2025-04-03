@@ -7,7 +7,7 @@ final class Quote implements DomainObjectInterface
     public function __construct(
         public readonly ?string $currency,
         public readonly int $total,
-        public readonly ?BillableCollection $billables
+        public readonly ?BillableCollection $billables = null
     ) {
     }
 

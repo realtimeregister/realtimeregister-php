@@ -10,11 +10,11 @@ use RealtimeRegister\Domain\Enum\WhoisEnum;
 class CertificateValidation implements DomainObjectInterface
 {
     public function __construct(
-        public ?string $organization,
-        public ?string $docs,
-        public ?string $voice,
-        public ?string $whois,
-        public ?DomainControlValidationCollection $dcv
+        public ?string $organization = null,
+        public ?string $docs = null,
+        public ?string $voice = null,
+        public ?string $whois = null,
+        public ?DomainControlValidationCollection $dcv = null
     ) {
     }
 

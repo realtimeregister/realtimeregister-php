@@ -15,8 +15,8 @@ class DomainRegistration implements DomainObjectInterface
 
     private function __construct(
         string $domainName,
-        ?DateTime $expiryDate,
-        ?array $status,
+        ?DateTime $expiryDate = null,
+        ?array $status = null,
     ) {
         $this->domainName = $domainName;
         $this->expiryDate = $expiryDate;

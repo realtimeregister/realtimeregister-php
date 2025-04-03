@@ -110,21 +110,21 @@ final class BrandsApi extends AbstractApi
     public function update(
         string $customer,
         string $handle,
-        ?string $locale,
-        ?string $organization,
-        ?array $addressLine,
-        ?string $postalCode,
-        ?string $city,
-        ?string $state,
-        ?string $country,
-        ?string $email,
-        ?string $url,
-        ?string $voice,
-        ?string $fax,
-        ?string $privacyContact,
-        ?string $abuseContact,
-        ?DateTime $createdDate,
-        ?DateTime $updatedDate
+        ?string $locale = null,
+        ?string $organization = null,
+        ?array $addressLine = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $state = null,
+        ?string $country = null,
+        ?string $email = null,
+        ?string $url = null,
+        ?string $voice = null,
+        ?string $fax = null,
+        ?string $privacyContact = null,
+        ?string $abuseContact = null,
+        ?DateTime $createdDate = null,
+        ?DateTime $updatedDate = null
     ): void {
         $payload = [];
 
@@ -225,9 +225,9 @@ final class BrandsApi extends AbstractApi
         string $customer,
         string $brand,
         string $name,
-        ?string $subject,
-        ?string $text,
-        ?string $html
+        ?string $subject = null,
+        ?string $text = null,
+        ?string $html = null
     ): void {
         $payload = [];
 
