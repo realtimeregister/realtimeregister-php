@@ -12,8 +12,8 @@ final class Zone implements DomainObjectInterface
         public readonly ZoneServiceEnum $service,
         public ?string $template,
         public bool $dnssec,
-        public ?bool $link,
-        public ?string $master
+        public ?bool $link = null,
+        public ?string $master = null
     ) {
     }
 

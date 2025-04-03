@@ -12,7 +12,7 @@ final class Country implements DomainObjectInterface
 
     public ?string $postalCodeExample;
 
-    private function __construct(string $code, string $name, ?string $postalCodePattern, ?string $postalCodeExample)
+    private function __construct(string $code, string $name, ?string $postalCodePattern = null, ?string $postalCodeExample = null)
     {
         $this->code = $code;
         $this->name = $name;

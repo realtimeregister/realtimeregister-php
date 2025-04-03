@@ -53,11 +53,11 @@ final class Product implements DomainObjectInterface
         int $warranty,
         string $issueTime,
         int $renewalWindow,
-        ?int $includedDomains,
-        ?int $maxDomains,
-        ?array $requiredFields,
-        ?array $optionalFields,
-        ?array $renewForm
+        ?int $includedDomains = null,
+        ?int $maxDomains = null,
+        ?array $requiredFields = null,
+        ?array $optionalFields = null,
+        ?array $renewForm = null
     ) {
         $this->product = $product;
         $this->brand = $brand;

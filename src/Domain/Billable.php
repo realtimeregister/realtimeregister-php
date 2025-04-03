@@ -10,10 +10,10 @@ final class Billable implements DomainObjectInterface
         public readonly string $product,
         public readonly BillableActionEnum $action,
         public readonly int $quantity,
-        public readonly ?int $amount,
-        public readonly ?bool $refundable,
-        public readonly ?int $total,
-        public readonly ?string $providerName
+        public readonly ?int $amount = null,
+        public readonly ?bool $refundable = null,
+        public readonly ?int $total = null,
+        public readonly ?string $providerName = null
     ) {
     }
 

@@ -80,11 +80,11 @@ final class Certificate implements DomainObjectInterface
         ?DateTime $subscriptionEndDate,
         ?array $san,
         string $status,
-        ?string $publicKeyAlgorithm,
-        ?int $publicKeySize,
-        ?string $csr,
-        ?string $certificate,
-        ?string $fingerprint
+        ?string $publicKeyAlgorithm = null,
+        ?int $publicKeySize = null,
+        ?string $csr = null,
+        ?string $certificate = null,
+        ?string $fingerprint = null
     ) {
         $this->id = $id;
         $this->product = $product;

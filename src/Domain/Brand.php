@@ -59,7 +59,7 @@ final class Brand implements DomainObjectInterface
         ?string $privacyContact,
         ?string $abuseContact,
         DateTime $createdDate,
-        ?DateTime $updatedDate
+        ?DateTime $updatedDate = null
     ) {
         $this->customer = $customer;
         $this->handle = $handle;

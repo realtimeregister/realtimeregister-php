@@ -80,7 +80,7 @@ final class HostsApi extends AbstractApi
      */
     public function update(
         string $hostName,
-        ?DnsHostAddressCollection $addresses
+        ?DnsHostAddressCollection $addresses = null
     ): void {
         $payload = [
             'hostName' => $hostName,

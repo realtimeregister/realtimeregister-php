@@ -12,12 +12,12 @@ class DomainControlValidation implements DomainObjectInterface
         public readonly string $commonName,
         public readonly string $type,
         public readonly string $status,
-        public readonly ?string $email,
-        public readonly ?string $dnsRecord,
-        public readonly ?string $dnsType,
-        public readonly ?string $dnsContents,
-        public readonly ?string $fileLocation,
-        public readonly ?string $fileContents
+        public readonly ?string $email = null,
+        public readonly ?string $dnsRecord = null,
+        public readonly ?string $dnsType = null,
+        public readonly ?string $dnsContents = null,
+        public readonly ?string $fileLocation = null,
+        public readonly ?string $fileContents = null
     ) {
     }
 

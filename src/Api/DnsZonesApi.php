@@ -136,7 +136,7 @@ final class DnsZonesApi extends AbstractApi
      */
     public function update(
         int $id,
-        ?string $name,
+        ?string $name = null,
         ?ZoneServiceEnum $service = null,
         ?string $template = null,
         ?bool $link = null,
