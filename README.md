@@ -1,6 +1,5 @@
 # Realtime Register RESTful API - PHP SDK
 
-[![Codecov](https://codecov.io/gh/realtimeregister/realtimeregister-php/branch/master/graph/badge.svg?token=CWWIFWRKZC)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/realtimeregister/realtimeregister-php/ci.yml?branch=master)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
 [![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/realtimeregister/realtimeregister-php)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
 [![Packagist PHP Version Support](https://img.shields.io/packagist/v/realtimeregister/realtimeregister-php)](https://packagist.org/packages/realtimeregister/realtimeregister-php)
