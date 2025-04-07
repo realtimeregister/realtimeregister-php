@@ -8,7 +8,7 @@ final class NotificationPoll implements DomainObjectInterface
 
     public ?Notification $notification;
 
-    private function __construct(int $count, ?Notification $notification)
+    private function __construct(int $count, ?Notification $notification = null)
     {
         $this->count = $count;
         $this->notification = $notification;

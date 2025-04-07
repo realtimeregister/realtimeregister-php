@@ -70,13 +70,13 @@ final class Process implements DomainObjectInterface
         ?string $identifier,
         string $action,
         array $command,
-        ?DateTimeInterface $updatedDate,
-        ?DateTimeInterface $startedDate,
-        ?array $reservation,
-        ?array $transaction,
-        ?array $refund,
-        ?array $resumeTypes,
-        ?BillableCollection $billables
+        ?DateTimeInterface $updatedDate = null,
+        ?DateTimeInterface $startedDate = null,
+        ?array $reservation = null,
+        ?array $transaction = null,
+        ?array $refund = null,
+        ?array $resumeTypes = null,
+        ?BillableCollection $billables = null
     ) {
         $this->id = $id;
         $this->user = $user;

@@ -22,8 +22,8 @@ final class Transaction implements DomainObjectInterface
         public string $processIdentifier,
         public string $processAction,
         /** @var array<string, int>|null */
-        public ?array $chargesPerAccount,
-        public ?BillableCollection $billables
+        public ?array $chargesPerAccount = null,
+        public ?BillableCollection $billables = null
     ) {
     }
 

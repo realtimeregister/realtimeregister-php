@@ -53,11 +53,11 @@ final class Notification implements DomainObjectInterface
         ?int $process,
         string $eventType,
         string $notificationType,
-        ?array $payload,
-        ?int $certificateId,
-        ?string $transferType,
-        ?string $subjectStatus,
-        ?string $domainName
+        ?array $payload = null,
+        ?int $certificateId = null,
+        ?string $transferType = null,
+        ?string $subjectStatus = null,
+        ?string $domainName = null
     ) {
         $this->id = $id;
         $this->fireDate = $fireDate;

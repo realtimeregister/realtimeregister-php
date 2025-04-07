@@ -8,7 +8,7 @@ final class LanguageCode implements DomainObjectInterface
 
     public ?string $allowedCharacters;
 
-    private function __construct(string $name, ?string $allowedCharacters)
+    private function __construct(string $name, ?string $allowedCharacters = null)
     {
         $this->name = $name;
         $this->allowedCharacters = $allowedCharacters;

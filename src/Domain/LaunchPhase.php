@@ -12,7 +12,7 @@ final class LaunchPhase implements DomainObjectInterface
 
     public ?Datetime $endDate;
 
-    private function __construct(string $phase, ?DateTime $startDate, ?DateTime $endDate)
+    private function __construct(string $phase, ?DateTime $startDate = null, ?DateTime $endDate = null)
     {
         $this->phase = $phase;
         $this->startDate = $startDate;

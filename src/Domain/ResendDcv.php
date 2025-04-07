@@ -9,7 +9,7 @@ class ResendDcv implements DomainObjectInterface
     public function __construct(
         public readonly string $commonName,
         public readonly string $type,
-        public readonly ?string $email,
+        public readonly ?string $email = null,
     ) {
     }
 

@@ -11,9 +11,9 @@ final class TemplatePreview implements DomainObjectInterface
     public ?string $html;
 
     private function __construct(
-        ?string $subject,
-        ?string $text,
-        ?string $html
+        ?string $subject = null,
+        ?string $text = null,
+        ?string $html = null
     ) {
         $this->subject = $subject;
         $this->text = $text;
