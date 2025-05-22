@@ -8,7 +8,6 @@ use RealtimeRegister\Domain\DnsZoneCollection;
 use RealtimeRegister\Domain\DomainZoneRecordCollection;
 use RealtimeRegister\Domain\DomainZoneStatistics;
 use RealtimeRegister\Domain\Enum\ZoneServiceEnum;
-use RealtimeRegister\Domain\Zone;
 use Webmozart\Assert\Assert;
 
 final class DnsZonesApi extends AbstractApi
@@ -81,7 +80,7 @@ final class DnsZonesApi extends AbstractApi
         ?int $expire = null,
         ?int $ttl = null,
         ?DomainZoneRecordCollection $records = null,
-    ): Zone {
+    ): int {
         $this->validateZoneName($name);
 
         $payload = [
@@ -123,10 +122,8 @@ final class DnsZonesApi extends AbstractApi
         if ($records !== null) {
             $payload['records'] = $records->toArray();
         }
-
         $response = $this->client->post('v2/dns/zones', $payload);
-
-        return Zone::fromArray($response->json());
+        return $response->json()['id'];
     }
 
     /**
