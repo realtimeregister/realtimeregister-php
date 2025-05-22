@@ -14,7 +14,7 @@ class CertificateApiProcessResendTest extends TestCase
         $sdk = MockedClientFactory::makeSdk(
             200,
             json_encode(include __DIR__ . '/../../Domain/data/certificates/certificate_process_resend.php'),
-            MockedClientFactory::assertRoute('POST', '/v2/processes/' . $certificateId . '/resend', $this)
+            MockedClientFactory::assertRoute('POST', 'v2/processes/' . $certificateId . '/resend', $this)
         );
 
         $sdk->certificates->resendDcv(
