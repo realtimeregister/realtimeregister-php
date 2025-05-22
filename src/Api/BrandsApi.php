@@ -16,7 +16,7 @@ final class BrandsApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/brands/get */
     public function get(string $customer, string $handle): Brand
     {
-        $response = $this->client->get(sprintf('/v2/customers/%s/brands/%s', urlencode($customer), urlencode($handle)));
+        $response = $this->client->get(sprintf('v2/customers/%s/brands/%s', urlencode($customer), urlencode($handle)));
         return Brand::fromArray($response->json());
     }
 
@@ -30,7 +30,7 @@ final class BrandsApi extends AbstractApi
     ): BrandCollection {
         $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
-        $response = $this->client->get(sprintf('/v2/customers/%s/brands', urlencode($customer)), $query);
+        $response = $this->client->get(sprintf('v2/customers/%s/brands', urlencode($customer)), $query);
         return BrandCollection::fromArray($response->json());
     }
 
@@ -40,7 +40,7 @@ final class BrandsApi extends AbstractApi
     ): array {
         $query = $parameters;
         $query['export'] = 'true';
-        $response = $this->client->get(sprintf('/v2/customers/%s/brands', urlencode($customer)), $query);
+        $response = $this->client->get(sprintf('v2/customers/%s/brands', urlencode($customer)), $query);
         return $response->json()['entities'];
     }
 
@@ -99,7 +99,7 @@ final class BrandsApi extends AbstractApi
             $payload['updatedDate'] = $updatedDate;
         }
 
-        $this->client->post(sprintf('/v2/customers/%s/brands/%s', urlencode($customer), urlencode($handle)), $payload);
+        $this->client->post(sprintf('v2/customers/%s/brands/%s', urlencode($customer), urlencode($handle)), $payload);
     }
 
     /**
@@ -188,13 +188,13 @@ final class BrandsApi extends AbstractApi
             $payload['updatedDate'] = $updatedDate;
         }
 
-        $this->client->post(sprintf('/v2/customers/%s/brands/%s/update', urlencode($customer), urlencode($handle)), $payload);
+        $this->client->post(sprintf('v2/customers/%s/brands/%s/update', urlencode($customer), urlencode($handle)), $payload);
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/brands/delete */
     public function delete(string $customer, string $handle): void
     {
-        $this->client->delete("/v2/customers/{$customer}/brands/{$handle}");
+        $this->client->delete("v2/customers/{$customer}/brands/{$handle}");
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/brands/templates/get */
@@ -202,7 +202,7 @@ final class BrandsApi extends AbstractApi
     {
         TemplateNameEnum::validate($name);
 
-        return Template::fromArray($this->client->get(sprintf('/v2/customers/%s/brands/%s/templates/%s', urlencode($customer), urlencode($brand), urlencode($name)))->json());
+        return Template::fromArray($this->client->get(sprintf('v2/customers/%s/brands/%s/templates/%s', urlencode($customer), urlencode($brand), urlencode($name)))->json());
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/brands/templates/list */
@@ -216,7 +216,7 @@ final class BrandsApi extends AbstractApi
     ): TemplateCollection {
         $query = $this->processListQuery($limit, $offset, $search, $parameters);
 
-        $response = $this->client->get(sprintf('/v2/customers/%s/brands/%s/templates', urlencode($customer), urlencode($brand)), $query);
+        $response = $this->client->get(sprintf('v2/customers/%s/brands/%s/templates', urlencode($customer), urlencode($brand)), $query);
         return TemplateCollection::fromArray($response->json());
     }
 
@@ -241,7 +241,7 @@ final class BrandsApi extends AbstractApi
             $payload['html'] = $html;
         }
 
-        $this->client->post(sprintf('/v2/customers/%s/brands/%s/templates/%s/update', urlencode($customer), urlencode($brand), urlencode($name)), $payload);
+        $this->client->post(sprintf('v2/customers/%s/brands/%s/templates/%s/update', urlencode($customer), urlencode($brand), urlencode($name)), $payload);
     }
 
     /**
@@ -271,7 +271,7 @@ final class BrandsApi extends AbstractApi
         }
 
         return TemplatePreview::fromArray(
-            $this->client->get(sprintf('/v2/customers/%s/brands/%s/templates/%s/preview', urlencode($customer), urlencode($brand), urlencode($name)), $payload)->json()
+            $this->client->get(sprintf('v2/customers/%s/brands/%s/templates/%s/preview', urlencode($customer), urlencode($brand), urlencode($name)), $payload)->json()
         );
     }
 }
