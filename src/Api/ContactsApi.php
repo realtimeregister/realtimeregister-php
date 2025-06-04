@@ -151,12 +151,12 @@ final class ContactsApi extends AbstractApi
     /**
      * @see https://dm.realtimeregister.com/docs/api/contacts/validate
      *
-     * @param array<string> $categories Must be one of ("General", "IisNu", "IisSe", "Nominet", "DkHostmaster")
+     * @param array<string> $categories Must be one of ("General", "IisNu", "IisSe", "ESNic", "Nominet", "DkHostmaster")
      */
     public function validate(string $customer, string $handle, array $categories): void
     {
         foreach ($categories as $category) {
-            $categoriesAllowed = ['General', 'IisNu', 'IisSe', 'Nominet', 'DkHostmaster'];
+            $categoriesAllowed = ['General', 'IisNu', 'IisSe', 'ESNic', 'Nominet', 'DkHostmaster'];
 
             if (! in_array($category, $categoriesAllowed)) {
                 $imploded = implode(',', $categoriesAllowed);
