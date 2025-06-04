@@ -7,7 +7,7 @@ class ValidationCategoryEnum extends AbstractEnum
     const VALIDATION_CATEGORY_GENERAL = 'General';
     const VALIDATION_CATEGORY_ISI_NU = 'IisNu';
     const VALIDATION_CATEGORY_ISI_SE = 'IisSe';
-    const VALIDATION_CATEGORY_ESNIC = 'ESNic';
+    const VALIDATION_CATEGORY_ESNIC = 'Esnic';
     const VALIDATION_CATEGORY_NOMINET = 'Nominet';
     const VALIDATION_CATEGORY_DK_HOSTMASTER = 'DkHostmaster';
 
