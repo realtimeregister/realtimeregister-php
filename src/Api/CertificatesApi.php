@@ -48,7 +48,6 @@ final class CertificatesApi extends AbstractApi
     /* @see https://dm.realtimeregister.com/docs/api/ssl/dcvemailaddresslist */
     public function listDcvEmailAddresses(string $domainName, string $product = null): array
     {
-
         $response = $this->client->get(sprintf('v2/ssl/dcvemailaddresslist/%s', urlencode($domainName)) . ($product ? sprintf('?product=%s', urlencode($product)) : ''));
 
         return $response->json();
@@ -383,7 +382,10 @@ final class CertificatesApi extends AbstractApi
         $this->client->post(sprintf('v2/processes/%s/send-subscriber-agreement', $processId), $payload);
     }
 
-    /** @see https://dm.realtimeregister.com/docs/api/ssl/add-note */
+    /**
+     * @see https://dm.realtimeregister.com/docs/api/ssl/add-note
+     * @deprecated As of 19-02-2024 Sectigo will no longer support notes on certificate requests.
+     */
     public function addNote(int $processId, string $message): void
     {
         $payload = [
@@ -413,8 +415,13 @@ final class CertificatesApi extends AbstractApi
     }
 
     /** @see https://dm.realtimeregister.com/docs/api/ssl/import */
-    public function importCertificate(string $customer, string $certificate, ?string $csr = null, ?string $coc = null): void
-    {
+    public function importCertificate(
+        string $customer,
+        string $certificate,
+        ?string $csr = null,
+        ?string $coc = null,
+        ?string $domainName = null
+    ): void {
         $payload = [
             'customer' => $customer,
             'certificate' => $certificate,
@@ -426,6 +433,10 @@ final class CertificatesApi extends AbstractApi
 
         if (! is_null($coc)) {
             $payload['coc'] = $coc;
+        }
+
+        if (! is_null($domainName)) {
+            $payload['domainName'] = $domainName;
         }
 
         $this->client->post('v2/ssl/import', $payload);

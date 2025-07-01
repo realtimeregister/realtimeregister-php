@@ -61,7 +61,7 @@ class DnsTemplatesApiListTest extends TestCase
     public function test_list_with_search_and_parameters(): void
     {
         $parameters = [
-            'name' => 'test',
+            'templateName' => 'test',
         ];
 
         $sdk = MockedClientFactory::makeSdk(
@@ -79,7 +79,7 @@ class DnsTemplatesApiListTest extends TestCase
                 ],
             ]),
             MockedClientFactory::assertRoute('GET', 'v2/customers/johndoe/dnstemplates', $this, [
-                'name' => 'test',
+                'templateName' => 'test',
                 'limit' => '3',
                 'offset' => '0',
                 'q' => 'john',

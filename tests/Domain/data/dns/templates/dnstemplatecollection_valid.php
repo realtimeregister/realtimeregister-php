@@ -5,7 +5,8 @@ return [
     include __DIR__ . '/dnstemplate_valid_without_records.php',
     [
         'customer'   => 'jackdaniels',
-        'name'       => 'whiskey',
+        'templateName' => 'whiskey',
+        'createdDate' => '2020-03-04T15:00:00Z',
         'hostMaster' => 'cheers@home.nl',
         'refresh'    => 1,
         'retry'      => 2,

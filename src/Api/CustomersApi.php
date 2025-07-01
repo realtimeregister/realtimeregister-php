@@ -3,6 +3,7 @@
 namespace RealtimeRegister\Api;
 
 use RealtimeRegister\Domain\AccountCollection;
+use RealtimeRegister\Domain\PriceChangesCollection;
 use RealtimeRegister\Domain\PriceCollection;
 use RealtimeRegister\Domain\PromoCollection;
 
@@ -13,6 +14,13 @@ final class CustomersApi extends AbstractApi
     {
         $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)));
         return PriceCollection::fromArray($response->json()['prices']);
+    }
+
+    /** @see https://dm.realtimeregister.com/docs/api/customers/pricelist#priceChanges */
+    public function priceChangesList(string $customer): PriceChangesCollection
+    {
+        $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)));
+        return PriceChangesCollection::fromArray($response->json()['priceChanges']);
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/customers/pricelist#promos  */

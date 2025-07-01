@@ -29,7 +29,7 @@ final class DnsTemplateCollectionTest extends TestCase
         assert($dnsTemplate !== null);
 
         Assert::assertInstanceOf(DnsTemplate::class, $dnsTemplate);
-        Assert::assertSame('whiskey', $dnsTemplate->name);
+        Assert::assertSame('whiskey', $dnsTemplate->templateName);
     }
 
     public function test_from_and_to_array(): void
@@ -50,7 +50,8 @@ final class DnsTemplateCollectionTest extends TestCase
             '3',
             DnsTemplate::fromArray([
                 'customer'   => 'coca',
-                'name'       => 'cola',
+                'templateName' => 'cola',
+                'createdDate' => '2020-03-04T15:00:00Z',
                 'hostMaster' => 'drink@fresh.com',
                 'refresh'    => 123,
                 'retry'      => 456,
@@ -65,7 +66,7 @@ final class DnsTemplateCollectionTest extends TestCase
 
         assert($dnsTemplate !== null);
 
-        Assert::assertSame('cola', $dnsTemplate->name);
+        Assert::assertSame('cola', $dnsTemplate->templateName);
 
         $dnsTemplateCollection->offsetUnset(3);
 

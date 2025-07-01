@@ -14,19 +14,19 @@ final class DomainTransferStatus implements DomainObjectInterface
 {
     public string $domainName;
 
-    public ?string $registrar;
+    public string $registrar;
 
     public string $status;
 
     public DateTimeInterface $requestedDate;
 
-    public ?DateTimeInterface $actionDate;
+    public DateTimeInterface $actionDate;
 
-    public ?DateTimeInterface $expiryDate;
+    public DateTimeInterface $expiryDate;
 
     public string $type;
 
-    public ?int $processId;
+    public int $processId;
 
     public ?LogCollection $log;
 
@@ -35,10 +35,10 @@ final class DomainTransferStatus implements DomainObjectInterface
         string $status,
         DateTimeInterface $requestedDate,
         string $type,
-        ?int $processId = null,
-        ?DateTimeInterface $actionDate = null,
-        ?DateTimeInterface $expiryDate = null,
-        ?string $registrar = null,
+        int $processId,
+        DateTimeInterface $actionDate,
+        DateTimeInterface $expiryDate,
+        string $registrar,
         ?LogCollection $log = null
     ) {
         $this->domainName = $domainName;
@@ -65,10 +65,10 @@ final class DomainTransferStatus implements DomainObjectInterface
             $json['status'],
             new DateTimeImmutable($json['requestedDate']),
             $json['type'],
-            $json['processId'] ?? null,
-            isset($json['actionDate']) ? new DateTimeImmutable($json['actionDate']) : null,
-            isset($json['expiryDate']) ? new DateTimeImmutable($json['expiryDate']) : null,
-            $json['registrar'] ?? null,
+            $json['processId'],
+            new DateTimeImmutable($json['actionDate']),
+            new DateTimeImmutable($json['expiryDate']),
+            $json['registrar'],
             isset($json['log']) ? LogCollection::fromArray($json['log']) : null
         );
     }
@@ -81,8 +81,8 @@ final class DomainTransferStatus implements DomainObjectInterface
                 'registrar' => $this->registrar,
                 'status' => $this->status,
                 'requestedDate' => $this->requestedDate->format('Y-m-d\TH:i:s\Z'),
-                'actionDate' => $this->actionDate ? $this->actionDate->format('Y-m-d\TH:i:s\Z') : null,
-                'expiryDate' => $this->expiryDate ? $this->expiryDate->format('Y-m-d\TH:i:s\Z') : null,
+                'actionDate' =>  $this->actionDate->format('Y-m-d\TH:i:s\Z'),
+                'expiryDate' => $this->expiryDate->format('Y-m-d\TH:i:s\Z'),
                 'type' => $this->type,
                 'processId' => $this->processId,
                 'log' => $this->log ? $this->log->toArray() : null,

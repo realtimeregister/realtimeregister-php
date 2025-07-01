@@ -9,6 +9,7 @@ return [
     'reason' => 'FAKE_REASON',
     'customer' => 'johndoe',
     'process' => 1,
+    'isAsync' => true,
     'eventType' => 'FAKE_EVENT_TYPE',
     'notificationType' => 'FAKE_NOTIFICATION_TYPE',
     'payload' => ['customer' => 'johndoe'],

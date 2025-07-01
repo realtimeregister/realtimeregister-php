@@ -118,7 +118,9 @@ class AuthorizedClient
         } elseif ($response->getStatusCode() === 401) {
             throw new UnauthorizedException('Unauthorized: ' . $response->getBody());
         } elseif ($response->getStatusCode() === 403) {
-            throw new ForbiddenException('Forbidden:' . $response->getBody());
+            throw new ForbiddenException(
+                'Forbidden' . ($response->getBody() != '' ? ':' . $response->getBody() : '')
+            );
         } elseif ($response->getStatusCode() === 404) {
             throw new NotFoundException('Not found.');
         }

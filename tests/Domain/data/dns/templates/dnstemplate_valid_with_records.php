@@ -2,7 +2,8 @@
 
 return [
     'customer'   => 'donaldduck',
-    'name'       => 'magazine',
+    'templateName'       => 'magazine',
+    'createdDate' => '2020-03-04T15:00:00Z',
     'hostMaster' => 'movies@ducktown.disney.com',
     'refresh'    => 129371293,
     'retry'      => 123456,

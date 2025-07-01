@@ -10,6 +10,10 @@ class ProcessInfo implements DomainObjectInterface
 
     private bool $requiresAttention;
 
+    private ?int $certificateId;
+
+    private ?string $oneTimeLink;
+
     private ?array $validations;
 
     private ?array $notes;
@@ -17,11 +21,15 @@ class ProcessInfo implements DomainObjectInterface
     public function __construct(
         string $commonName,
         bool $requiresAttention,
+        ?int $certificateId,
+        ?string $oneTimeLink,
         ?array $validations = null,
         ?array $notes = null
     ) {
         $this->commonName = $commonName;
         $this->requiresAttention = $requiresAttention;
+        $this->certificateId = $certificateId;
+        $this->oneTimeLink = $oneTimeLink;
         $this->validations = $validations;
         $this->notes = $notes;
     }
@@ -31,6 +39,8 @@ class ProcessInfo implements DomainObjectInterface
         return array_filter([
             'commonName' => $this->commonName,
             'requiresAttention' => $this->requiresAttention,
+            'certificateId' => $this->certificateId,
+            'oneTimeLink' => $this->oneTimeLink,
             'validations' => $this->validations,
             'notes' => $this->notes,
         ], fn ($v) => ! is_null($v));
@@ -41,6 +51,8 @@ class ProcessInfo implements DomainObjectInterface
         return new self(
             $json['commonName'],
             $json['requiresAttention'] ?? false,
+            $json['certificateId'] ?? null,
+            $json['oneTimeLink'] ?? null,
             $json['validations'] ?? null,
             $json['notes'] ?? null
         );

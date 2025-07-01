@@ -7,9 +7,9 @@ final class DnsTemplateCollection extends AbstractCollection
     /** @var DnsTemplate[] */
     public array $entities;
 
-    public static function fromArray(array $data): DnsTemplateCollection
+    public static function fromArray(array $json): DnsTemplateCollection
     {
-        return parent::fromArray($data);
+        return parent::fromArray($json);
     }
 
     public function offsetGet($offset): ?DnsTemplate
@@ -17,8 +17,8 @@ final class DnsTemplateCollection extends AbstractCollection
         return $this->entities[$offset] ?? null;
     }
 
-    public static function parseChild(array $data): DnsTemplate
+    public static function parseChild(array $json): DnsTemplate
     {
-        return DnsTemplate::fromArray($data);
+        return DnsTemplate::fromArray($json);
     }
 }

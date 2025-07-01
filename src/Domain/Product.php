@@ -20,6 +20,12 @@ final class Product implements DomainObjectInterface
     /** @var string[] */
     public ?array $features;
 
+    /** @var string[] */
+    public ?array $requiredFields;
+
+    /** @var string[] */
+    public ?array $optionalFields;
+
     /** @var int[] */
     public array $periods;
 
@@ -29,18 +35,12 @@ final class Product implements DomainObjectInterface
 
     public int $renewalWindow;
 
+    /** @var string[] */
+    public ?array $renewFrom;
+
     public ?int $includedDomains;
 
     public ?int $maxDomains;
-
-    /** @var string[] */
-    public ?array $requiredFields;
-
-    /** @var string[] */
-    public ?array $optionalFields;
-
-    /** @var string[] */
-    public ?array $renewFrom;
 
     private function __construct(
         string $product,
@@ -57,7 +57,7 @@ final class Product implements DomainObjectInterface
         ?int $maxDomains = null,
         ?array $requiredFields = null,
         ?array $optionalFields = null,
-        ?array $renewForm = null
+        ?array $renewFrom = null
     ) {
         $this->product = $product;
         $this->brand = $brand;
@@ -73,7 +73,7 @@ final class Product implements DomainObjectInterface
         $this->maxDomains = $maxDomains;
         $this->requiredFields = $requiredFields;
         $this->optionalFields = $optionalFields;
-        $this->renewFrom = $renewForm;
+        $this->renewFrom = $renewFrom;
     }
 
     public static function fromArray(array $json): Product

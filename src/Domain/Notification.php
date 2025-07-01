@@ -14,6 +14,8 @@ final class Notification implements DomainObjectInterface
 
     public ?DateTime $acknowledgeDate;
 
+    public ?DateTime $deliveryDate;
+
     public string $message;
 
     public ?string $reason;
@@ -29,40 +31,34 @@ final class Notification implements DomainObjectInterface
     /** @var array<string>|null */
     public ?array $payload;
 
-    public ?int $certificateId;
+    public bool $isAsync;
 
-    public ?string $transferType;
+    public ?string $processIndentifier;
 
-    /**
-     * Can be either PENDING, OK, CANCELLED or FAILED.
-     *
-     * @var string|null
-     */
-    public ?string $subjectStatus;
-
-    public ?string $domainName;
+    public ?string $processType;
 
     private function __construct(
         int $id,
         DateTime $fireDate,
         ?DateTime $readDate,
         ?DateTime $acknowledgeDate,
+        ?DateTime $deliveryDate,
         string $message,
         ?string $reason,
         ?string $customer,
         ?int $process,
         string $eventType,
         string $notificationType,
+        bool $isAsync,
         ?array $payload = null,
-        ?int $certificateId = null,
-        ?string $transferType = null,
-        ?string $subjectStatus = null,
-        ?string $domainName = null
+        ?string $processIndentifier = null,
+        ?string $processType = null
     ) {
         $this->id = $id;
         $this->fireDate = $fireDate;
         $this->readDate = $readDate;
         $this->acknowledgeDate = $acknowledgeDate;
+        $this->deliveryDate = $deliveryDate;
         $this->message = $message;
         $this->reason = $reason;
         $this->customer = $customer;
@@ -70,10 +66,9 @@ final class Notification implements DomainObjectInterface
         $this->eventType = $eventType;
         $this->notificationType = $notificationType;
         $this->payload = $payload;
-        $this->certificateId = $certificateId;
-        $this->transferType = $transferType;
-        $this->subjectStatus = $subjectStatus;
-        $this->domainName = $domainName;
+        $this->isAsync = $isAsync;
+        $this->processIndentifier = $processIndentifier;
+        $this->processType = $processType;
     }
 
     public static function fromArray(array $json): Notification
@@ -83,17 +78,17 @@ final class Notification implements DomainObjectInterface
             new DateTime($json['fireDate']),
             isset($json['readDate']) ? new DateTime($json['readDate']) : null,
             isset($json['acknowledgeDate']) ? new DateTime($json['acknowledgeDate']) : null,
+            isset($json['deliveryDate']) ? new DateTime($json['deliveryDate']) : null,
             $json['message'],
             $json['reason'] ?? null,
             $json['customer'] ?? null,
             $json['process'] ?? null,
             $json['eventType'],
             $json['notificationType'],
+            $json['isAsync'],
             $json['payload'] ?? null,
-            $json['certificateId'] ?? null,
-            $json['transferType'] ?? null,
-            $json['subjectStatus'] ?? null,
-            $json['domainName'] ?? null
+            $json['processIndentifier'] ?? null,
+            $json['processType'] ?? null
         );
     }
 
@@ -102,8 +97,9 @@ final class Notification implements DomainObjectInterface
         return array_filter([
             'id' => $this->id,
             'fireDate' => $this->fireDate->format('Y-m-d\TH:i:s\Z'),
-            'readDate' => $this->readDate ? $this->readDate->format('Y-m-d\TH:i:s\Z') : null,
-            'acknowledgeDate' => $this->acknowledgeDate ? $this->acknowledgeDate->format('Y-m-d\TH:i:s\Z') : null,
+            'readDate' => $this->readDate?->format('Y-m-d\TH:i:s\Z'),
+            'acknowledgeDate' => $this->acknowledgeDate?->format('Y-m-d\TH:i:s\Z'),
+            'deliveryDate' => $this->deliveryDate?->format('Y-m-d\TH:i:s\Z'),
             'message' => $this->message,
             'reason' => $this->reason,
             'customer' => $this->customer,
@@ -111,10 +107,9 @@ final class Notification implements DomainObjectInterface
             'eventType' => $this->eventType,
             'notificationType' => $this->notificationType,
             'payload' => $this->payload,
-            'certificateId' => $this->certificateId,
-            'transferType' => $this->transferType,
-            'subjectStatus' => $this->subjectStatus,
-            'domainName' => $this->domainName,
+            'isAsync' => $this->isAsync,
+            'processIndentifier' => $this->processIndentifier,
+            'processType' => $this->processType,
         ], function ($x) {
             return ! is_null($x);
         });

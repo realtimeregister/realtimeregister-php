@@ -21,12 +21,12 @@ final class TLDInfo implements DomainObjectInterface
         $this->metadata = $metadata;
     }
 
-    public static function fromArray(array $data): TLDInfo
+    public static function fromArray(array $json): TLDInfo
     {
         return new TLDInfo(
-            $data['provider'],
-            $data['applicableFor'],
-            TLDMetaData::fromArray($data['metadata'])
+            $json['provider'],
+            $json['applicableFor'],
+            TLDMetaData::fromArray($json['metadata'])
         );
     }
 

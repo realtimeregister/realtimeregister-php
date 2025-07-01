@@ -2,7 +2,7 @@
 
 namespace RealtimeRegister\Domain;
 
-final class Price implements DomainObjectInterface
+class Price implements DomainObjectInterface
 {
     public string $product;
 
@@ -12,7 +12,7 @@ final class Price implements DomainObjectInterface
 
     public int $price;
 
-    private function __construct(string $product, string $action, string $currency, int $price)
+    protected function __construct(string $product, string $action, string $currency, int $price)
     {
         $this->product = $product;
         $this->action = $action;
