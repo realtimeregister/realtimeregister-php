@@ -37,7 +37,8 @@ class BrandsApiCreateTest extends TestCase
             'privacycontacttest',
             'abusecontacttest',
             new DateTime('2020-08-30 01:02:03'),
-            new DateTime('2020-09-05 11:02:03')
+            new DateTime('2020-09-05 11:02:03'),
+            false
         );
     }
 }

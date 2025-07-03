@@ -2,11 +2,17 @@
 
 namespace RealtimeRegister\Domain;
 
+use DateTime;
+
 final class DnsTemplate implements DomainObjectInterface
 {
     public string $customer;
 
-    public string $name;
+    public string $templateName;
+
+    public DateTime $createdDate;
+
+    public ?DateTime $lastUpdatedDate;
 
     public string $hostMaster;
 
@@ -24,17 +30,21 @@ final class DnsTemplate implements DomainObjectInterface
 
     private function __construct(
         string $customer,
-        string $name,
+        string $templateName,
+        DateTime $createdDate,
         string $hostMaster = 'hostmaster@realtimeregister.com',
         int $refresh = 3600,
         int $retry = 3600,
         int $expire = 14 * 24 * 60 * 60,
         int $ttl = 3600,
         ?array $defaultRecords = null,
-        ?array $records = null
+        ?array $records = null,
+        ?DateTime $lastUpdatedDate = null
     ) {
         $this->customer = $customer;
-        $this->name = $name;
+        $this->templateName = $templateName;
+        $this->createdDate = $createdDate;
+        $this->lastUpdatedDate = $lastUpdatedDate;
         $this->hostMaster = $hostMaster;
         $this->refresh = $refresh;
         $this->retry = $retry;
@@ -48,18 +58,20 @@ final class DnsTemplate implements DomainObjectInterface
         }
     }
 
-    public static function fromArray(array $data): DnsTemplate
+    public static function fromArray(array $json): DnsTemplate
     {
         return new DnsTemplate(
-            $data['customer'],
-            $data['name'],
-            $data['hostMaster'],
-            $data['refresh'],
-            $data['retry'],
-            $data['expire'],
-            $data['ttl'],
-            $data['defaultRecords'] ?? null,
-            $data['records'] ?? null
+            $json['customer'],
+            $json['templateName'],
+            new DateTime($json['createdDate']),
+            $json['hostMaster'],
+            $json['refresh'],
+            $json['retry'],
+            $json['expire'],
+            $json['ttl'],
+            $json['defaultRecords'] ?? null,
+            $json['records'] ?? null,
+            isset($json['lastUpdatedDate']) ? new DateTime($json['lastUpdatedDate']) : null
         );
     }
 
@@ -67,7 +79,8 @@ final class DnsTemplate implements DomainObjectInterface
     {
         return array_filter([
             'customer'       => $this->customer,
-            'name'           => $this->name,
+            'templateName'   => $this->templateName,
+            'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
             'hostMaster'     => $this->hostMaster,
             'refresh'        => $this->refresh,
             'retry'          => $this->retry,
@@ -75,6 +88,7 @@ final class DnsTemplate implements DomainObjectInterface
             'ttl'            => $this->ttl,
             'defaultRecords' => ($this->defaultRecords !== null ? $this->defaultRecords->toArray() : null),
             'records'        => ($this->records !== null ? $this->records->toArray() : null),
+            'lastUpdatedDate' => $this->lastUpdatedDate ? $this->lastUpdatedDate->format('Y-m-d\TH:i:s\Z') : null,
         ], function ($x) {
             return ! is_null($x);
         });

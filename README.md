@@ -10,14 +10,19 @@
 This SDK currently supports these APIs:
 
 * [Domains API](https://dm.realtimeregister.com/docs/api/domains)
-* [Hosts API](https://dm.realtimeregister.com/docs/api/hosts)
+* [SSL Certificates API](https://dm.realtimeregister.com/docs/api/ssl)
 * [Customers API](https://dm.realtimeregister.com/docs/api/customers)
+* [Hosts API](https://dm.realtimeregister.com/docs/api/hosts)
 * [Contacts API](https://dm.realtimeregister.com/docs/api/contacts)
-* [Notifications API](https://dm.realtimeregister.com/docs/api/notifications)
+* [DNS Templates API](https://dm.realtimeregister.com/docs/api/templates)
+* [DNS Zones API](https://dm.realtimeregister.com/docs/api/dns/zones)
 * [Providers API](https://dm.realtimeregister.com/docs/api/providers)
 * [TLDs API](https://dm.realtimeregister.com/docs/api/tlds)
+* [Brands API](https://dm.realtimeregister.com/docs/api/brands)
 * [Processes API](https://dm.realtimeregister.com/docs/api/processes)
-* [Certificates API](https://dm.realtimeregister.com/docs/api/ssl)
+* [Notifications API](https://dm.realtimeregister.com/docs/api/notifications)
+* [Financial API](https://dm.realtimeregister.com/docs/api/financial)
+* [IsProxy API](https://dm.realtimeregister.com/docs/api/isproxy)
 
 Are you missing functionality? Feel free to create an issue, or hit us up with a pull request.
 

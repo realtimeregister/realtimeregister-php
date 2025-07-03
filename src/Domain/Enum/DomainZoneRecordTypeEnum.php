@@ -8,16 +8,22 @@ class DomainZoneRecordTypeEnum extends AbstractEnum
     public const TYPE_AAAA = 'AAAA';
     public const TYPE_ALIAS = 'ALIAS';
     public const TYPE_CAA = 'CAA';
+    public const TYPE_CERT = 'CERT';
     public const TYPE_CNAME = 'CNAME';
+    public const TYPE_DNSKEY = 'DNSKEY';
+    public const TYPE_DS = 'DS';
     public const TYPE_HINFO = 'HINFO';
     public const TYPE_MBOXFW = 'MBOXFW';
     public const TYPE_MX = 'MX';
     public const TYPE_NAPTR = 'NAPTR';
+    public const TYPE_LOC = 'LOC';
     public const TYPE_NS = 'NS';
     public const TYPE_SOA = 'SOA';
+    public const TYPE_SSHFP = 'SSHFP';
     public const TYPE_SRV = 'SRV';
     public const TYPE_TXT = 'TXT';
     public const TYPE_TLSA = 'TLSA';
+    public const TYPE_URI = 'URI';
     public const TYPE_URL = 'URL';
 
     protected static array $values = [
@@ -26,15 +32,21 @@ class DomainZoneRecordTypeEnum extends AbstractEnum
         self::TYPE_ALIAS,
         self::TYPE_CAA,
         self::TYPE_CNAME,
+        self::TYPE_CERT,
+        self::TYPE_DNSKEY,
+        self::TYPE_DS,
         self::TYPE_HINFO,
+        self::TYPE_LOC,
         self::TYPE_MBOXFW,
         self::TYPE_MX,
         self::TYPE_NAPTR,
         self::TYPE_NS,
         self::TYPE_SOA,
+        self::TYPE_SSHFP,
         self::TYPE_SRV,
         self::TYPE_TXT,
         self::TYPE_TLSA,
+        self::TYPE_URI,
         self::TYPE_URL,
     ];
 

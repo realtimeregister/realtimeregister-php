@@ -40,6 +40,8 @@ final class Brand implements DomainObjectInterface
 
     public ?string $abuseContact;
 
+    public ?bool $hideOptionalTerms;
+
     public DateTime $createdDate;
 
     public ?DateTime $updatedDate;
@@ -62,8 +64,10 @@ final class Brand implements DomainObjectInterface
         ?string $privacyContact,
         ?string $abuseContact,
         DateTime $createdDate,
-        ?DateTime $updatedDate = null
+        ?DateTime $updatedDate = null,
+        ?bool $hideOptionalTerms = false
     ) {
+        $this->hideOptionalTerms = $hideOptionalTerms;
         $this->customer = $customer;
         $this->handle = $handle;
         $this->locale = $locale;
@@ -107,7 +111,8 @@ final class Brand implements DomainObjectInterface
             $json['privacyContact'] ?? null,
             $json['abuseContact'] ?? null,
             new DateTime($json['createdDate']),
-            $updatedDate
+            $updatedDate,
+            $json['hideOptionalTerms'] ?? null
         );
     }
 
@@ -131,7 +136,8 @@ final class Brand implements DomainObjectInterface
             'privacyContact' => $this->privacyContact,
             'abuseContact' => $this->abuseContact,
             'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
-            'updatedDate' => $this->updatedDate ? $this->updatedDate->format('Y-m-d\TH:i:s\Z') : null,
+            'updatedDate' => $this->updatedDate?->format('Y-m-d\TH:i:s\Z'),
+            'hideOptionalTerms' => $this->hideOptionalTerms ?? null,
         ], function ($x) {
             return ! is_null($x);
         });

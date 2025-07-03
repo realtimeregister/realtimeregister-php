@@ -49,7 +49,8 @@ class ContactsApiCreateTest extends TestCase
             'Acme Corp',
             'Acme Corp',
             'TheoreticalState',
-            '+31655555555'
+            '+31655555555',
+            ['registryContactId', 'email', 'postalCode']
         );
     }
 }

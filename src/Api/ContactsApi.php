@@ -57,7 +57,8 @@ final class ContactsApi extends AbstractApi
         ?string $brand = null,
         ?string $organization = null,
         ?string $state = null,
-        ?string $fax = null
+        ?string $fax = null,
+        ?array $disclosedFields = null
     ): void {
         $payload = [
             'customer' => $customer,
@@ -82,6 +83,9 @@ final class ContactsApi extends AbstractApi
         if ($fax) {
             $payload['fax'] = $fax;
         }
+        if ($disclosedFields) {
+            $payload['disclosedFields'] = $disclosedFields;
+        }
 
         $this->client->post(sprintf('v2/customers/%s/contacts/%s', urlencode($customer), urlencode($handle)), $payload);
     }
@@ -104,7 +108,8 @@ final class ContactsApi extends AbstractApi
         ?string $brand = null,
         ?string $organization = null,
         ?string $state = null,
-        ?string $fax = null
+        ?string $fax = null,
+        ?array $disclosedFields = null
     ): void {
         $payload = [
             'customer' => $customer,
@@ -143,6 +148,9 @@ final class ContactsApi extends AbstractApi
         }
         if ($fax) {
             $payload['fax'] = $fax;
+        }
+        if ($disclosedFields) {
+            $payload['disclosedFields'] = $disclosedFields;
         }
 
         $this->client->post(sprintf('v2/customers/%s/contacts/%s/update', urlencode($customer), urlencode($handle)), $payload);

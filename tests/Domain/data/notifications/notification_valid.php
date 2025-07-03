@@ -5,6 +5,7 @@ return [
     'fireDate' => '2020-08-30T01:02:03Z',
     'readDate' => '2020-08-30T01:02:03Z',
     'acknowledgeDate' => '2020-08-30T01:02:03Z',
+    'deliveryDate' => '2020-08-30T01:02:53Z',
     'message' => 'FAKE_MESSAGE',
     'reason' => 'FAKE_REASON',
     'customer' => 'johndoe',
@@ -12,8 +13,5 @@ return [
     'eventType' => 'FAKE_EVENT_TYPE',
     'notificationType' => 'FAKE_NOTIFICATION_TYPE',
     'payload' => ['customer' => 'johndoe'],
-    'certificateId' => 1234567890,
-    'transferType' => 'FAKE_TRANSFER_TYPE',
-    'subjectStatus' => 'FAKE_SUBJECT_STATUS',
-    'domainName' => 'fake-domain-name.com',
+    'isAsync' => true,
 ];

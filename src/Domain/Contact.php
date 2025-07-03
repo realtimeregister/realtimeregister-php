@@ -3,6 +3,7 @@
 namespace RealtimeRegister\Domain;
 
 use DateTime;
+use RealtimeRegister\Domain\Enum\DisclosedField;
 
 final class Contact implements DomainObjectInterface
 {
@@ -43,6 +44,8 @@ final class Contact implements DomainObjectInterface
 
     public ?Datetime $updatedDate;
 
+    public ?array $disclosedFields;
+
     public ?ValidationCollection $validations;
 
     private function __construct(
@@ -63,7 +66,8 @@ final class Contact implements DomainObjectInterface
         ?array $properties,
         DateTime $createdDate,
         ?DateTime $updatedDate = null,
-        ?ValidationCollection $validations = null
+        ?ValidationCollection $validations = null,
+        ?array $disclosedFields = null
     ) {
         $this->customer = $customer;
         $this->handle = $handle;
@@ -83,30 +87,39 @@ final class Contact implements DomainObjectInterface
         $this->createdDate = $createdDate;
         $this->updatedDate = $updatedDate;
         $this->validations = $validations;
+        $this->disclosedFields = $disclosedFields;
     }
 
-    public static function fromArray(array $data): Contact
+    public static function fromArray(array $json): Contact
     {
-        $updatedDate = isset($data['updatedDate']) ? new DateTime($data['updatedDate']) : null;
+        $updatedDate = isset($json['updatedDate']) ? new DateTime($json['updatedDate']) : null;
+
+        if (array_key_exists('disclosedFields', $json) && is_array($json['disclosedFields'])) {
+            foreach ($json['disclosedFields'] as $status) {
+                DisclosedField::validate($status);
+            }
+        }
+
         return new Contact(
-            $data['customer'],
-            $data['handle'],
-            $data['brand'],
-            $data['organization'] ?? null,
-            $data['name'],
-            $data['addressLine'],
-            $data['postalCode'],
-            $data['city'],
-            $data['state'] ?? null,
-            $data['country'],
-            $data['email'],
-            $data['voice'],
-            $data['fax'] ?? null,
-            $data['registries'] ?? null,
-            $data['properties'] ?? null,
-            new DateTime($data['createdDate']),
+            $json['customer'],
+            $json['handle'],
+            $json['brand'],
+            $json['organization'] ?? null,
+            $json['name'],
+            $json['addressLine'],
+            $json['postalCode'],
+            $json['city'],
+            $json['state'] ?? null,
+            $json['country'],
+            $json['email'],
+            $json['voice'],
+            $json['fax'] ?? null,
+            $json['registries'] ?? null,
+            $json['properties'] ?? null,
+            new DateTime($json['createdDate']),
             $updatedDate,
-            (isset($data['validations']) && is_array($data['validations'])) ? ValidationCollection::fromArray($data['validations']) : null
+            (isset($json['validations']) && is_array($json['validations'])) ? ValidationCollection::fromArray($json['validations']) : null,
+            (isset($json['disclosedFields']) && is_array($json['disclosedFields'])) ? $json['disclosedFields'] : null
         );
     }
 
@@ -131,6 +144,7 @@ final class Contact implements DomainObjectInterface
             'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
             'updatedDate' => $this->updatedDate ? $this->updatedDate->format('Y-m-d\TH:i:s\Z') : null,
             'validations' => $this->validations?->toArray(),
+            'disclosedFields' => $this->disclosedFields,
         ], function ($x) {
             return ! is_null($x);
         });

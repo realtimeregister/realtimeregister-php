@@ -49,9 +49,9 @@ final class Process implements DomainObjectInterface
     public ?array $refund;
 
     /**
-     * @var array<string>|null
+     * @var array<string>
      */
-    public ?array $command;
+    public array $command;
 
     /**
      * @var string[]|null

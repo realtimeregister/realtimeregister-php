@@ -38,4 +38,8 @@ return [
             'category' => 'IisSe',
         ],
     ],
+    'disclosedFields' => [
+        \RealtimeRegister\Domain\Enum\DisclosedField::DISCLOSED_FIELD_REGISTY_CITY,
+        \RealtimeRegister\Domain\Enum\DisclosedField::DISCLOSED_FIELD_REGISTY_ADDRESS_LINE,
+    ],
 ];

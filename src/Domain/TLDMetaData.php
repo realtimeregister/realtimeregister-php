@@ -177,67 +177,67 @@ final class TLDMetaData implements DomainObjectInterface
         $this->premiumSupport = $premiumSupport;
     }
 
-    public static function fromArray(array $data): TLDMetaData
+    public static function fromArray(array $json): TLDMetaData
     {
-        if (isset($data['possibleClientDomainStatuses'])) {
-            Assert::isArray($data['possibleClientDomainStatuses']);
-            foreach ($data['possibleClientDomainStatuses'] as $status) {
+        if (isset($json['possibleClientDomainStatuses'])) {
+            Assert::isArray($json['possibleClientDomainStatuses']);
+            foreach ($json['possibleClientDomainStatuses'] as $status) {
                 DomainPossibleClientDomainStatusEnum::validate($status);
             }
         }
-        if (isset($data['validationCategory'])) {
-            ValidationCategoryEnum::validate($data['validationCategory']);
+        if (isset($json['validationCategory'])) {
+            ValidationCategoryEnum::validate($json['validationCategory']);
         }
-        foreach ($data['featuresAvailable'] as $feature) {
+        foreach ($json['featuresAvailable'] as $feature) {
             DomainFeatureEnum::validate($feature);
         }
-        if (isset($data['allowDesignatedAgent'])) {
-            DomainDesignatedAgentEnum::validate($data['allowDesignatedAgent']);
+        if (isset($json['allowDesignatedAgent'])) {
+            DomainDesignatedAgentEnum::validate($json['allowDesignatedAgent']);
         }
-        WhoisExposureEnum::validate($data['whoisExposure']);
-        GDPRCategoryEnum::validate($data['gdprCategory']);
-        PremiumSupportEnum::validate($data['premiumSupport']);
+        WhoisExposureEnum::validate($json['whoisExposure']);
+        GDPRCategoryEnum::validate($json['gdprCategory']);
+        PremiumSupportEnum::validate($json['premiumSupport']);
 
         return new TLDMetaData(
-            $data['createDomainPeriods'],
-            $data['renewDomainPeriods'],
-            $data['autoRenewDomainPeriods'],
-            $data['transferFOA'],
-            $data['adjustableAuthCode'],
-            $data['customAuthcodeSupport'],
-            $data['transferSupportsAuthcode'],
-            $data['transferRequiresAuthcode'],
-            $data['creationRequiresPreValidation'],
-            $data['featuresAvailable'],
-            $data['registrantChangeApprovalRequired'],
-            $data['whoisExposure'],
-            $data['gdprCategory'],
-            DomainSyntax::fromArray($data['domainSyntax']),
-            Nameservers::fromArray($data['nameservers']),
-            Registrant::fromArray($data['registrant']),
-            ContactsConstraint::fromArray($data['adminContacts']),
-            ContactsConstraint::fromArray($data['billingContacts']),
-            ContactsConstraint::fromArray($data['techContacts']),
-            isset($data['contactProperties']) ? ContactPropertyCollection::fromArray($data['contactProperties']) : null,
-            isset($data['launchPhases']) ? LaunchPhaseCollection::fromArray($data['launchPhases']) : null,
-            $data['redemptionPeriod'] ?? null,
-            $data['pendingDeletePeriod'] ?? null,
-            $data['addGracePeriod'] ?? null,
-            $data['renewGracePeriod'] ?? null,
-            $data['autoRenewGracePeriod'] ?? null,
-            $data['transferGracePeriod'] ?? null,
-            $data['expiryDateOffset'] ?? null,
-            $data['transferDomainPeriods'] ?? null,
-            $data['possibleClientDomainStatuses'] ?? null,
-            $data['allowedDnssecRecords'] ?? null,
-            $data['allowedDnssecAlgorithms'] ?? null,
-            $data['validationCategory'] ?? null,
-            $data['zoneCheck'] ?? null,
-            $data['allowDesignatedAgent'] ?? null,
-            $data['jurisdiction'] ?? null,
-            $data['termsOfService'] ?? null,
-            $data['privacyPolicy'] ?? null,
-            $data['premiumSupport']
+            $json['createDomainPeriods'],
+            $json['renewDomainPeriods'],
+            $json['autoRenewDomainPeriods'],
+            $json['transferFOA'],
+            $json['adjustableAuthCode'],
+            $json['customAuthcodeSupport'],
+            $json['transferSupportsAuthcode'],
+            $json['transferRequiresAuthcode'],
+            $json['creationRequiresPreValidation'],
+            $json['featuresAvailable'],
+            $json['registrantChangeApprovalRequired'],
+            $json['whoisExposure'],
+            $json['gdprCategory'],
+            DomainSyntax::fromArray($json['domainSyntax']),
+            Nameservers::fromArray($json['nameservers']),
+            Registrant::fromArray($json['registrant']),
+            ContactsConstraint::fromArray($json['adminContacts']),
+            ContactsConstraint::fromArray($json['billingContacts']),
+            ContactsConstraint::fromArray($json['techContacts']),
+            isset($json['contactProperties']) ? ContactPropertyCollection::fromArray($json['contactProperties']) : null,
+            isset($json['launchPhases']) ? LaunchPhaseCollection::fromArray($json['launchPhases']) : null,
+            $json['redemptionPeriod'] ?? null,
+            $json['pendingDeletePeriod'] ?? null,
+            $json['addGracePeriod'] ?? null,
+            $json['renewGracePeriod'] ?? null,
+            $json['autoRenewGracePeriod'] ?? null,
+            $json['transferGracePeriod'] ?? null,
+            $json['expiryDateOffset'] ?? null,
+            $json['transferDomainPeriods'] ?? null,
+            $json['possibleClientDomainStatuses'] ?? null,
+            $json['allowedDnssecRecords'] ?? null,
+            $json['allowedDnssecAlgorithms'] ?? null,
+            $json['validationCategory'] ?? null,
+            $json['zoneCheck'] ?? null,
+            $json['allowDesignatedAgent'] ?? null,
+            $json['jurisdiction'] ?? null,
+            $json['termsOfService'] ?? null,
+            $json['privacyPolicy'] ?? null,
+            $json['premiumSupport']
         );
     }
 

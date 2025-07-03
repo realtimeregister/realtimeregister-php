@@ -66,7 +66,8 @@ final class BrandsApi extends AbstractApi
         ?string $privacyContact,
         ?string $abuseContact,
         DateTime $createdDate,
-        ?DateTime $updatedDate
+        ?DateTime $updatedDate,
+        ?bool $hideOptionalTerms
     ): void {
         $payload = [
             'locale' => $locale,
@@ -98,6 +99,9 @@ final class BrandsApi extends AbstractApi
         if ($updatedDate) {
             $payload['updatedDate'] = $updatedDate;
         }
+        if (isset($hideOptionalTerms)) {
+            $payload['hideOptionalTerms'] = $hideOptionalTerms;
+        }
 
         $this->client->post(sprintf('v2/customers/%s/brands/%s', urlencode($customer), urlencode($handle)), $payload);
     }
@@ -124,7 +128,8 @@ final class BrandsApi extends AbstractApi
         ?string $privacyContact = null,
         ?string $abuseContact = null,
         ?DateTime $createdDate = null,
-        ?DateTime $updatedDate = null
+        ?DateTime $updatedDate = null,
+        ?bool $hideOptionalTerms = false
     ): void {
         $payload = [];
 
@@ -186,6 +191,10 @@ final class BrandsApi extends AbstractApi
 
         if ($updatedDate) {
             $payload['updatedDate'] = $updatedDate;
+        }
+
+        if (isset($hideOptionalTerms)) {
+            $payload['hideOptionalTerms'] = $hideOptionalTerms;
         }
 
         $this->client->post(sprintf('v2/customers/%s/brands/%s/update', urlencode($customer), urlencode($handle)), $payload);

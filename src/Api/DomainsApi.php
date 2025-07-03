@@ -231,7 +231,7 @@ final class DomainsApi extends AbstractApi
         ?string $authcode = null,
         ?bool $autoRenew = null,
         ?array $ns = null,
-        ?string $transferContacts = null,
+        ?array $transferContacts = null,
         ?string $designatedAgent = null,
         ?Zone $zone = null,
         ?DomainContactCollection $contacts = null,
@@ -264,7 +264,7 @@ final class DomainsApi extends AbstractApi
             $payload['ns'] = $ns;
         }
 
-        if (is_string($transferContacts)) {
+        if (is_array($transferContacts)) {
             $payload['transferContacts'] = $transferContacts;
         }
 

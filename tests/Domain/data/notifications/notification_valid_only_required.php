@@ -6,4 +6,5 @@ return [
     'message' => 'FAKEMESSAGE',
     'eventType' => 'FAKE_EVENT_TYPE',
     'notificationType' => 'FAKE_NOTIFICATION_TYPE',
+    'isAsync' => true,
 ];
