@@ -20,9 +20,9 @@ final class DomainTransferStatus implements DomainObjectInterface
 
     public DateTimeInterface $requestedDate;
 
-    public DateTimeInterface $actionDate;
+    public ?DateTimeInterface $actionDate;
 
-    public DateTimeInterface $expiryDate;
+    public ?DateTimeInterface $expiryDate;
 
     public string $type;
 
@@ -36,8 +36,8 @@ final class DomainTransferStatus implements DomainObjectInterface
         DateTimeInterface $requestedDate,
         string $type,
         int $processId,
-        DateTimeInterface $actionDate,
-        DateTimeInterface $expiryDate,
+        ?DateTimeInterface $actionDate,
+        ?DateTimeInterface $expiryDate,
         string $registrar,
         ?LogCollection $log = null
     ) {
@@ -66,8 +66,8 @@ final class DomainTransferStatus implements DomainObjectInterface
             new DateTimeImmutable($json['requestedDate']),
             $json['type'],
             $json['processId'],
-            new DateTimeImmutable($json['actionDate']),
-            new DateTimeImmutable($json['expiryDate']),
+            isset($json['actionDate']) ? new DateTimeImmutable($json['actionDate']) : null,
+            isset($json['expiryDate']) ? new DateTimeImmutable($json['expiryDate']) : null,
             $json['registrar'],
             isset($json['log']) ? LogCollection::fromArray($json['log']) : null
         );
@@ -81,8 +81,8 @@ final class DomainTransferStatus implements DomainObjectInterface
                 'registrar' => $this->registrar,
                 'status' => $this->status,
                 'requestedDate' => $this->requestedDate->format('Y-m-d\TH:i:s\Z'),
-                'actionDate' =>  $this->actionDate->format('Y-m-d\TH:i:s\Z'),
-                'expiryDate' => $this->expiryDate->format('Y-m-d\TH:i:s\Z'),
+                'actionDate' => $this->actionDate ? $this->actionDate->format('Y-m-d\TH:i:s\Z') : null,
+                'expiryDate' => $this->expiryDate ? $this->expiryDate->format('Y-m-d\TH:i:s\Z') : null,
                 'type' => $this->type,
                 'processId' => $this->processId,
                 'log' => $this->log ? $this->log->toArray() : null,
