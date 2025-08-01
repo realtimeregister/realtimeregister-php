@@ -46,7 +46,7 @@ final class CertificatesApi extends AbstractApi
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/ssl/dcvemailaddresslist */
-    public function listDcvEmailAddresses(string $domainName, string $product = null): array
+    public function listDcvEmailAddresses(string $domainName, ?string $product = null): array
     {
         $response = $this->client->get(sprintf('v2/ssl/dcvemailaddresslist/%s', urlencode($domainName)) . ($product ? sprintf('?product=%s', urlencode($product)) : ''));
 
