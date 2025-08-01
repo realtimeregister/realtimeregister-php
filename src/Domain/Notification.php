@@ -33,9 +33,11 @@ final class Notification implements DomainObjectInterface
 
     public bool $isAsync;
 
-    public ?string $processIndentifier;
+    public ?string $processIdentifier;
 
     public ?string $processType;
+
+    public ?string $domainName;
 
     private function __construct(
         int $id,
@@ -51,8 +53,9 @@ final class Notification implements DomainObjectInterface
         string $notificationType,
         bool $isAsync,
         ?array $payload = null,
-        ?string $processIndentifier = null,
-        ?string $processType = null
+        ?string $processIdentifier = null,
+        ?string $processType = null,
+        ?string $domainName = null
     ) {
         $this->id = $id;
         $this->fireDate = $fireDate;
@@ -67,8 +70,9 @@ final class Notification implements DomainObjectInterface
         $this->notificationType = $notificationType;
         $this->payload = $payload;
         $this->isAsync = $isAsync;
-        $this->processIndentifier = $processIndentifier;
+        $this->processIdentifier = $processIdentifier;
         $this->processType = $processType;
+        $this->domainName = $domainName;
     }
 
     public static function fromArray(array $json): Notification
@@ -87,8 +91,9 @@ final class Notification implements DomainObjectInterface
             $json['notificationType'],
             $json['isAsync'],
             $json['payload'] ?? null,
-            $json['processIndentifier'] ?? null,
-            $json['processType'] ?? null
+            $json['processIdentifier'] ?? null,
+            $json['processType'] ?? null,
+            $json['domainName'] ?? null
         );
     }
 
@@ -108,8 +113,9 @@ final class Notification implements DomainObjectInterface
             'notificationType' => $this->notificationType,
             'payload' => $this->payload,
             'isAsync' => $this->isAsync,
-            'processIndentifier' => $this->processIndentifier,
+            'processIdentifier' => $this->processIdentifier,
             'processType' => $this->processType,
+            'domainName' => $this->domainName,
         ], function ($x) {
             return ! is_null($x);
         });
