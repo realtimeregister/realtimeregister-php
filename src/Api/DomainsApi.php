@@ -5,6 +5,7 @@ namespace RealtimeRegister\Api;
 use DateTime;
 use Exception;
 use RealtimeRegister\Domain\BillableCollection;
+use RealtimeRegister\Domain\DnsZone;
 use RealtimeRegister\Domain\DomainAvailability;
 use RealtimeRegister\Domain\DomainContactCollection;
 use RealtimeRegister\Domain\DomainDetails;
@@ -12,6 +13,7 @@ use RealtimeRegister\Domain\DomainDetailsCollection;
 use RealtimeRegister\Domain\DomainQuote;
 use RealtimeRegister\Domain\DomainRegistration;
 use RealtimeRegister\Domain\DomainTransferStatus;
+use RealtimeRegister\Domain\DomainZoneRecordCollection;
 use RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
 use RealtimeRegister\Domain\Enum\DomainStatusEnum;
 use RealtimeRegister\Domain\KeyDataCollection;
@@ -57,6 +59,40 @@ final class DomainsApi extends AbstractApi
 
         $response = $this->client->get(sprintf('v2/domains/%s/check', urlencode($domainName)), $query);
         return DomainAvailability::fromArray($response->json());
+    }
+
+    /* @see https://dm.realtimeregister.com/docs/api/dns/zones/get */
+    public function zone(string $domainName): DnsZone
+    {
+        $response = $this->client->get(sprintf('v2/domains/%s/zone', urlencode($domainName)));
+        return DnsZone::fromArray($response->json());
+    }
+
+    /**
+     * @see https://dm.realtimeregister.com/docs/api/dns/zones/update
+     */
+    public function zoneUpdate(
+        string $domainName,
+        string $hostMaster,
+        int $refresh,
+        int $retry,
+        int $expire,
+        int $ttl,
+        ?DomainZoneRecordCollection $records = null
+    ): void {
+        $data = [
+            'hostMaster' => $hostMaster,
+            'refresh' => $refresh,
+            'retry' => $retry,
+            'expire' => $expire,
+            'ttl' => $ttl,
+        ];
+
+        if ($records !== null) {
+            $data['records'] = $records;
+        }
+
+        $this->client->post(sprintf('v2/domains/%s/zone/update', urlencode($domainName)), $data);
     }
 
     /**

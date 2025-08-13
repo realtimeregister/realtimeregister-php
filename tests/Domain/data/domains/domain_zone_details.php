@@ -1,6 +1,13 @@
 <?php declare(strict_types = 1);
 
 return [
+    'id' => 42,
+    'customer' => 'example-customer',
+    'name' => 'example-zone',
+    'createdDate' => '2020-08-30T01:02:03Z',
+    'service' => 'BASIC',
+    'dnssec' => false,
+    'managed' => true,
     'hostMaster' => 'hostmaster@example.com',
     'refresh' => 3600,
     'retry' => 3600,
