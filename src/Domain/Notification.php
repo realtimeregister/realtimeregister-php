@@ -3,6 +3,8 @@
 namespace RealtimeRegister\Domain;
 
 use DateTime;
+use RealtimeRegister\Domain\Enum\EventTypeEnum;
+use RealtimeRegister\Domain\Enum\NotificationTypeEnum;
 
 final class Notification implements DomainObjectInterface
 {
@@ -24,9 +26,9 @@ final class Notification implements DomainObjectInterface
 
     public ?int $process;
 
-    public string $eventType;
+    public EventTypeEnum $eventType;
 
-    public string $notificationType;
+    public NotificationTypeEnum $notificationType;
 
     /** @var array<string>|null */
     public ?array $payload;
@@ -49,8 +51,8 @@ final class Notification implements DomainObjectInterface
         ?string $reason,
         ?string $customer,
         ?int $process,
-        string $eventType,
-        string $notificationType,
+        EventTypeEnum $eventType,
+        NotificationTypeEnum $notificationType,
         bool $isAsync,
         ?array $payload = null,
         ?string $processIdentifier = null,
@@ -77,6 +79,9 @@ final class Notification implements DomainObjectInterface
 
     public static function fromArray(array $json): Notification
     {
+        $eventType = EventTypeEnum::from($json['eventType']);
+        $notificationType = NotificationTypeEnum::from($json['notificationType']);
+
         return new Notification(
             $json['id'],
             new DateTime($json['fireDate']),
@@ -87,8 +92,8 @@ final class Notification implements DomainObjectInterface
             $json['reason'] ?? null,
             $json['customer'] ?? null,
             $json['process'] ?? null,
-            $json['eventType'],
-            $json['notificationType'],
+            $eventType,
+            $notificationType,
             $json['isAsync'],
             $json['payload'] ?? null,
             $json['processIdentifier'] ?? null,
@@ -109,8 +114,8 @@ final class Notification implements DomainObjectInterface
             'reason' => $this->reason,
             'customer' => $this->customer,
             'process' => $this->process,
-            'eventType' => $this->eventType,
-            'notificationType' => $this->notificationType,
+            'eventType' => $this->eventType->value,
+            'notificationType' => $this->notificationType->value,
             'payload' => $this->payload,
             'isAsync' => $this->isAsync,
             'processIdentifier' => $this->processIdentifier,
