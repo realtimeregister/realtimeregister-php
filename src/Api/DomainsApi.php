@@ -89,7 +89,7 @@ final class DomainsApi extends AbstractApi
         ];
 
         if ($records !== null) {
-            $data['records'] = $records;
+            $data['records'] = $records->toArray();
         }
 
         $this->client->post(sprintf('v2/domains/%s/zone/update', urlencode($domainName)), $data);
