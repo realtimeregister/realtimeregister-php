@@ -12,6 +12,8 @@ final class Certificate implements DomainObjectInterface
 {
     public int $id;
 
+    public int $process;
+
     public string $product;
 
     public string $validationType;
@@ -62,6 +64,7 @@ final class Certificate implements DomainObjectInterface
 
     private function __construct(
         int $id,
+        int $process,
         string $product,
         string $validationType,
         string $certificateType,
@@ -87,6 +90,7 @@ final class Certificate implements DomainObjectInterface
         ?string $fingerprint = null
     ) {
         $this->id = $id;
+        $this->process = $process;
         $this->product = $product;
         $this->validationType = $validationType;
         $this->certificateType = $certificateType;
@@ -121,6 +125,7 @@ final class Certificate implements DomainObjectInterface
 
         return new Certificate(
             $json['id'],
+            $json['process'],
             $json['product'],
             $json['validationType'],
             $json['certificateType'],
@@ -151,6 +156,7 @@ final class Certificate implements DomainObjectInterface
     {
         return array_filter([
             'id' => $this->id,
+            'process' => $this->process,
             'product' => $this->product,
             'validationType' => $this->validationType,
             'certificateType' => $this->certificateType,
