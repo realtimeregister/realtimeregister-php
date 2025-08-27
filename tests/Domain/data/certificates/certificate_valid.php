@@ -7,6 +7,7 @@ use RealtimeRegister\Domain\Enum\ValidationTypeEnum;
 
 return [
     'id' => 1234567,
+    'process' => 1,
     'product' => 'ssl_sectigo',
     'validationType' => ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION,
     'certificateType' => CertificateTypeEnum::LOCALE_SINGLE_DOMAIN,

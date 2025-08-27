@@ -21,6 +21,7 @@ class CertificatesApiGetCertificateTest extends TestCase
             200,
             json_encode([
                 'id' => 1,
+                'process' => 1,
                 'product' => 'ssl',
                 'validationType' => ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION,
                 'certificateType' => CertificateTypeEnum::LOCALE_SINGLE_DOMAIN,
