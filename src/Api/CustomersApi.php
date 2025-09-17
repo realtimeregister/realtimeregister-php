@@ -13,8 +13,7 @@ final class CustomersApi extends AbstractApi
     public function priceList(string $customer, ?string $currency): PriceCollection
     {
         $params = $currency ? ['currency' => $currency] : [];
-        $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)),
-            $params);
+        $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)), $params);
         return PriceCollection::fromArray($response->json()['prices']);
     }
 
