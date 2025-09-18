@@ -8,7 +8,7 @@ use RealtimeRegister\Domain\Enum\ZoneServiceEnum;
 final class Zone implements DomainObjectInterface
 {
     private function __construct(
-        public int $id,
+        public ?int $id,
         public readonly ZoneServiceEnum $service,
         public ?string $template,
         public bool $dnssec,
@@ -20,10 +20,10 @@ final class Zone implements DomainObjectInterface
     public static function fromArray(array $json): self
     {
         return new self(
-            $json['id'],
+            $json['id'] ?? null,
             ZoneServiceEnum::from($json['service']),
             $json['template'] ?? null,
-            $json['dnssec'],
+            $json['dnssec'] ?? false,
             $json['link'] ?? null,
             $json['master'] ?? null
         );
