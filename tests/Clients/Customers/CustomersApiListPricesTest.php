@@ -27,7 +27,7 @@ class CustomersApiListPricesTest extends TestCase
             MockedClientFactory::assertRoute('GET', 'v2/customers/johndoe/pricelist', $this)
         );
 
-        $response = $sdk->customers->priceList('johndoe', null);
+        $response = $sdk->customers->priceList('johndoe');
         $this->assertInstanceOf(PriceCollection::class, $response);
     }
 }
