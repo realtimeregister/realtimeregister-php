@@ -10,9 +10,10 @@ use RealtimeRegister\Domain\PromoCollection;
 final class CustomersApi extends AbstractApi
 {
     /* @see https://dm.realtimeregister.com/docs/api/customers/pricelist */
-    public function priceList(string $customer): PriceCollection
+    public function priceList(string $customer, ?string $currency = null): PriceCollection
     {
-        $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)));
+        $params = $currency ? ['currency' => $currency] : [];
+        $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)), $params);
         return PriceCollection::fromArray($response->json()['prices']);
     }
 
