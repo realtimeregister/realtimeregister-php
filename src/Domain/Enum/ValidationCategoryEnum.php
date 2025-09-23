@@ -15,7 +15,7 @@ class ValidationCategoryEnum extends AbstractEnum
         ValidationCategoryEnum::VALIDATION_CATEGORY_IIS_NU,
         ValidationCategoryEnum::VALIDATION_CATEGORY_IIS_SE,
         ValidationCategoryEnum::VALIDATION_CATEGORY_NOMINET,
-        ValidationCategoryEnum::VALIDATION_CATEGORY_SKNIC
+        ValidationCategoryEnum::VALIDATION_CATEGORY_SKNIC,
     ];
 
     /** @param string $value */
