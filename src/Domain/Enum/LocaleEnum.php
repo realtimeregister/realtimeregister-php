@@ -19,6 +19,7 @@ class LocaleEnum extends AbstractEnum
     const LOCALE_ET_ET = 'et-ET';
     const LOCALE_RU_RU = 'ru-RU';
     const LOCALE_SV_SE = 'sv-SE';
+    const LOCALE_NB_NO = 'nb-NO';
 
     protected static array $values = [
         LocaleEnum::LOCALE_EN_US,
@@ -36,6 +37,7 @@ class LocaleEnum extends AbstractEnum
         LocaleEnum::LOCALE_ET_ET,
         LocaleEnum::LOCALE_RU_RU,
         LocaleEnum::LOCALE_SV_SE,
+        LocaleEnum::LOCALE_NB_NO,
     ];
 
     /** @param string $value */
