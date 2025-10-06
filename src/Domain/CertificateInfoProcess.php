@@ -34,7 +34,7 @@ class CertificateInfoProcess implements DomainObjectInterface
             $json['commonName'],
             $json['requiresAttention'] ?? false,
             $json['certificateId'] ?? null,
-            CertificateValidation::fromArray($json['validations']),
+            $json['validations'] ? CertificateValidation::fromArray($json['validations']) : null,
             array_key_exists('headers', $json) ? self::getProcessId($json['headers']) : null
         );
     }
