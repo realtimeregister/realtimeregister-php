@@ -10,7 +10,7 @@ class DomainControlValidation implements DomainObjectInterface
 {
     public function __construct(
         public readonly string $commonName,
-        public readonly string $type,
+        public readonly ?string $type,
         public readonly string $status,
         public readonly ?string $email = null,
         public readonly ?string $dnsRecord = null,
@@ -40,7 +40,9 @@ class DomainControlValidation implements DomainObjectInterface
 
     public static function fromArray(array $json): DomainControlValidation
     {
-        DcvTypeEnum::validate($json['type']);
+        if ($json['type']) {
+            DcvTypeEnum::validate($json['type']);
+        }
         DcvStatusEnum::validate($json['status']);
         if (array_key_exists('dnsType', $json)) {
             DcvDnsTypeRecordEnum::validate($json['dnsType']);
@@ -48,7 +50,7 @@ class DomainControlValidation implements DomainObjectInterface
 
         return new DomainControlValidation(
             $json['commonName'],
-            $json['type'],
+            $json['type'] ?? null,
             $json['status'],
             $json['email'] ?? null,
             $json['dnsRecord'] ?? null,
