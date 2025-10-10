@@ -2,6 +2,9 @@
 
 namespace RealtimeRegister\Domain\Enum;
 
+/**
+ * @Deprecated See listLocales in BrandsApi
+ */
 class LocaleEnum extends AbstractEnum
 {
     const LOCALE_EN_US = 'en-US';

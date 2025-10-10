@@ -283,4 +283,8 @@ final class BrandsApi extends AbstractApi
             $this->client->get(sprintf('v2/customers/%s/brands/%s/templates/%s/preview', urlencode($customer), urlencode($brand), urlencode($name)), $payload)->json()
         );
     }
+
+    public function listLocales(string $customer) {
+        $this->client->get(sprintf('v2/customers/%s/brands/locales', urlencode($customer)));
+    }
 }
