@@ -22,7 +22,7 @@ class BrandsApiUpdateTest extends TestCase
         $sdk->brands->update(
             $customerHandle,
             $brandHandle,
-            'en_US',
+            'en-US',
             'organizationtestname',
             ['addresslinetest_1', 'addresslinetest_2'],
             'postcodetest',

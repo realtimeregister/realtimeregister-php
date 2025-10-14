@@ -3,7 +3,7 @@
 return [
     'customer' => 1,
     'handle' => 'brandtestname',
-    'locale' => 'en_US',
+    'locale' => 'en-US',
     'organization' => 'organizationtestname',
     'addressLine' => ['addresslinetest_1', 'addresslinetest_2'],
     'postalCode' => 'postcodetest',

@@ -22,7 +22,7 @@ class BrandsApiCreateTest extends TestCase
         $sdk->brands->create(
             $customerHandle,
             $brandHandle,
-            'en_US',
+            'en-US',
             'organizationtestname',
             ['addresslinetest_1', 'addresslinetest_2'],
             'postcodetest',

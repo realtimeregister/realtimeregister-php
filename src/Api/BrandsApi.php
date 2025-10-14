@@ -284,7 +284,10 @@ final class BrandsApi extends AbstractApi
         );
     }
 
-    public function listLocales(string $customer) {
-        $this->client->get(sprintf('v2/customers/%s/brands/locales', urlencode($customer)));
+    /**
+     * @see https://dm.realtimeregister.com/docs/api/brands/locales
+     */
+    public function listLocales() {
+        $this->client->get('v2/brands/locales');
     }
 }
