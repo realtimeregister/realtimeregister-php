@@ -7,7 +7,6 @@ use RealtimeRegister\Domain\Enum\DomainFeatureEnum;
 use RealtimeRegister\Domain\Enum\DomainPossibleClientDomainStatusEnum;
 use RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
 use RealtimeRegister\Domain\Enum\PremiumSupportEnum;
-use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
 use RealtimeRegister\Domain\Enum\WhoisExposureEnum;
 use Webmozart\Assert\Assert;
 
@@ -184,9 +183,6 @@ final class TLDMetaData implements DomainObjectInterface
             foreach ($json['possibleClientDomainStatuses'] as $status) {
                 DomainPossibleClientDomainStatusEnum::validate($status);
             }
-        }
-        if (isset($json['validationCategory'])) {
-            ValidationCategoryEnum::validate($json['validationCategory']);
         }
         foreach ($json['featuresAvailable'] as $feature) {
             DomainFeatureEnum::validate($feature);
