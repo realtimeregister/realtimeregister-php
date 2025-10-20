@@ -4,7 +4,6 @@ namespace RealtimeRegister\Domain;
 
 class ValidationCategoryCollection extends AbstractCollection
 {
-
     /** @var ValidationCategory[] */
     public array $entities;
 

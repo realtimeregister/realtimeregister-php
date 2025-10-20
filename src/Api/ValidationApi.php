@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Api;
 
@@ -7,7 +7,6 @@ use RealtimeRegister\Domain\ValidationCategoryCollection;
 
 class ValidationApi extends AbstractApi
 {
-
     /* @see https://dm.realtimeregister.com/docs/api/validation/list */
     public function list(
         ?int $limit = null,

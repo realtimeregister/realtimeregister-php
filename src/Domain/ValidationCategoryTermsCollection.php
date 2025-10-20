@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain;
 
 class ValidationCategoryTermsCollection extends AbstractCollection
 {
-
     /** @var ValidationCategoryTerms[] */
     public array $entities;
 
@@ -23,4 +22,3 @@ class ValidationCategoryTermsCollection extends AbstractCollection
         return ValidationCategoryTerms::fromArray($json);
     }
 }
-

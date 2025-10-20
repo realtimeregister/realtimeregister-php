@@ -13,7 +13,8 @@ class ValidationCategory implements DomainObjectInterface
 
     public ValidationCategoryTermsCollection $terms;
 
-    private function __construct(string $name, string $description, array $fields, array $terms) {
+    private function __construct(string $name, string $description, array $fields, array $terms)
+    {
         $this->name = $name;
         $this->description = $description;
         $this->fields = $fields;
@@ -36,7 +37,7 @@ class ValidationCategory implements DomainObjectInterface
             'name' => $this->name,
             'description' => $this->description,
             'fields' => $this->fields,
-            'terms' => $this->terms
+            'terms' => $this->terms,
         ];
     }
 }

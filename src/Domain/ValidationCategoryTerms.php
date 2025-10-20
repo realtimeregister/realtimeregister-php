@@ -23,12 +23,13 @@ class ValidationCategoryTerms implements DomainObjectInterface
     /**
      * @throws \Exception
      */
-    public static function fromArray(array $json)
+    public static function fromArray(array $json): ValidationCategoryTerms
     {
         return new ValidationCategoryTerms(
             $json['version'],
             $json['terms'],
-            $json['validTill'] ? new DateTimeImmutable($json['validTill']) : null);
+            $json['validTill'] ? new DateTimeImmutable($json['validTill']) : null
+        );
     }
 
     public function toArray(): array
@@ -36,7 +37,7 @@ class ValidationCategoryTerms implements DomainObjectInterface
         return [
             'version' => $this->version,
             'terms' => $this->terms,
-            'validTill' => $this->validTill
+            'validTill' => $this->validTill,
         ];
     }
 }
