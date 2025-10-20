@@ -288,7 +288,7 @@ final class BrandsApi extends AbstractApi
     /**
      * @see https://dm.realtimeregister.com/docs/api/brands/locales
      */
-    public function listLocales() : array
+    public function listLocales(): array
     {
         return array_map(fn ($locale) => Locale::fromArray($locale), $this->client->get('v2/brands/locales')->json());
     }
