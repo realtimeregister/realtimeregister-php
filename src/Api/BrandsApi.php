@@ -6,6 +6,7 @@ use DateTime;
 use RealtimeRegister\Domain\Brand;
 use RealtimeRegister\Domain\BrandCollection;
 use RealtimeRegister\Domain\Enum\TemplateNameEnum;
+use RealtimeRegister\Domain\Locale;
 use RealtimeRegister\Domain\Template;
 use RealtimeRegister\Domain\TemplateCollection;
 use RealtimeRegister\Domain\TemplatePreview;
@@ -287,7 +288,8 @@ final class BrandsApi extends AbstractApi
     /**
      * @see https://dm.realtimeregister.com/docs/api/brands/locales
      */
-    public function listLocales() {
-        $this->client->get('v2/brands/locales');
+    public function listLocales() : array
+    {
+        return array_map(fn ($locale) => Locale::fromArray($locale), $this->client->get('v2/brands/locales')->json());
     }
 }

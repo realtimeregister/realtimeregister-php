@@ -2,16 +2,19 @@
 
 namespace RealtimeRegister\Domain;
 
-class Locale implements DomainObjectInterface {
+class Locale implements DomainObjectInterface
+{
     public string $code;
+
     public string $name;
 
-    private function __construct(string $code, string $name) {
+    private function __construct(string $code, string $name)
+    {
         $this->code = $code;
         $this->name = $name;
     }
 
-    public static function fromArray(array $json)
+    public static function fromArray(array $json): Locale
     {
         return new Locale($json['code'], $json['name']);
     }
