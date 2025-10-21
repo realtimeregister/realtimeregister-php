@@ -4,7 +4,6 @@ namespace RealtimeRegister\Tests\Clients\Brands;
 
 use DateTime;
 use PHPUnit\Framework\TestCase;
-use RealtimeRegister\Domain\Enum\LocaleEnum;
 use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
 class BrandsApiCreateTest extends TestCase
@@ -23,7 +22,7 @@ class BrandsApiCreateTest extends TestCase
         $sdk->brands->create(
             $customerHandle,
             $brandHandle,
-            LocaleEnum::LOCALE_EN_US,
+            'en-US',
             'organizationtestname',
             ['addresslinetest_1', 'addresslinetest_2'],
             'postcodetest',

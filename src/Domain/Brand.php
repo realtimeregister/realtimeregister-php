@@ -3,7 +3,6 @@
 namespace RealtimeRegister\Domain;
 
 use DateTime;
-use RealtimeRegister\Domain\Enum\LocaleEnum;
 
 final class Brand implements DomainObjectInterface
 {
@@ -90,7 +89,6 @@ final class Brand implements DomainObjectInterface
 
     public static function fromArray(array $json): Brand
     {
-        LocaleEnum::validate($json['locale']);
         $updatedDate = isset($json['updatedDate']) ? new DateTime($json['updatedDate']) : null;
 
         return new Brand(

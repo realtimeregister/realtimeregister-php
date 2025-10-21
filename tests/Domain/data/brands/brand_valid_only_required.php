@@ -1,11 +1,9 @@
 <?php declare(strict_types = 1);
 
-use RealtimeRegister\Domain\Enum\LocaleEnum;
-
 return [
     'customer' => 'customertestname',
     'handle' => 'brandtestname',
-    'locale' => LocaleEnum::LOCALE_EN_US,
+    'locale' => 'en-US',
     'organization' => 'organizationtestname',
     'addressLine' => ['addresslinetest_1', 'addresslinetest_2'],
     'postalCode' => 'postcodetest',
