@@ -2,6 +2,9 @@
 
 namespace RealtimeRegister\Domain\Enum;
 
+/**
+ * @Deprecated see ValidationsApi
+ */
 class ValidationCategoryEnum extends AbstractEnum
 {
     const VALIDATION_CATEGORY_GENERAL = 'General';
