@@ -140,13 +140,13 @@ final class ContactsApi extends AbstractApi
         if ($brand) {
             $payload['brand'] = $brand;
         }
-        if ($organization) {
+        if (is_string($organization)) {
             $payload['organization'] = $organization;
         }
-        if ($state) {
+        if (is_string($state)) {
             $payload['state'] = $state;
         }
-        if ($fax) {
+        if (is_string($fax)) {
             $payload['fax'] = $fax;
         }
         if ($disclosedFields) {
