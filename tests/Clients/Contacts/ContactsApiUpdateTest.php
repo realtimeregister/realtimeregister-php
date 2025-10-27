@@ -31,4 +31,29 @@ class ContactsApiUpdateTest extends TestCase
             '+31655555555'
         );
     }
+
+    public function test_update_with_empty_fields(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/customers/johndoe/contacts/test/update', $this, expectedFields: [
+                'customer' => 'johndoe',
+                'handle' => 'test',
+                'name' => 'John Doe',
+                'organization' => '',
+                'state' => '',
+                'fax' => '',
+            ])
+        );
+
+        $sdk->contacts->update(
+            customer: 'johndoe',
+            handle: 'test',
+            name: 'John Doe',
+            organization: '',
+            state: '',
+            fax: '',
+        );
+    }
 }

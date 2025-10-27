@@ -16,9 +16,9 @@ class MockedClientFactory
 {
     const API_KEY = 'bigsecretdonttellanyone';
 
-    public static function assertRoute(string $method, string $route, TestCase $testCase, ?array $expectedParameters = null): callable
+    public static function assertRoute(string $method, string $route, TestCase $testCase, ?array $expectedParameters = null, ?array $expectedFields = null): callable
     {
-        return function (RequestInterface $request) use ($method, $route, $testCase, $expectedParameters) {
+        return function (RequestInterface $request) use ($method, $route, $testCase, $expectedParameters, $expectedFields) {
             $testCase->assertSame(strtoupper($method), strtoupper($request->getMethod()));
             $testCase->assertSame($route, $request->getUri()->getPath());
             $testCase->assertSame('ApiKey ' . static::API_KEY, $request->getHeader('Authorization')[0]);
@@ -26,6 +26,10 @@ class MockedClientFactory
             if (null !== $expectedParameters) {
                 parse_str($request->getUri()->getQuery(), $parameters);
                 $testCase->assertSame($expectedParameters, $parameters);
+            }
+
+            if (null !== $expectedFields) {
+                $testCase->assertSame($expectedFields, json_decode($request->getBody()->getContents(), true));
             }
         };
     }

@@ -69,6 +69,26 @@ class DomainsApiUpdateTest extends TestCase
         );
     }
 
+    public function test_update_empty_fields(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/update', $this, expectedFields: [
+                'authcode' => '',
+                'ns' => [],
+                'keyData' => [],
+            ])
+        );
+
+        $sdk->domains->update(
+            domainName: 'example.com',
+            authcode: '',
+            ns: [],
+            keyData: KeyDataCollection::fromArray([])
+        );
+    }
+
     public function test_free_update(): void
     {
         $sdk = MockedClientFactory::makeSdk(
