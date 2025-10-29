@@ -108,6 +108,7 @@ final class Process implements DomainObjectInterface
                 'user' => $this->user,
                 'customer' => $this->customer,
                 'status' => $this->status,
+                'statusDetail' => $this->statusDetail,
                 'resumeTypes' => $this->resumeTypes,
                 'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
                 'updatedDate' => $this->updatedDate ? $this->updatedDate->format('Y-m-d\TH:i:s\Z') : null,
