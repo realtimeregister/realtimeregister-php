@@ -5,6 +5,7 @@ return [
     'user' => 'johndoe/died',
     'customer' => 'johndoe',
     'status' => 'FAILED',
+    'statusDetail' => 'Contact validation failed',
     'resumeTypes' => [
         'MANUAL',
         'TIMER',

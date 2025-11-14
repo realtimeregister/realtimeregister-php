@@ -21,6 +21,8 @@ final class Process implements DomainObjectInterface
 
     public string $status;
 
+    public ?string $statusDetail;
+
     public DateTimeInterface $createdDate;
 
     public ?DateTimeInterface $updatedDate;
@@ -65,6 +67,7 @@ final class Process implements DomainObjectInterface
         string $user,
         string $customer,
         string $status,
+        ?string $statusDetail,
         DateTimeInterface $createdDate,
         string $type,
         ?string $identifier,
@@ -82,6 +85,7 @@ final class Process implements DomainObjectInterface
         $this->user = $user;
         $this->customer = $customer;
         $this->status = $status;
+        $this->statusDetail = $statusDetail;
         $this->createdDate = $createdDate;
         $this->type = $type;
         $this->identifier = $identifier;
@@ -104,6 +108,7 @@ final class Process implements DomainObjectInterface
                 'user' => $this->user,
                 'customer' => $this->customer,
                 'status' => $this->status,
+                'statusDetail' => $this->statusDetail,
                 'resumeTypes' => $this->resumeTypes,
                 'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
                 'updatedDate' => $this->updatedDate ? $this->updatedDate->format('Y-m-d\TH:i:s\Z') : null,
@@ -145,6 +150,7 @@ final class Process implements DomainObjectInterface
             $json['user'],
             $json['customer'],
             $json['status'],
+            $json['statusDetail'] ?? null,
             new DateTimeImmutable($json['createdDate']),
             $json['type'],
             $json['identifier'] ?? null,
