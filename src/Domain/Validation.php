@@ -3,7 +3,6 @@
 namespace RealtimeRegister\Domain;
 
 use DateTimeInterface;
-use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
 
 class Validation implements DomainObjectInterface
 {
