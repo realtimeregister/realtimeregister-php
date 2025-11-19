@@ -12,7 +12,6 @@ class ValidationCategoryEnum extends AbstractEnum
     const VALIDATION_CATEGORY_IIS_SE = 'IisSe';
     const VALIDATION_CATEGORY_NOMINET = 'Nominet';
     const VALIDATION_CATEGORY_SKNIC = 'SKNic';
-    const VALIDATION_CATEGORY_ESNIC = 'Esnic';
 
     protected static array $values = [
         ValidationCategoryEnum::VALIDATION_CATEGORY_GENERAL,
@@ -20,7 +19,6 @@ class ValidationCategoryEnum extends AbstractEnum
         ValidationCategoryEnum::VALIDATION_CATEGORY_IIS_SE,
         ValidationCategoryEnum::VALIDATION_CATEGORY_NOMINET,
         ValidationCategoryEnum::VALIDATION_CATEGORY_SKNIC,
-        ValidationCategoryEnum::VALIDATION_CATEGORY_ESNIC,
     ];
 
     /** @param string $value */

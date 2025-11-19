@@ -25,8 +25,6 @@ class Validation implements DomainObjectInterface
 
     public static function fromArray(array $json): Validation
     {
-        ValidationCategoryEnum::validate($json['category']);
-
         return new Validation(
             new \DateTime($json['validatedOn']),
             $json['version'],
