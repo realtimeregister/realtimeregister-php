@@ -3,7 +3,6 @@
 namespace RealtimeRegister\Domain;
 
 use DateTimeInterface;
-use RealtimeRegister\Domain\Enum\ValidationCategoryEnum;
 
 class Validation implements DomainObjectInterface
 {
@@ -25,8 +24,6 @@ class Validation implements DomainObjectInterface
 
     public static function fromArray(array $json): Validation
     {
-        ValidationCategoryEnum::validate($json['category']);
-
         return new Validation(
             new \DateTime($json['validatedOn']),
             $json['version'],
