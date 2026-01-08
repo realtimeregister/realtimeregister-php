@@ -21,14 +21,20 @@ final class CustomersApi extends AbstractApi
     public function priceChangesList(string $customer): PriceChangesCollection
     {
         $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)));
-        return PriceChangesCollection::fromArray($response->json()['priceChanges']);
+        if (array_key_exists('priceChanges', $response->json())) {
+            return PriceChangesCollection::fromArray($response->json()['priceChanges']);
+        }
+        return PriceChangesCollection::fromArray([]);
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/customers/pricelist#promos  */
     public function promoList(string $customer): PromoCollection
     {
         $response = $this->client->get(sprintf('v2/customers/%s/pricelist', urlencode($customer)));
-        return PromoCollection::fromArray($response->json()['promos']);
+        if (array_key_exists('promos', $response->json())) {
+            return PromoCollection::fromArray($response->json()['promos']);
+        }
+        return PromoCollection::fromArray([]);
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/customers/credits */
