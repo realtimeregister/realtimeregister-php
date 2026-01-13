@@ -41,6 +41,22 @@ final class Notification implements DomainObjectInterface
 
     public ?int $certificateId;
 
+    /**
+     * Can be one of:
+     *  - 'NEW'
+     *  - 'OK'
+     *  - 'PENDING'
+     *  - 'COMPLETED'
+     *  - 'WARNING'
+     *  - 'FAILED'
+     *  - 'PREMIUM-CHANGE'
+     *
+     * @var string|null
+     */
+    public ?string $subjectStatus;
+
+    public ?string $statusDetail;
+
     private function __construct(
         int $id,
         DateTime $fireDate,
@@ -58,7 +74,9 @@ final class Notification implements DomainObjectInterface
         ?string $processIdentifier = null,
         ?string $processType = null,
         ?string $domainName = null,
-        ?int $certificateId = null
+        ?int $certificateId = null,
+        ?string $subjectStatus = null,
+        ?string $statusDetail = null
     ) {
         $this->id = $id;
         $this->fireDate = $fireDate;
@@ -77,6 +95,8 @@ final class Notification implements DomainObjectInterface
         $this->processType = $processType;
         $this->domainName = $domainName;
         $this->certificateId = $certificateId;
+        $this->subjectStatus = $subjectStatus;
+        $this->statusDetail = $statusDetail;
     }
 
     public static function fromArray(array $json): Notification
@@ -98,7 +118,9 @@ final class Notification implements DomainObjectInterface
             $json['processIdentifier'] ?? null,
             $json['processType'] ?? null,
             $json['domainName'] ?? null,
-            $json['certificateId'] ?? null
+            $json['certificateId'] ?? null,
+            $json['subjectStatus'] ?? null,
+            $json['statusDetail'] ?? null
         );
     }
 
@@ -122,6 +144,8 @@ final class Notification implements DomainObjectInterface
             'processType' => $this->processType,
             'domainName' => $this->domainName,
             'certificateId' => $this->certificateId,
+            'subjectStatus' => $this->subjectStatus,
+            'statusDetail' => $this->statusDetail,
         ], function ($x) {
             return ! is_null($x);
         });
