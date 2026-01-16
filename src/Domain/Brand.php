@@ -45,6 +45,12 @@ final class Brand implements DomainObjectInterface
 
     public ?DateTime $updatedDate;
 
+    public ?DateTime $spfInvalidSince;
+
+    public ?DateTime $dkimInvalidSince;
+
+    public ?string $dkimSelector;
+
     private function __construct(
         string $customer,
         string $handle,
@@ -64,6 +70,9 @@ final class Brand implements DomainObjectInterface
         ?string $abuseContact,
         DateTime $createdDate,
         ?DateTime $updatedDate = null,
+        ?DateTime $spfInvalidSince = null,
+        ?DateTime $dkimInvalidSince = null,
+        ?string $dkimSelector = null,
         ?bool $hideOptionalTerms = false
     ) {
         $this->hideOptionalTerms = $hideOptionalTerms;
@@ -85,11 +94,16 @@ final class Brand implements DomainObjectInterface
         $this->abuseContact = $abuseContact;
         $this->createdDate = $createdDate;
         $this->updatedDate = $updatedDate;
+        $this->spfInvalidSince = $spfInvalidSince;
+        $this->dkimInvalidSince = $dkimInvalidSince;
+        $this->dkimSelector = $dkimSelector;
     }
 
     public static function fromArray(array $json): Brand
     {
         $updatedDate = isset($json['updatedDate']) ? new DateTime($json['updatedDate']) : null;
+        $spfInvalidSince = isset($json['spfInvalidSince']) ? new DateTime($json['spfInvalidSince']) : null;
+        $dkimInvalidSince = isset($json['dkimInvalidSince']) ? new DateTime($json['dkimInvalidSince']) : null;
 
         return new Brand(
             $json['customer'],
@@ -110,6 +124,9 @@ final class Brand implements DomainObjectInterface
             $json['abuseContact'] ?? null,
             new DateTime($json['createdDate']),
             $updatedDate,
+            $spfInvalidSince,
+            $dkimInvalidSince,
+            $json['dkimSelector'] ?? null,
             $json['hideOptionalTerms'] ?? null
         );
     }
@@ -135,6 +152,9 @@ final class Brand implements DomainObjectInterface
             'abuseContact' => $this->abuseContact,
             'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
             'updatedDate' => $this->updatedDate?->format('Y-m-d\TH:i:s\Z'),
+            'spfInvalidSince' => $this->spfInvalidSince?->format('Y-m-d\TH:i:s\Z'),
+            'dkimInvalidSince' => $this->dkimInvalidSince?->format('Y-m-d\TH:i:s\Z'),
+            'dkimSelector' => $this->dkimSelector,
             'hideOptionalTerms' => $this->hideOptionalTerms ?? null,
         ], function ($x) {
             return ! is_null($x);
