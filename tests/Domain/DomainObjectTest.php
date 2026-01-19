@@ -358,8 +358,8 @@ class DomainObjectTest extends TestCase
     public function test_from_and_to_array(string $class, array $data, ?string $exception = null): void
     {
         try {
-            set_error_handler(function ($errno, $errstr) {
-                if ($errno === E_USER_WARNING) {
+            set_error_handler(function ($errno, $errstr) use ($exception) {
+                if ($errno === E_USER_WARNING && $exception) {
                     throw new InvalidArgumentException($errstr);
                 }
             });
