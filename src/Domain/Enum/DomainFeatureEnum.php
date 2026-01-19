@@ -23,7 +23,7 @@ class DomainFeatureEnum extends AbstractEnum
         DomainFeatureEnum::FEATURE_PRIVACY_PROTECT,
         DomainFeatureEnum::FEATURE_PUSH_TRANSFER,
         DomainFeatureEnum::FEATURE_LOCAL_CONTACT,
-        DomainFeatureEnum::FEATURE_REGISTRY_LOCK
+        DomainFeatureEnum::FEATURE_REGISTRY_LOCK,
     ];
 
     /** @param string $value */
