@@ -26,7 +26,7 @@ class MetaDataObjectTest extends TestCase
             'metadata_unknown_feature_exception' => [
                 TLDMetaData::class,
                 include __DIR__ . '/data/metadata/metadata_unknown_feature.php',
-                InvalidArgumentException::class
+                InvalidArgumentException::class,
             ],
         ];
     }

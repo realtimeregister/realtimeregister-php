@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 return [
     'createDomainPeriods' => [12],
@@ -30,4 +30,3 @@ return [
     'billingContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true], // ContactsConstraint
     'techContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true], // ContactsConstraint
 ];
-
