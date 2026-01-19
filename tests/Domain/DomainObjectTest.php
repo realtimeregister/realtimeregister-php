@@ -45,9 +45,6 @@ use ValueError;
  */
 class DomainObjectTest extends TestCase
 {
-
-
-
     public static function parserDataSet(): array
     {
         /**
