@@ -2,8 +2,6 @@
 
 namespace RealtimeRegister\Domain\Enum;
 
-use RealtimeRegister\Exceptions\InvalidArgumentException;
-
 abstract class AbstractEnum
 {
     /** @var array */
@@ -16,12 +14,13 @@ abstract class AbstractEnum
     protected static function assertValueValid($value): void
     {
         if (! in_array($value, static::$values)) {
-            throw new InvalidArgumentException(sprintf(
+            $message = sprintf(
                 'Unexpected ENUM value in in class %s: %s. Possible values: (%s)',
                 static::class,
                 $value,
                 implode(', ', static::$values)
-            ));
+            );
+            trigger_error($message, E_USER_WARNING);
         }
     }
 }
