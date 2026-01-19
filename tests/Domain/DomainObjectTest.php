@@ -45,6 +45,9 @@ use ValueError;
  */
 class DomainObjectTest extends TestCase
 {
+
+
+
     public static function parserDataSet(): array
     {
         /**
@@ -357,16 +360,25 @@ class DomainObjectTest extends TestCase
     /** @dataProvider parserDataSet */
     public function test_from_and_to_array(string $class, array $data, ?string $exception = null): void
     {
-        // In case of invalid data.
-        if ($exception) {
-            self::expectException($exception);
-        }
-        // Object from array
-        $object = call_user_func($class . '::fromArray', $data);
-        self::assertSame($class, get_class($object), "{$class}::fromArray(array \$json) gave an unexpected result.");
+        try {
+            set_error_handler(function ($errno, $errstr) {
+                if ($errno === E_USER_WARNING) {
+                    throw new InvalidArgumentException($errstr);
+                }
+            });
+            // In case of invalid data.
+            if ($exception) {
+                self::expectException($exception);
+            }
+            // Object from array
+            $object = call_user_func($class . '::fromArray', $data);
+            self::assertSame($class, get_class($object), "{$class}::fromArray(array \$json) gave an unexpected result.");
 
-        // Object to array
-        $array = $object->toArray();
-        self::assertSame($data, $array, "{$class}::toArray() gave an unexpected result.");
+            // Object to array
+            $array = $object->toArray();
+            self::assertSame($data, $array, "{$class}::toArray() gave an unexpected result.");
+        } finally {
+            restore_error_handler();
+        }
     }
 }
