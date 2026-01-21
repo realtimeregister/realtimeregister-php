@@ -30,6 +30,7 @@ class RegistryAccount implements DomainObjectInterface
 
     public bool $sendWdrpNotifications;
 
+    /** @var string[]|null */
     public ?array $tlds;
 
     public ?string $validationCategory;

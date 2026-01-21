@@ -35,4 +35,10 @@ return [
         include __DIR__ . '/../ds_data_valid.php',
         include __DIR__ . '/../ds_data_valid.php',
     ],
+    'registryAccount' => 'johndoe',
+    'roid' => '12345',
+    'premiumCategory' => 'Test',
+    'privacyContactId' => 'privacyContactTestId',
+    'lastErrpNotificationDate' => '2020-08-30T01:02:03Z',
+    'lastWdrpNotificationDate' => '2020-08-30T01:02:03Z',
 ];

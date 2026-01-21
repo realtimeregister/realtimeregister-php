@@ -51,6 +51,18 @@ final class DomainDetails implements DomainObjectInterface
 
     public ?DsDataCollection $dsData;
 
+    public ?string $registryAccount;
+
+    public ?string $roid;
+
+    public ?string $premiumCategory;
+
+    public ?string $privacyContactId;
+
+    public ?DateTime $lastErrpNotificationDate;
+
+    public ?DateTime $lastWdrpNotificationDate;
+
     private function __construct(
         string $domainName,
         string $registry,
@@ -71,7 +83,13 @@ final class DomainDetails implements DomainObjectInterface
         ?Zone $zone = null,
         ?DomainContactCollection $contacts = null,
         ?KeyDataCollection $keyData = null,
-        ?DsDataCollection $dsData = null
+        ?DsDataCollection $dsData = null,
+        ?string $registryAccount = null,
+        ?string $roid = null,
+        ?string $premiumCategory = null,
+        ?string $privacyContactId = null,
+        ?DateTime $lastErrpNotificationDate = null,
+        ?DateTime $lastWdrpNotificationDate = null
     ) {
         $this->domainName = $domainName;
         $this->registry = $registry;
@@ -93,6 +111,12 @@ final class DomainDetails implements DomainObjectInterface
         $this->contacts = $contacts;
         $this->keyData = $keyData;
         $this->dsData = $dsData;
+        $this->registryAccount = $registryAccount;
+        $this->roid = $roid;
+        $this->premiumCategory = $premiumCategory;
+        $this->privacyContactId = $privacyContactId;
+        $this->lastErrpNotificationDate = $lastErrpNotificationDate;
+        $this->lastWdrpNotificationDate = $lastWdrpNotificationDate;
     }
 
     public static function fromArray(array $json): DomainDetails
@@ -123,7 +147,13 @@ final class DomainDetails implements DomainObjectInterface
             isset($json['zone']) ? Zone::fromArray($json['zone']) : null,
             isset($json['contacts']) ? DomainContactCollection::fromArray($json['contacts']) : null,
             isset($json['keyData']) ? KeyDataCollection::fromArray($json['keyData']) : null,
-            isset($json['ds_data']) ? DsDataCollection::fromArray($json['ds_data']) : null
+            isset($json['ds_data']) ? DsDataCollection::fromArray($json['ds_data']) : null,
+            $json['registryAccount'] ?? null,
+            $json['roid'] ?? null,
+            $json['premiumCategory'] ?? null,
+            $json['privacyContactId'] ?? null,
+            isset($json['lastErrpNotificationDate']) ? new DateTime($json['lastErrpNotificationDate']) : null,
+            isset($json['lastWdrpNotificationDate']) ? new DateTime($json['lastWdrpNotificationDate']) : null
         );
     }
 
@@ -150,6 +180,12 @@ final class DomainDetails implements DomainObjectInterface
             'contacts' => $this->contacts ? $this->contacts->toArray() : null,
             'keyData' => $this->keyData ? $this->keyData->toArray() : null,
             'ds_data' => $this->dsData ? $this->dsData->toArray() : null,
+            'registryAccount' => $this->registryAccount,
+            'roid' => $this->roid,
+            'premiumCategory' => $this->premiumCategory,
+            'privacyContactId' => $this->privacyContactId,
+            'lastErrpNotificationDate' => $this->lastErrpNotificationDate ? $this->lastErrpNotificationDate->format('Y-m-d\TH:i:s\Z') : null,
+            'lastWdrpNotificationDate' => $this->lastWdrpNotificationDate ? $this->lastWdrpNotificationDate->format('Y-m-d\TH:i:s\Z') : null,
         ], function ($x) {
             return ! is_null($x);
         });

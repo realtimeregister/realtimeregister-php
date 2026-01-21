@@ -4,6 +4,7 @@ namespace RealtimeRegister\Tests\Clients\Contacts;
 
 use PHPUnit\Framework\TestCase;
 use RealtimeRegister\Domain\Contact;
+use RealtimeRegister\Domain\ContactRegistryAccountCollection;
 use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
 class ContactsApiGetTest extends TestCase
@@ -18,5 +19,7 @@ class ContactsApiGetTest extends TestCase
 
         $response = $sdk->contacts->get('johndoe', 'test');
         $this->assertInstanceOf(Contact::class, $response);
+
+        $this->assertInstanceOf(ContactRegistryAccountCollection::class, $response->registryAccounts);
     }
 }
