@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain;
 
 class ContactRegistryAccountCollection extends AbstractCollection
 {
-
     /** @var ContactRegistryAccount[] */
     public array $entities;
 
