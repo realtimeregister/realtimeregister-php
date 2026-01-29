@@ -48,6 +48,8 @@ final class Contact implements DomainObjectInterface
 
     public ?ValidationCollection $validations;
 
+    public ?ContactRegistryAccountCollection $registryAccounts;
+
     private function __construct(
         string $customer,
         string $handle,
@@ -67,6 +69,7 @@ final class Contact implements DomainObjectInterface
         DateTime $createdDate,
         ?DateTime $updatedDate = null,
         ?ValidationCollection $validations = null,
+        ?ContactRegistryAccountCollection $registryAccounts = null,
         ?array $disclosedFields = null
     ) {
         $this->customer = $customer;
@@ -87,6 +90,7 @@ final class Contact implements DomainObjectInterface
         $this->createdDate = $createdDate;
         $this->updatedDate = $updatedDate;
         $this->validations = $validations;
+        $this->registryAccounts = $registryAccounts;
         $this->disclosedFields = $disclosedFields;
     }
 
@@ -119,6 +123,7 @@ final class Contact implements DomainObjectInterface
             new DateTime($json['createdDate']),
             $updatedDate,
             (isset($json['validations']) && is_array($json['validations'])) ? ValidationCollection::fromArray($json['validations']) : null,
+            (isset($json['registryAccounts']) && is_array($json['registryAccounts'])) ? ContactRegistryAccountCollection::fromArray($json['registryAccounts']) : null,
             (isset($json['disclosedFields']) && is_array($json['disclosedFields'])) ? $json['disclosedFields'] : null
         );
     }
@@ -144,6 +149,7 @@ final class Contact implements DomainObjectInterface
             'createdDate' => $this->createdDate->format('Y-m-d\TH:i:s\Z'),
             'updatedDate' => $this->updatedDate ? $this->updatedDate->format('Y-m-d\TH:i:s\Z') : null,
             'validations' => $this->validations?->toArray(),
+            'registryAccounts' => $this->registryAccounts?->toArray(),
             'disclosedFields' => $this->disclosedFields,
         ], function ($x) {
             return ! is_null($x);

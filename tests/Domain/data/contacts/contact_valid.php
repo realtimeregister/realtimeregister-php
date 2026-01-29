@@ -38,6 +38,13 @@ return [
             'category' => 'IisSe',
         ],
     ],
+    'registryAccounts' => [
+        [
+            'id' => 'test',
+            'registry' => 'Sidn',
+            'registryAccount' => 'johndoe',
+        ],
+    ],
     'disclosedFields' => [
         \RealtimeRegister\Domain\Enum\DisclosedField::DISCLOSED_FIELD_REGISTY_CITY,
         \RealtimeRegister\Domain\Enum\DisclosedField::DISCLOSED_FIELD_REGISTY_ADDRESS_LINE,

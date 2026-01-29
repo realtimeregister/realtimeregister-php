@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace RealtimeRegister\Tests\Clients\Processes;
+namespace RealtimeRegister\Tests\Clients\Providers;
 
 use PHPUnit\Framework\TestCase;
 use RealtimeRegister\Domain\ProviderCollection;
