@@ -195,7 +195,7 @@ final class CertificatesApi extends AbstractApi
         ?string $language = null,
         ?array $dcv = null,
         ?string $domainName = null,
-        ?string $authKey = null,
+        ?bool $authKey = null,
         ?string $state = null,
         ?string $product = null,
     ): CertificateInfoProcess {
@@ -289,7 +289,7 @@ final class CertificatesApi extends AbstractApi
         ?string $language = null,
         ?array $dcv = null,
         ?string $domainName = null,
-        ?string $authKey = null,
+        ?bool $authKey = null,
         ?string $state = null,
     ): CertificateInfoProcess {
         $payload = [
