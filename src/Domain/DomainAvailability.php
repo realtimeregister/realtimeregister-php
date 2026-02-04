@@ -14,13 +14,16 @@ final class DomainAvailability implements DomainObjectInterface
 
     public ?string $currency;
 
-    private function __construct(bool $available, ?string $reason = null, ?bool $premium = null, ?int $price = null, ?string $currency = null)
+    public ?int $renewPrice;
+
+    private function __construct(bool $available, ?string $reason = null, ?bool $premium = null, ?int $price = null, ?string $currency = null, ?int $renewPrice = null)
     {
         $this->available = $available;
         $this->reason = $reason;
         $this->premium = $premium;
         $this->price = $price;
         $this->currency = $currency;
+        $this->renewPrice = $renewPrice;
     }
 
     public static function fromArray(array $json): DomainAvailability
@@ -30,7 +33,8 @@ final class DomainAvailability implements DomainObjectInterface
             $json['reason'] ?? null,
             $json['premium'] ?? null,
             $json['price'] ?? null,
-            $json['currency'] ?? null
+            $json['currency'] ?? null,
+            $json['renewPrice'] ?? null
         );
     }
 
@@ -38,11 +42,12 @@ final class DomainAvailability implements DomainObjectInterface
     {
         return array_filter(
             [
-            'available' => $this->available,
-            'reason'    => $this->reason,
-            'premium'   => $this->premium,
-            'price'     => $this->price,
-            'currency'  => $this->currency,
+            'available'  => $this->available,
+            'reason'     => $this->reason,
+            'premium'    => $this->premium,
+            'price'      => $this->price,
+            'currency'   => $this->currency,
+            'renewPrice' => $this->renewPrice,
         ],
             function ($x) {
                 return ! is_null($x);

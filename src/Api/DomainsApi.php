@@ -50,11 +50,14 @@ final class DomainsApi extends AbstractApi
     }
 
     /* @see https://dm.realtimeregister.com/docs/api/domains/check */
-    public function check(string $domainName, ?string $languageCode = null): DomainAvailability
+    public function check(string $domainName, ?string $languageCode = null, ?bool $renewPrice = false): DomainAvailability
     {
         $query = [];
         if (! is_null($languageCode)) {
             $query['languageCode'] = $languageCode;
+        }
+        if ($renewPrice) {
+            $query['renewPrice'] = true;
         }
 
         $response = $this->client->get(sprintf('v2/domains/%s/check', urlencode($domainName)), $query);
