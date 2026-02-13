@@ -6,7 +6,6 @@ class DcvStatusEnum extends AbstractEnum
 {
     const DCV_STATUS_WAITING = 'WAITING';
     const DCV_STATUS_ATTENTION = 'ATTENTION';
-
     const DCV_STATUS_VALIDATED = 'VALIDATED';
 
     protected static array $values = [

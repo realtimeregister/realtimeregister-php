@@ -9,7 +9,7 @@ return [
     'brand' => 'brand',
     'name' => 'SSL',
     'validationType' => ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION,
-    'certificateType' => CertificateTypeEnum::LOCALE_MULTI_DOMAIN,
+    'certificateType' => CertificateTypeEnum::MULTI_DOMAIN,
     'features' => [FeatureEnum::FEATURE_WILDCARD],
     'requiredFields' => ['dcv', 'address', 'postalCode'],
     'optionalFields' => ['organization'],

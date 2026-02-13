@@ -10,7 +10,7 @@ return [
     'process' => 1,
     'product' => 'ssl_sectigo',
     'validationType' => ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION,
-    'certificateType' => CertificateTypeEnum::LOCALE_SINGLE_DOMAIN,
+    'certificateType' => CertificateTypeEnum::SINGLE_DOMAIN,
     'domainName' => 'www.testingasslrequest.com',
     'organization' => 'Organization',
     'department' => 'Internet',

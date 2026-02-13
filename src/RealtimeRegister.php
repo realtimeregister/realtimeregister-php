@@ -3,6 +3,7 @@
 namespace RealtimeRegister;
 
 use Psr\Log\LoggerInterface;
+use RealtimeRegister\Api\AcmeApi;
 use RealtimeRegister\Api\BrandsApi;
 use RealtimeRegister\Api\CertificatesApi;
 use RealtimeRegister\Api\ContactsApi;
@@ -21,6 +22,8 @@ use RealtimeRegister\Support\AuthorizedClient;
 final class RealtimeRegister
 {
     private const BASE_URL = 'https://api.yoursrs.com/';
+
+    public AcmeApi $acme;
 
     public BrandsApi $brands;
 
@@ -59,6 +62,7 @@ final class RealtimeRegister
 
     public function setClient(AuthorizedClient $client): void
     {
+        $this->acme = new AcmeApi($client);
         $this->brands = new BrandsApi($client);
         $this->certificates = new CertificatesApi($client);
         $this->contacts = new ContactsApi($client);

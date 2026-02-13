@@ -1,17 +1,19 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace RealtimeRegister\Domain\Enum;
 
 class CertificateTypeEnum extends AbstractEnum
 {
-    const LOCALE_SINGLE_DOMAIN = 'SINGLE_DOMAIN';
-    const LOCALE_MULTI_DOMAIN = 'MULTI_DOMAIN';
-    const LOCALE_WILDCARD = 'WILDCARD';
+    const SINGLE_DOMAIN = 'SINGLE_DOMAIN';
+    const MULTI_DOMAIN = 'MULTI_DOMAIN';
+    const WILDCARD = 'WILDCARD';
+    const ACME_SUBSCRIPTION = 'ACME_SUBSCRIPTION';
 
     protected static array $values = [
-        CertificateTypeEnum::LOCALE_SINGLE_DOMAIN,
-        CertificateTypeEnum::LOCALE_MULTI_DOMAIN,
-        CertificateTypeEnum::LOCALE_WILDCARD,
+        CertificateTypeEnum::SINGLE_DOMAIN,
+        CertificateTypeEnum::MULTI_DOMAIN,
+        CertificateTypeEnum::WILDCARD,
+        CertificateTypeEnum::ACME_SUBSCRIPTION
     ];
 
     /** @param string $value */
