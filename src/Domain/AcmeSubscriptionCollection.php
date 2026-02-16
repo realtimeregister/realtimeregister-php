@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain;
 
 class AcmeSubscriptionCollection extends AbstractCollection
 {
-
     /** @var AcmeSubscription[] */
     public array $entities;
 

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Clients\Acme;
 
@@ -9,7 +9,8 @@ use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
 class AcmeApiUpdateTest extends TestCase
 {
-    public function test_update() {
+    public function test_update()
+    {
         $sdk = MockedClientFactory::makeMockedSdk(
             static function (): Response {
                 return new Response(

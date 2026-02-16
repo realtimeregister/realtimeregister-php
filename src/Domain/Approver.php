@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain;
 
@@ -37,7 +37,7 @@ class Approver implements DomainObjectInterface
             'email' => $this->email,
             'voice' => $this->voice,
         ], static function ($value) {
-            return !is_null($value);
+            return ! is_null($value);
         });
     }
 

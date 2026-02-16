@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Clients\Acme;
 
@@ -11,7 +11,8 @@ use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
 class AcmeApiGetTest extends TestCase
 {
-    public function test_get() {
+    public function test_get()
+    {
         $startDate = new DateTimeImmutable();
         $expiryDate = new DateTimeImmutable('+1 year');
 
@@ -34,7 +35,7 @@ class AcmeApiGetTest extends TestCase
                 'status' => AcmeSubscriptionStatusEnum::ACTIVE,
                 'period' => 12,
                 'directoryUrl' => 'example.directory',
-                'autoRenew' => false
+                'autoRenew' => false,
             ]),
             MockedClientFactory::assertRoute('GET', 'v2/ssl/acme/1', $this)
         );

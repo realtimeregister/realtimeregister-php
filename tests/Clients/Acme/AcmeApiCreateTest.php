@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Clients\Acme;
 
@@ -10,14 +10,13 @@ use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
 class AcmeApiCreateTest extends TestCase
 {
-
     public function test_create()
     {
         $response = [
             'id' => 1,
             'directoryUrl' => 'example.directory',
             'accountKey' => 'TESTKEY123',
-            'hmacKey' => 'TESTHMACKEY123'
+            'hmacKey' => 'TESTHMACKEY123',
         ];
         $sdk = MockedClientFactory::makeMockedSdk(
             static function () use ($response): Response {

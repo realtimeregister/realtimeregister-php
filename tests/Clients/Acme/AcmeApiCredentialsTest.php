@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Clients\Acme;
 
@@ -8,11 +8,12 @@ use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
 class AcmeApiCredentialsTest extends TestCase
 {
-    public function test_credentials() {
+    public function test_credentials()
+    {
         $response = [
             'directoryUrl' => 'example.directory',
             'accountKey' => 'TESTKEY123',
-            'hmacKey' => 'TESTHMACKEY123'
+            'hmacKey' => 'TESTHMACKEY123',
         ];
         $sdk = MockedClientFactory::makeMockedSdk(
             static function () use ($response): Response {

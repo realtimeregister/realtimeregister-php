@@ -1,7 +1,6 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain;
-
 
 use DateTime;
 use RealtimeRegister\Domain\Enum\AcmeSubscriptionStatusEnum;
@@ -49,28 +48,27 @@ final class AcmeSubscription implements DomainObjectInterface
     public string $status;
 
     private function __construct(
-        ?int                               $id,
-        array                              $domainNames,
-        string                             $product,
-        ?string                            $organization,
-        ?string                            $address,
-        ?string                            $city,
-        ?string                            $state,
-        ?string                            $postalCode,
-        ?string                            $country,
-        ?Approver                          $approver,
-        DateTime                           $expiryDate,
-        DateTime                           $createdDate,
-        ?DateTime                          $updatedDate,
-        ?int                               $period,
-        ?string                            $directoryUrl,
-        ?bool                              $autoRenew,
-        ?int                               $certValidity,
-        ?DateTime                          $orgValidUntil,
-        ?string                            $organizationId,
-        string                             $status
-    )
-    {
+        ?int $id,
+        array $domainNames,
+        string $product,
+        ?string $organization,
+        ?string $address,
+        ?string $city,
+        ?string $state,
+        ?string $postalCode,
+        ?string $country,
+        ?Approver $approver,
+        DateTime $expiryDate,
+        DateTime $createdDate,
+        ?DateTime $updatedDate,
+        ?int $period,
+        ?string $directoryUrl,
+        ?bool $autoRenew,
+        ?int $certValidity,
+        ?DateTime $orgValidUntil,
+        ?string $organizationId,
+        string $status
+    ) {
         $this->id = $id;
         $this->domainNames = $domainNames;
         $this->product = $product;
@@ -149,7 +147,7 @@ final class AcmeSubscription implements DomainObjectInterface
             'organizationId' => $this->organizationId,
             'status' => $this->status,
         ], static function ($value) {
-            return !is_null($value);
+            return ! is_null($value);
         });
     }
 }

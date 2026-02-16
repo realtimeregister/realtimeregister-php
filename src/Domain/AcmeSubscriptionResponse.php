@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain;
 
 class AcmeSubscriptionResponse implements DomainObjectInterface
 {
-
     public ?int $id;
 
     public string $directoryUrl;
@@ -13,7 +12,8 @@ class AcmeSubscriptionResponse implements DomainObjectInterface
 
     public string $hmacKey;
 
-    private function __construct(?int $id, string $directoryUrl, string $accountKey, string $hmacKey) {
+    private function __construct(?int $id, string $directoryUrl, string $accountKey, string $hmacKey)
+    {
         $this->id = $id;
         $this->directoryUrl = $directoryUrl;
         $this->accountKey = $accountKey;
@@ -26,12 +26,13 @@ class AcmeSubscriptionResponse implements DomainObjectInterface
             ['id' => $this->id,
                 'directoryUrl' => $this->directoryUrl,
                 'accountKey' => $this->accountKey,
-                'hmacKey' => $this->hmacKey
-            ], fn($value) => !is_null($value)
+                'hmacKey' => $this->hmacKey,
+            ],
+            fn ($value) => ! is_null($value)
         );
     }
 
-    public static function fromArray(array $json) : AcmeSubscriptionResponse
+    public static function fromArray(array $json): AcmeSubscriptionResponse
     {
         return new AcmeSubscriptionResponse(
             $json['id'],

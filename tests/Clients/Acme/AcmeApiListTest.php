@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Clients\Acme;
 
@@ -10,9 +10,10 @@ use RealtimeRegister\Domain\Enum\CertificateTypeEnum;
 use RealtimeRegister\Domain\Enum\ValidationTypeEnum;
 use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
-class AcmeApiListTest extends TestCase {
-
-    public function test_list() {
+class AcmeApiListTest extends TestCase
+{
+    public function test_list()
+    {
         $createdDate = new DateTimeImmutable();
         $expiryDate = new DateTimeImmutable('+1 year');
 
@@ -37,8 +38,8 @@ class AcmeApiListTest extends TestCase {
                         'status' => AcmeSubscriptionStatusEnum::ACTIVE,
                         'period' => 12,
                         'directoryUrl' => 'example.directory',
-                        'autoRenew' => false
-                    ]
+                        'autoRenew' => false,
+                    ],
                 ],
                 'pagination' => [
                     'total' => 1,
@@ -48,7 +49,7 @@ class AcmeApiListTest extends TestCase {
             ]),
             MockedClientFactory::assertRoute('GET', 'v2/ssl/acme', $this, [
                 'limit' => '5',
-                'offset' => '0'
+                'offset' => '0',
             ])
         );
 

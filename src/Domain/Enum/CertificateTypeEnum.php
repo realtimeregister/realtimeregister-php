@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain\Enum;
 
@@ -13,7 +13,7 @@ class CertificateTypeEnum extends AbstractEnum
         CertificateTypeEnum::SINGLE_DOMAIN,
         CertificateTypeEnum::MULTI_DOMAIN,
         CertificateTypeEnum::WILDCARD,
-        CertificateTypeEnum::ACME_SUBSCRIPTION
+        CertificateTypeEnum::ACME_SUBSCRIPTION,
     ];
 
     /** @param string $value */

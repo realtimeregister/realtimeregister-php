@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace RealtimeRegister\Domain\Enum;
 
@@ -13,7 +13,7 @@ class AcmeSubscriptionStatusEnum extends AbstractEnum
         AcmeSubscriptionStatusEnum::ACTIVE,
         AcmeSubscriptionStatusEnum::SUSPENDED,
         AcmeSubscriptionStatusEnum::REVOKED,
-        AcmeSubscriptionStatusEnum::PENDING_ORGANIZATION_VALIDATION
+        AcmeSubscriptionStatusEnum::PENDING_ORGANIZATION_VALIDATION,
     ];
 
     public static function validate($value): void
