@@ -41,7 +41,7 @@ class Approver implements DomainObjectInterface
         });
     }
 
-    public static function fromArray(array $json)
+    public static function fromArray(array $json) : Approver
     {
         return new Approver(
             $json['firstName'],

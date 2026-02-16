@@ -48,7 +48,7 @@ final class AcmeSubscription implements DomainObjectInterface
     public string $status;
 
     private function __construct(
-        ?int $id,
+        int $id,
         array $domainNames,
         string $product,
         ?string $organization,
@@ -61,9 +61,9 @@ final class AcmeSubscription implements DomainObjectInterface
         DateTime $expiryDate,
         DateTime $createdDate,
         ?DateTime $updatedDate,
-        ?int $period,
-        ?string $directoryUrl,
-        ?bool $autoRenew,
+        int $period,
+        string $directoryUrl,
+        bool $autoRenew,
         ?int $certValidity,
         ?DateTime $orgValidUntil,
         ?string $organizationId,
