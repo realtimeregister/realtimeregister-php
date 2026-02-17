@@ -31,6 +31,8 @@ final class Notification implements DomainObjectInterface
     /** @var array<string>|null */
     public ?array $payload;
 
+    public ?string $transferType;
+
     public bool $isAsync;
 
     public ?string $processIdentifier;
@@ -71,6 +73,7 @@ final class Notification implements DomainObjectInterface
         string $notificationType,
         bool $isAsync,
         ?array $payload = null,
+        ?string $transferType = null,
         ?string $processIdentifier = null,
         ?string $processType = null,
         ?string $domainName = null,
@@ -91,6 +94,7 @@ final class Notification implements DomainObjectInterface
         $this->notificationType = $notificationType;
         $this->payload = $payload;
         $this->isAsync = $isAsync;
+        $this->transferType = $transferType;
         $this->processIdentifier = $processIdentifier;
         $this->processType = $processType;
         $this->domainName = $domainName;
@@ -115,6 +119,7 @@ final class Notification implements DomainObjectInterface
             $json['notificationType'],
             $json['isAsync'],
             $json['payload'] ?? null,
+            $json['transferType'] ?? null,
             $json['processIdentifier'] ?? null,
             $json['processType'] ?? null,
             $json['domainName'] ?? null,
@@ -140,6 +145,7 @@ final class Notification implements DomainObjectInterface
             'notificationType' => $this->notificationType,
             'payload' => $this->payload,
             'isAsync' => $this->isAsync,
+            'transferType' => $this->transferType,
             'processIdentifier' => $this->processIdentifier,
             'processType' => $this->processType,
             'domainName' => $this->domainName,
