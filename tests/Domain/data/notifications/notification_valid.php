@@ -14,4 +14,5 @@ return [
     'notificationType' => 'FAKE_NOTIFICATION_TYPE',
     'payload' => ['customer' => 'johndoe'],
     'isAsync' => true,
+    'transferType' => 'FAKE_TRANSFER_TYPE',
 ];
