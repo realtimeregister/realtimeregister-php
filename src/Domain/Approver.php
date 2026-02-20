@@ -4,28 +4,13 @@ namespace RealtimeRegister\Domain;
 
 class Approver implements DomainObjectInterface
 {
-    public string $firstName;
-
-    public string $lastName;
-
-    public ?string $jobTitle;
-
-    public string $email;
-
-    public string $voice;
-
     private function __construct(
-        string $firstName,
-        string $lastName,
-        ?string $jobTitle,
-        string $email,
-        string $voice
+        public string $firstName,
+        public string $lastName,
+        public ?string $jobTitle,
+        public string $email,
+        public string $voice
     ) {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->jobTitle = $jobTitle;
-        $this->email = $email;
-        $this->voice = $voice;
     }
 
     public function toArray(): array

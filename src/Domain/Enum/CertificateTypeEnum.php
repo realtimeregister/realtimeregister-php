@@ -4,6 +4,12 @@ namespace RealtimeRegister\Domain\Enum;
 
 class CertificateTypeEnum extends AbstractEnum
 {
+    /* @Deprecated */
+    const LOCALE_SINGLE_DOMAIN = 'SINGLE_DOMAIN';
+    /* @Deprecated */
+    const LOCALE_MULTI_DOMAIN = 'MULTI_DOMAIN';
+    /* @Deprecated */
+    const LOCALE_WILDCARD = 'WILDCARD';
     const SINGLE_DOMAIN = 'SINGLE_DOMAIN';
     const MULTI_DOMAIN = 'MULTI_DOMAIN';
     const WILDCARD = 'WILDCARD';

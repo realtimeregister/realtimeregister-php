@@ -7,88 +7,28 @@ use RealtimeRegister\Domain\Enum\AcmeSubscriptionStatusEnum;
 
 final class AcmeSubscription implements DomainObjectInterface
 {
-    public int $id;
-
-    public ?array $domainNames;
-
-    public string $product;
-
-    public ?string $organization;
-
-    public ?string $address;
-
-    public ?string $city;
-
-    public ?string $state;
-
-    public ?string $postalCode;
-
-    public ?string $country;
-
-    public ?Approver $approver;
-
-    public DateTime $expiryDate;
-
-    public DateTime $createdDate;
-
-    public ?DateTime $updatedDate;
-
-    public int $period;
-
-    public string $directoryUrl;
-
-    public bool $autoRenew;
-
-    public ?int $certValidity;
-
-    public ?DateTime $orgValidUntil;
-
-    public ?string $organizationId;
-
-    public string $status;
-
     private function __construct(
-        int $id,
-        array $domainNames,
-        string $product,
-        ?string $organization,
-        ?string $address,
-        ?string $city,
-        ?string $state,
-        ?string $postalCode,
-        ?string $country,
-        ?Approver $approver,
-        DateTime $expiryDate,
-        DateTime $createdDate,
-        ?DateTime $updatedDate,
-        int $period,
-        string $directoryUrl,
-        bool $autoRenew,
-        ?int $certValidity,
-        ?DateTime $orgValidUntil,
-        ?string $organizationId,
-        string $status
+        public int $id,
+        public array $domainNames,
+        public string $product,
+        public ?string $organization,
+        public ?string $address,
+        public ?string $city,
+        public ?string $state,
+        public ?string $postalCode,
+        public ?string $country,
+        public ?Approver $approver,
+        public DateTime $expiryDate,
+        public DateTime $createdDate,
+        public ?DateTime $updatedDate,
+        public int $period,
+        public string $directoryUrl,
+        public bool $autoRenew,
+        public ?int $certValidity,
+        public ?DateTime $orgValidUntil,
+        public ?string $organizationId,
+        public string $status
     ) {
-        $this->id = $id;
-        $this->domainNames = $domainNames;
-        $this->product = $product;
-        $this->organization = $organization;
-        $this->address = $address;
-        $this->city = $city;
-        $this->state = $state;
-        $this->postalCode = $postalCode;
-        $this->country = $country;
-        $this->approver = $approver;
-        $this->expiryDate = $expiryDate;
-        $this->createdDate = $createdDate;
-        $this->updatedDate = $updatedDate;
-        $this->period = $period;
-        $this->directoryUrl = $directoryUrl;
-        $this->autoRenew = $autoRenew;
-        $this->certValidity = $certValidity;
-        $this->orgValidUntil = $orgValidUntil;
-        $this->organizationId = $organizationId;
-        $this->status = $status;
     }
 
     /**
