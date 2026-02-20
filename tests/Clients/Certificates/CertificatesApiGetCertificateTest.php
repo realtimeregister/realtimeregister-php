@@ -24,7 +24,7 @@ class CertificatesApiGetCertificateTest extends TestCase
                 'process' => 1,
                 'product' => 'ssl',
                 'validationType' => ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION,
-                'certificateType' => CertificateTypeEnum::LOCALE_SINGLE_DOMAIN,
+                'certificateType' => CertificateTypeEnum::SINGLE_DOMAIN,
                 'domainName' => 'example.com',
                 'organization' => 'Example',
                 'department' => 'Example department',
@@ -55,7 +55,7 @@ class CertificatesApiGetCertificateTest extends TestCase
         self::assertSame(1, $certificate->id);
         self::assertSame('ssl', $certificate->product);
         self::assertSame(ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION, $certificate->validationType);
-        self::assertSame(CertificateTypeEnum::LOCALE_SINGLE_DOMAIN, $certificate->certificateType);
+        self::assertSame(CertificateTypeEnum::SINGLE_DOMAIN, $certificate->certificateType);
         self::assertSame('example.com', $certificate->domainName);
         self::assertSame('Example', $certificate->organization);
         self::assertSame('Example department', $certificate->department);

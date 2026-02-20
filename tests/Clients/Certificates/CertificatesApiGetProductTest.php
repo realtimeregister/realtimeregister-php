@@ -19,7 +19,7 @@ class CertificatesApiGetProductTest extends TestCase
                 'brand' => 'brand',
                 'name' => 'SSL',
                 'validationType' => ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION,
-                'certificateType' => CertificateTypeEnum::LOCALE_MULTI_DOMAIN,
+                'certificateType' => CertificateTypeEnum::MULTI_DOMAIN,
                 'features' => [FeatureEnum::FEATURE_WILDCARD],
                 'requiredFields' => ['dcv', 'address', 'postalCode'],
                 'optionalFields' => ['organization'],
@@ -39,7 +39,7 @@ class CertificatesApiGetProductTest extends TestCase
         self::assertSame('brand', $product->brand);
         self::assertSame('SSL', $product->name);
         self::assertSame(ValidationTypeEnum::VALIDATION_TYPE_DOMAIN_VALIDATION, $product->validationType);
-        self::assertSame(CertificateTypeEnum::LOCALE_MULTI_DOMAIN, $product->certificateType);
+        self::assertSame(CertificateTypeEnum::MULTI_DOMAIN, $product->certificateType);
         self::assertSame([FeatureEnum::FEATURE_WILDCARD], $product->features);
         self::assertSame(['dcv', 'address', 'postalCode'], $product->requiredFields);
         self::assertSame(['organization'], $product->optionalFields);
