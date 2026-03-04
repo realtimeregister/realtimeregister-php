@@ -42,6 +42,10 @@
         "renewGracePeriod": 5,
         "transferGracePeriod": 5,
         "creationRequiresPreValidation": false,
+        "createDomainRequiresValidation": false,
+        "transferDomainIncomingRequiresValidation": false,
+        "transferDomainInternalRequiresValidation": false,
+        "updateDomainRequiresValidation": false,
         "transferFOA": true,
         "featuresAvailable": [
             "RESTORE",
@@ -463,7 +467,11 @@
         "premiumSupport": "NO",
         "registrantChangeApprovalRequired": true,
         "allowDesignatedAgent": "BOTH",
-        "validationCategory": "General"
+        "validationCategory": "General",
+        "kbLink": "https://kb.realtimeregister.com/article/469-abuse-reports-or-legal-inquiries",
+        "wdrpNotifications": false,
+        "errpNotifications": false,
+        "daysTransferLock": 0
     },
     "provider": "Verisign",
     "applicableFor": [
