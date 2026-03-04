@@ -18,11 +18,19 @@ return [
     'transferSupportsAuthcode' => false,
     'transferRequiresAuthcode' => false,
     'creationRequiresPreValidation' => false,
+    'createDomainRequiresValidation' => false,
+    'transferDomainIncomingRequiresValidation' => false,
+    'transferDomainInternalRequiresValidation' => false,
+    'updateDomainRequiresValidation' => false,
     'featuresAvailable' => ['CREATE', 'RENEW'],
     'registrantChangeApprovalRequired' => false,
     'whoisExposure' => 'FULL',
     'gdprCategory' => 'EU_BASED',
     'premiumSupport' => 'REGULAR',
+    'kbLink' => 'https://kb.realtimeregister.com/article/469-abuse-reports-or-legal-inquiries',
+    'wdrpNotifications' => false,
+    'errpNotifications' => false,
+    'daysTransferLock' => 0,
     'domainSyntax' => ['minLength' => 1, 'maxLength' => 64, 'idnSupport' => false], // DomainSyntax
     'nameservers' => ['min' => 0, 'max' => 13, 'required' => false], // Nameservers
     'registrant' => [ 'organizationRequired' => false, 'organizationAllowed' => true], // Registrant
