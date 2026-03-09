@@ -32,9 +32,11 @@ class DomainRegistration implements DomainObjectInterface
             }
         }
 
+        $expiryDate = $json['expiryDate'] ?? null;
+
         return new DomainRegistration(
             $json['domainName'],
-            $json['expiryDate'] ? new DateTime($json['expiryDate']) : null,
+            $expiryDate !== null ? new DateTime($expiryDate) : null,
             $json['status'] ?? null,
         );
     }
