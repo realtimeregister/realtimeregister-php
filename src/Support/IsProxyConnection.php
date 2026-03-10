@@ -78,10 +78,22 @@ class IsProxyConnection
         }
 
         $response = $this->read();
-        if (preg_match('#^400\sLogin\sfailed#', $response)) {
-            return false;
+        if (preg_match('#^100\sLogin\sok#', $response)) {
+            $this->write('STARTTLS');
+            $response = $this->read();
+            if (preg_match('#^100\sLogin\sok#', $response)) {
+                stream_socket_enable_crypto(
+                    $this->socket,
+                    true,
+                    STREAM_CRYPTO_METHOD_TLS_CLIENT
+                );
+
+                if (preg_match('#^100\sOK#', $response)) {
+                    return true;
+                }
+            }
         }
 
-        return (bool) preg_match('#^100\sLogin\sok#', $response);
+        return false;
     }
 }
