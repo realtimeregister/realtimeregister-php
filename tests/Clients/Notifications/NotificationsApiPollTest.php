@@ -18,5 +18,6 @@ class NotificationsApiPollTest extends TestCase
 
         $response = $sdk->notifications->poll('johndoe');
         $this->assertInstanceOf(NotificationPoll::class, $response);
+        $this->assertSame('2026-03-14T11:02:53Z', $response->notification->toArray()['expiryDate']);
     }
 }

@@ -2,10 +2,10 @@
 
 return [
     'id' => 1,
-    'fireDate' => '2020-08-30T01:02:03Z',
-    'readDate' => '2020-08-30T01:02:03Z',
-    'acknowledgeDate' => '2020-08-30T01:02:03Z',
-    'deliveryDate' => '2020-08-30T01:02:53Z',
+    'fireDate' => '2026-03-14T11:02:03Z',
+    'readDate' => '2026-03-14T11:02:03Z',
+    'acknowledgeDate' => '2026-03-14T11:02:03Z',
+    'deliveryDate' => '2026-03-14T11:02:53Z',
     'message' => 'FAKE_MESSAGE',
     'reason' => 'FAKE_REASON',
     'customer' => 'johndoe',
@@ -15,4 +15,5 @@ return [
     'payload' => ['customer' => 'johndoe'],
     'isAsync' => true,
     'transferType' => 'FAKE_TRANSFER_TYPE',
+    'expiryDate' => '2026-03-14T11:02:53Z',
 ];

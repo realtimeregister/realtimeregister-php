@@ -39,6 +39,8 @@ final class Notification implements DomainObjectInterface
 
     public ?string $processType;
 
+    public ?DateTime $expiryDate;
+
     public ?string $domainName;
 
     public ?int $certificateId;
@@ -76,6 +78,7 @@ final class Notification implements DomainObjectInterface
         ?string $transferType = null,
         ?string $processIdentifier = null,
         ?string $processType = null,
+        ?DateTime $expiryDate = null,
         ?string $domainName = null,
         ?int $certificateId = null,
         ?string $subjectStatus = null,
@@ -97,6 +100,7 @@ final class Notification implements DomainObjectInterface
         $this->transferType = $transferType;
         $this->processIdentifier = $processIdentifier;
         $this->processType = $processType;
+        $this->expiryDate = $expiryDate;
         $this->domainName = $domainName;
         $this->certificateId = $certificateId;
         $this->subjectStatus = $subjectStatus;
@@ -122,6 +126,7 @@ final class Notification implements DomainObjectInterface
             $json['transferType'] ?? null,
             $json['processIdentifier'] ?? null,
             $json['processType'] ?? null,
+            isset($json['expiryDate']) ? new DateTime($json['expiryDate']) : null,
             $json['domainName'] ?? null,
             $json['certificateId'] ?? null,
             $json['subjectStatus'] ?? null,
@@ -148,6 +153,7 @@ final class Notification implements DomainObjectInterface
             'transferType' => $this->transferType,
             'processIdentifier' => $this->processIdentifier,
             'processType' => $this->processType,
+            'expiryDate' => $this->expiryDate?->format('Y-m-d\TH:i:s\Z'),
             'domainName' => $this->domainName,
             'certificateId' => $this->certificateId,
             'subjectStatus' => $this->subjectStatus,
