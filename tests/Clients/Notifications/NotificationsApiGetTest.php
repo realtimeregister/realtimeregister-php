@@ -18,5 +18,6 @@ class NotificationsApiGetTest extends TestCase
 
         $response = $sdk->notifications->get('johndoe', 1);
         $this->assertInstanceOf(Notification::class, $response);
+        $this->assertSame('2026-03-14T11:02:53Z', $response->toArray()['expiryDate']);
     }
 }
