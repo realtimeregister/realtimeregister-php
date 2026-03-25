@@ -27,6 +27,10 @@ final class Brand implements DomainObjectInterface
 
     public string $email;
 
+    public ?string $contactEmail;
+
+    public ?string $replyToEmail;
+
     public ?string $contactUrl;
 
     public ?string $url;
@@ -62,6 +66,8 @@ final class Brand implements DomainObjectInterface
         ?string $state,
         string $country,
         string $email,
+        ?string $contactEmail,
+        ?string $replyToEmail,
         ?string $contactUrl,
         ?string $url,
         string $voice,
@@ -86,6 +92,8 @@ final class Brand implements DomainObjectInterface
         $this->state = $state;
         $this->country = $country;
         $this->email = $email;
+        $this->contactEmail = $contactEmail;
+        $this->replyToEmail = $replyToEmail;
         $this->contactUrl = $contactUrl;
         $this->url = $url;
         $this->voice = $voice;
@@ -116,6 +124,8 @@ final class Brand implements DomainObjectInterface
             $json['state'] ?? null,
             $json['country'],
             $json['email'],
+            $json['contactEmail'],
+            $json['replyToEmail'],
             $json['contactUrl'] ?? null,
             $json['url'] ?? null,
             $json['voice'],
@@ -144,6 +154,8 @@ final class Brand implements DomainObjectInterface
             'state' => $this->state,
             'country' => $this->country,
             'email' => $this->email,
+            'contactEmail' => $this->contactEmail,
+            'replyToEmail' => $this->replyToEmail,
             'contactUrl' => $this->contactUrl,
             'url' => $this->url,
             'voice' => $this->voice,

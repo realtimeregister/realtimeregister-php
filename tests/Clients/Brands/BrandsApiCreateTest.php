@@ -30,6 +30,8 @@ class BrandsApiCreateTest extends TestCase
             'statetest',
             'countrytest',
             'email@test.com',
+            'email2@test.com',
+            'email3@test.com',
             'http://www.test.com',
             'voicetest',
             'faxtest',
