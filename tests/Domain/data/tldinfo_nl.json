@@ -107,10 +107,6 @@
         "registrantChangeApprovalRequired": false,
         "redemptionPeriod": 40,
         "creationRequiresPreValidation": false,
-        "createDomainRequiresValidation": false,
-        "transferDomainIncomingRequiresValidation": false,
-        "transferDomainInternalRequiresValidation": false,
-        "updateDomainRequiresValidation": false,
         "transferFOA": false,
         "featuresAvailable": [
             "CREATE",
@@ -127,7 +123,6 @@
             "organizationRequired": false,
             "organizationAllowed": true
         },
-        "kbLink": "https://kb.realtimeregister.com/article/469-abuse-reports-or-legal-inquiries",
         "wdrpNotifications": false,
         "errpNotifications": false,
         "daysTransferLock": 0

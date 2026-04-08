@@ -50,14 +50,6 @@ final class TLDMetaData implements DomainObjectInterface
 
     public bool $creationRequiresPreValidation;
 
-    public bool $createDomainRequiresValidation;
-
-    public bool $transferDomainIncomingRequiresValidation;
-
-    public bool $transferDomainInternalRequiresValidation;
-
-    public bool $updateDomainRequiresValidation;
-
     public ?string $zoneCheck;
 
     public ?array $possibleClientDomainStatuses;
@@ -102,8 +94,6 @@ final class TLDMetaData implements DomainObjectInterface
 
     public ?LaunchPhaseCollection $launchPhases;
 
-    public ?string $kbLink;
-
     public bool $wdrpNotifications;
 
     public bool $errpNotifications;
@@ -120,10 +110,6 @@ final class TLDMetaData implements DomainObjectInterface
         bool $transferSupportsAuthcode,
         bool $transferRequiresAuthcode,
         bool $creationRequiresPreValidation,
-        bool $createDomainRequiresValidation,
-        bool $transferDomainIncomingRequiresValidation,
-        bool $transferDomainInternalRequiresValidation,
-        bool $updateDomainRequiresValidation,
         array $featuresAvailable,
         bool $registrantChangeApprovalRequired,
         string $whoisExposure,
@@ -154,7 +140,6 @@ final class TLDMetaData implements DomainObjectInterface
         ?string $termsOfService,
         ?string $privacyPolicy,
         string $premiumSupport,
-        ?string $kbLink,
         bool $wdrpNotifications,
         bool $errpNotifications,
         ?int $daysTransferLock
@@ -168,10 +153,6 @@ final class TLDMetaData implements DomainObjectInterface
         $this->transferSupportsAuthcode = $transferSupportsAuthcode;
         $this->transferRequiresAuthcode = $transferRequiresAuthcode;
         $this->creationRequiresPreValidation = $creationRequiresPreValidation;
-        $this->createDomainRequiresValidation = $createDomainRequiresValidation;
-        $this->transferDomainIncomingRequiresValidation = $transferDomainIncomingRequiresValidation;
-        $this->transferDomainInternalRequiresValidation = $transferDomainInternalRequiresValidation;
-        $this->updateDomainRequiresValidation = $updateDomainRequiresValidation;
         $this->featuresAvailable = $featuresAvailable;
         $this->registrantChangeApprovalRequired = $registrantChangeApprovalRequired;
         $this->whoisExposure = $whoisExposure;
@@ -202,7 +183,6 @@ final class TLDMetaData implements DomainObjectInterface
         $this->termsOfService = $termsOfService;
         $this->privacyPolicy = $privacyPolicy;
         $this->premiumSupport = $premiumSupport;
-        $this->kbLink = $kbLink;
         $this->wdrpNotifications = $wdrpNotifications;
         $this->errpNotifications = $errpNotifications;
         $this->daysTransferLock = $daysTransferLock;
@@ -236,10 +216,6 @@ final class TLDMetaData implements DomainObjectInterface
             $json['transferSupportsAuthcode'],
             $json['transferRequiresAuthcode'],
             $json['creationRequiresPreValidation'],
-            $json['createDomainRequiresValidation'],
-            $json['transferDomainIncomingRequiresValidation'],
-            $json['transferDomainInternalRequiresValidation'],
-            $json['updateDomainRequiresValidation'],
             $json['featuresAvailable'],
             $json['registrantChangeApprovalRequired'],
             $json['whoisExposure'],
@@ -270,7 +246,6 @@ final class TLDMetaData implements DomainObjectInterface
             $json['termsOfService'] ?? null,
             $json['privacyPolicy'] ?? null,
             $json['premiumSupport'],
-            $json['kbLink'],
             $json['wdrpNotifications'],
             $json['errpNotifications'],
             $json['daysTransferLock']
@@ -297,10 +272,6 @@ final class TLDMetaData implements DomainObjectInterface
             'transferSupportsAuthcode' => $this->transferSupportsAuthcode,
             'transferRequiresAuthcode' => $this->transferRequiresAuthcode,
             'creationRequiresPreValidation' => $this->creationRequiresPreValidation,
-            'createDomainRequiresValidation' => $this->createDomainRequiresValidation,
-            'transferDomainIncomingRequiresValidation' => $this->transferDomainIncomingRequiresValidation,
-            'transferDomainInternalRequiresValidation' => $this->transferDomainInternalRequiresValidation,
-            'updateDomainRequiresValidation' => $this->updateDomainRequiresValidation,
             'zoneCheck' => $this->zoneCheck,
             'possibleClientDomainStatuses' => $this->possibleClientDomainStatuses,
             'allowedDnssecRecords' => $this->allowedDnssecRecords,
@@ -315,7 +286,6 @@ final class TLDMetaData implements DomainObjectInterface
             'whoisExposure' => $this->whoisExposure,
             'gdprCategory' => $this->gdprCategory,
             'premiumSupport' => $this->premiumSupport,
-            'kbLink' => $this->kbLink,
             'wdrpNotifications' => $this->wdrpNotifications,
             'errpNotifications' => $this->errpNotifications,
             'daysTransferLock' => $this->daysTransferLock,

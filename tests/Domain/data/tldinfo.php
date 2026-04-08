@@ -21,10 +21,6 @@ return [
         'transferSupportsAuthcode' => true,
         'transferRequiresAuthcode' => true,
         'creationRequiresPreValidation' => true,
-        'createDomainRequiresValidation' => false,
-        'transferDomainIncomingRequiresValidation' => false,
-        'transferDomainInternalRequiresValidation' => false,
-        'updateDomainRequiresValidation' => false,
         'zoneCheck' => 'True',
         'possibleClientDomainStatuses' => [
             'CLIENT_HOLD',
@@ -54,7 +50,6 @@ return [
         'whoisExposure' => 'NONE',
         'gdprCategory' => 'EU_BASED',
         'premiumSupport' => 'REGULAR',
-        'kbLink' => 'https://kb.realtimeregister.com/article/469-abuse-reports-or-legal-inquiries',
         'wdrpNotifications' => false,
         'errpNotifications' => false,
         'daysTransferLock' => 0,
