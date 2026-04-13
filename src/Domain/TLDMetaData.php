@@ -98,7 +98,7 @@ final class TLDMetaData implements DomainObjectInterface
 
     public bool $errpNotifications;
 
-    public ?int $daysTransferLock;
+    public ?int $transferLockDays;
 
     private function __construct(
         array $createDomainPeriods,
@@ -142,7 +142,7 @@ final class TLDMetaData implements DomainObjectInterface
         string $premiumSupport,
         bool $wdrpNotifications,
         bool $errpNotifications,
-        ?int $daysTransferLock
+        ?int $transferLockDays
     ) {
         $this->createDomainPeriods = $createDomainPeriods;
         $this->renewDomainPeriods = $renewDomainPeriods;
@@ -185,7 +185,7 @@ final class TLDMetaData implements DomainObjectInterface
         $this->premiumSupport = $premiumSupport;
         $this->wdrpNotifications = $wdrpNotifications;
         $this->errpNotifications = $errpNotifications;
-        $this->daysTransferLock = $daysTransferLock;
+        $this->transferLockDays = $transferLockDays;
     }
 
     public static function fromArray(array $json): TLDMetaData
@@ -248,7 +248,7 @@ final class TLDMetaData implements DomainObjectInterface
             $json['premiumSupport'],
             $json['wdrpNotifications'],
             $json['errpNotifications'],
-            $json['daysTransferLock']
+            $json['transferLockDays']
         );
     }
 
@@ -288,7 +288,7 @@ final class TLDMetaData implements DomainObjectInterface
             'premiumSupport' => $this->premiumSupport,
             'wdrpNotifications' => $this->wdrpNotifications,
             'errpNotifications' => $this->errpNotifications,
-            'daysTransferLock' => $this->daysTransferLock,
+            'transferLockDays' => $this->transferLockDays,
             'domainSyntax' => $this->domainSyntax->toArray(),
             'nameservers' => $this->nameservers->toArray(),
             'registrant' => $this->registrant->toArray(),

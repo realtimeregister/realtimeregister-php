@@ -52,7 +52,7 @@ return [
         'premiumSupport' => 'REGULAR',
         'wdrpNotifications' => false,
         'errpNotifications' => false,
-        'daysTransferLock' => 0,
+        'transferLockDays' => 0,
         'domainSyntax' => include __DIR__ . '/domains/domain_syntax.php',
         'nameservers' => include __DIR__ . '/nameservers.php',
         'registrant' => include __DIR__ . '/registrant.php',

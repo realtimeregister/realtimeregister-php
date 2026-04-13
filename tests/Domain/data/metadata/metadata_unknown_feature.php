@@ -25,7 +25,7 @@ return [
     'premiumSupport' => 'REGULAR',
     'wdrpNotifications' => false,
     'errpNotifications' => false,
-    'daysTransferLock' => 0,
+    'transferLockDays' => 0,
     'domainSyntax' => ['minLength' => 1, 'maxLength' => 64, 'idnSupport' => false], // DomainSyntax
     'nameservers' => ['min' => 0, 'max' => 13, 'required' => false], // Nameservers
     'registrant' => [ 'organizationRequired' => false, 'organizationAllowed' => true], // Registrant

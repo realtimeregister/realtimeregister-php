@@ -125,7 +125,7 @@
         },
         "wdrpNotifications": false,
         "errpNotifications": false,
-        "daysTransferLock": 0
+        "transferLockDays": 0
     },
     "provider": "Sidn",
     "applicableFor": [
