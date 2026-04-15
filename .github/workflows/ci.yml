@@ -1,6 +1,6 @@
 name: CI
 
-on: 
+on:
   push:
     branches: [ master ]
   pull_request:
@@ -16,8 +16,7 @@ jobs:
 
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v5
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
