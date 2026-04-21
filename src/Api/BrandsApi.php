@@ -61,6 +61,8 @@ final class BrandsApi extends AbstractApi
         ?string $state,
         string $country,
         string $email,
+        ?string $contactEmail,
+        ?string $replyToEmail,
         ?string $url,
         string $voice,
         ?string $fax,
@@ -85,6 +87,12 @@ final class BrandsApi extends AbstractApi
         if ($state) {
             $payload['state'] = $state;
         }
+        if ($contactEmail) {
+            $payload['$contactEmail'] = $contactEmail;
+        }
+        if ($replyToEmail) {
+            $payload['$replyToEmail'] = $replyToEmail;
+        }
         if ($url) {
             $payload['url'] = $url;
         }
@@ -103,7 +111,6 @@ final class BrandsApi extends AbstractApi
         if (isset($hideOptionalTerms)) {
             $payload['hideOptionalTerms'] = $hideOptionalTerms;
         }
-
         $this->client->post(sprintf('v2/customers/%s/brands/%s', urlencode($customer), urlencode($handle)), $payload);
     }
 
@@ -123,6 +130,8 @@ final class BrandsApi extends AbstractApi
         ?string $state = null,
         ?string $country = null,
         ?string $email = null,
+        ?string $contactEmail = null,
+        ?string $replyToEmail = null,
         ?string $url = null,
         ?string $voice = null,
         ?string $fax = null,
@@ -164,6 +173,14 @@ final class BrandsApi extends AbstractApi
 
         if ($email) {
             $payload['email'] = $email;
+        }
+
+        if ($contactEmail) {
+            $payload['$contactEmail'] = $contactEmail;
+        }
+
+        if ($replyToEmail) {
+            $payload['$replyToEmail'] = $replyToEmail;
         }
 
         if ($url) {
