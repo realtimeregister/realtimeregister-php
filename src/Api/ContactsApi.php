@@ -7,6 +7,7 @@ use RealtimeRegister\Domain\Contact;
 use RealtimeRegister\Domain\ContactCollection;
 use RealtimeRegister\Domain\Country;
 use RealtimeRegister\Domain\CountryCollection;
+use RealtimeRegister\Support\RealtimeRegisterResponse;
 
 final class ContactsApi extends AbstractApi
 {
@@ -110,7 +111,7 @@ final class ContactsApi extends AbstractApi
         ?string $state = null,
         ?string $fax = null,
         ?array $disclosedFields = null
-    ): void {
+    ): RealtimeRegisterResponse {
         $payload = [
             'customer' => $customer,
             'handle' => $handle,
@@ -153,7 +154,7 @@ final class ContactsApi extends AbstractApi
             $payload['disclosedFields'] = $disclosedFields;
         }
 
-        $this->client->post(sprintf('v2/customers/%s/contacts/%s/update', urlencode($customer), urlencode($handle)), $payload);
+        return $this->client->post(sprintf('v2/customers/%s/contacts/%s/update', urlencode($customer), urlencode($handle)), $payload);
     }
 
     /**

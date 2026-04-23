@@ -11,7 +11,7 @@ class ResponseObjectTest extends TestCase
 {
     public function test_get_text(): void
     {
-        $response = RealtimeRegisterResponse::fromString('This is text', ['foo' => 'bar']);
+        $response = RealtimeRegisterResponse::fromString('This is text', ['foo' => 'bar'], 200);
 
         $this->assertSame('This is text', $response->text());
         $this->assertSame(['foo' => 'bar'], $response->headers());
@@ -19,14 +19,14 @@ class ResponseObjectTest extends TestCase
 
     public function test_to_string(): void
     {
-        $response = RealtimeRegisterResponse::fromString('This is text', ['foo' => 'bar']);
+        $response = RealtimeRegisterResponse::fromString('This is text', ['foo' => 'bar'], 200);
 
         $this->assertSame('This is text', (string) $response);
     }
 
     public function test_parse_json(): void
     {
-        $response = RealtimeRegisterResponse::fromString('{"foo": "bar"}', ['foo' => 'bar']);
+        $response = RealtimeRegisterResponse::fromString('{"foo": "bar"}', ['foo' => 'bar'], 200);
 
         $this->assertSame(['foo' => 'bar'], $response->json());
         $this->assertSame(['foo' => 'bar'], $response->headers());
@@ -34,7 +34,7 @@ class ResponseObjectTest extends TestCase
 
     public function test_invalid_json(): void
     {
-        $response = RealtimeRegisterResponse::fromString('{"foo":  <><>>>>><<<< {{{{{{{{{{{{) "bar"}', ['foo' => 'bar']);
+        $response = RealtimeRegisterResponse::fromString('{"foo":  <><>>>>><<<< {{{{{{{{{{{{) "bar"}', ['foo' => 'bar'], 400);
 
         $this->expectException(UnexpectedValueException::class);
         $response->json();

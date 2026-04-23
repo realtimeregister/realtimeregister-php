@@ -10,10 +10,13 @@ class RealtimeRegisterResponse
 
     private array $headers;
 
-    public function __construct(string $response, array $headers)
+    private int $resultCode;
+
+    public function __construct(string $response, array $headers, int $resultCode)
     {
         $this->response = $response;
         $this->headers = $headers;
+        $this->resultCode = $resultCode;
     }
 
     public function __toString(): string
@@ -21,9 +24,9 @@ class RealtimeRegisterResponse
         return $this->text();
     }
 
-    public static function fromString(string $response, array $headers): RealtimeRegisterResponse
+    public static function fromString(string $response, array $headers, int $resultCode = -1): RealtimeRegisterResponse
     {
-        return new RealtimeRegisterResponse($response, array_change_key_case($headers));
+        return new RealtimeRegisterResponse($response, array_change_key_case($headers), $resultCode);
     }
 
     public function json(): array
@@ -45,5 +48,10 @@ class RealtimeRegisterResponse
     public function headers(): array
     {
         return $this->headers;
+    }
+
+    public function resultCode(): int
+    {
+        return $this->resultCode;
     }
 }

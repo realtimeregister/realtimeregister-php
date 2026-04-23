@@ -28,7 +28,7 @@ class AcmeSubscriptionResponse implements DomainObjectInterface
     public static function fromArray(array $json): AcmeSubscriptionResponse
     {
         return new AcmeSubscriptionResponse(
-            $json['id'],
+            $json['id'] ?? null,
             $json['directoryUrl'],
             $json['accountKey'],
             $json['hmacKey']
