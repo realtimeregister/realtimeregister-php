@@ -11,6 +11,8 @@ return [
     'state' => 'statetest',
     'country' => 'countrytest',
     'email' => 'email@test.com',
+    'contactEmail' => 'email2@test.com',
+    'replyToEmail' => 'email3@test.com',
     'url' => 'http://www.test.com',
     'voice' => 'voicetest',
     'fax' => 'faxtest',
