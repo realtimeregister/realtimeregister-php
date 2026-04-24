@@ -124,7 +124,7 @@
             "organizationAllowed": true
         },
         "wdrpNotifications": false,
-        "errpNotifications": false,
+        "errpNotifications": true,
         "transferLockDays": 0
     },
     "provider": "Sidn",

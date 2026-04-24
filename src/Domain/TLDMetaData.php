@@ -248,7 +248,7 @@ final class TLDMetaData implements DomainObjectInterface
             $json['premiumSupport'],
             $json['wdrpNotifications'],
             $json['errpNotifications'],
-            $json['transferLockDays']
+            $json['transferLockDays'] ?? null
         );
     }
 
