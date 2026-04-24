@@ -94,6 +94,12 @@ final class TLDMetaData implements DomainObjectInterface
 
     public ?LaunchPhaseCollection $launchPhases;
 
+    public bool $wdrpNotifications;
+
+    public bool $errpNotifications;
+
+    public ?int $transferLockDays;
+
     private function __construct(
         array $createDomainPeriods,
         array $renewDomainPeriods,
@@ -133,7 +139,10 @@ final class TLDMetaData implements DomainObjectInterface
         ?string $jurisdiction,
         ?string $termsOfService,
         ?string $privacyPolicy,
-        string $premiumSupport
+        string $premiumSupport,
+        bool $wdrpNotifications,
+        bool $errpNotifications,
+        ?int $transferLockDays
     ) {
         $this->createDomainPeriods = $createDomainPeriods;
         $this->renewDomainPeriods = $renewDomainPeriods;
@@ -174,6 +183,9 @@ final class TLDMetaData implements DomainObjectInterface
         $this->termsOfService = $termsOfService;
         $this->privacyPolicy = $privacyPolicy;
         $this->premiumSupport = $premiumSupport;
+        $this->wdrpNotifications = $wdrpNotifications;
+        $this->errpNotifications = $errpNotifications;
+        $this->transferLockDays = $transferLockDays;
     }
 
     public static function fromArray(array $json): TLDMetaData
@@ -233,7 +245,10 @@ final class TLDMetaData implements DomainObjectInterface
             $json['jurisdiction'] ?? null,
             $json['termsOfService'] ?? null,
             $json['privacyPolicy'] ?? null,
-            $json['premiumSupport']
+            $json['premiumSupport'],
+            $json['wdrpNotifications'],
+            $json['errpNotifications'],
+            $json['transferLockDays'] ?? null
         );
     }
 
@@ -271,6 +286,9 @@ final class TLDMetaData implements DomainObjectInterface
             'whoisExposure' => $this->whoisExposure,
             'gdprCategory' => $this->gdprCategory,
             'premiumSupport' => $this->premiumSupport,
+            'wdrpNotifications' => $this->wdrpNotifications,
+            'errpNotifications' => $this->errpNotifications,
+            'transferLockDays' => $this->transferLockDays,
             'domainSyntax' => $this->domainSyntax->toArray(),
             'nameservers' => $this->nameservers->toArray(),
             'registrant' => $this->registrant->toArray(),

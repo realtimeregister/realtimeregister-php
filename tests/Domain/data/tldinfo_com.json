@@ -463,7 +463,10 @@
         "premiumSupport": "NO",
         "registrantChangeApprovalRequired": true,
         "allowDesignatedAgent": "BOTH",
-        "validationCategory": "General"
+        "validationCategory": "General",
+        "wdrpNotifications": false,
+        "errpNotifications": false,
+        "transferLockDays": 0
     },
     "provider": "Verisign",
     "applicableFor": [

@@ -122,7 +122,10 @@
         "registrant": {
             "organizationRequired": false,
             "organizationAllowed": true
-        }
+        },
+        "wdrpNotifications": false,
+        "errpNotifications": true,
+        "transferLockDays": 0
     },
     "provider": "Sidn",
     "applicableFor": [
