@@ -466,7 +466,11 @@
         "validationCategory": "General",
         "wdrpNotifications": false,
         "errpNotifications": false,
-        "transferLockDays": 0
+        "transferLockDays": 0,
+        "renewalOnTransfer": "NO_CHANGE",
+        "registrationNotice": "This is a registration notice!",
+        "registrantChangeTransferLock": false,
+        "restoreIncludesRenew": false
     },
     "provider": "Verisign",
     "applicableFor": [
