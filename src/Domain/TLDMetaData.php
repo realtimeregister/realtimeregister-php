@@ -7,6 +7,7 @@ use RealtimeRegister\Domain\Enum\DomainFeatureEnum;
 use RealtimeRegister\Domain\Enum\DomainPossibleClientDomainStatusEnum;
 use RealtimeRegister\Domain\Enum\GDPRCategoryEnum;
 use RealtimeRegister\Domain\Enum\PremiumSupportEnum;
+use RealtimeRegister\Domain\Enum\RenewOnTransferEnum;
 use RealtimeRegister\Domain\Enum\WhoisExposureEnum;
 use Webmozart\Assert\Assert;
 
@@ -100,6 +101,14 @@ final class TLDMetaData implements DomainObjectInterface
 
     public ?int $transferLockDays;
 
+    public string $renewalOnTransfer;
+
+    public bool $restoreIncludesRenew;
+
+    public ?string $registrationNotice;
+
+    public bool $registrantChangeTransferLock;
+
     private function __construct(
         array $createDomainPeriods,
         array $renewDomainPeriods,
@@ -142,7 +151,11 @@ final class TLDMetaData implements DomainObjectInterface
         string $premiumSupport,
         bool $wdrpNotifications,
         bool $errpNotifications,
-        ?int $transferLockDays
+        ?int $transferLockDays,
+        string $renewalOnTransfer,
+        ?string $registrationNotice,
+        bool $registrantChangeTransferLock,
+        bool $restoreIncludesRenew
     ) {
         $this->createDomainPeriods = $createDomainPeriods;
         $this->renewDomainPeriods = $renewDomainPeriods;
@@ -186,6 +199,10 @@ final class TLDMetaData implements DomainObjectInterface
         $this->wdrpNotifications = $wdrpNotifications;
         $this->errpNotifications = $errpNotifications;
         $this->transferLockDays = $transferLockDays;
+        $this->renewalOnTransfer = $renewalOnTransfer;
+        $this->registrationNotice = $registrationNotice;
+        $this->registrantChangeTransferLock = $registrantChangeTransferLock;
+        $this->restoreIncludesRenew = $restoreIncludesRenew;
     }
 
     public static function fromArray(array $json): TLDMetaData
@@ -205,6 +222,7 @@ final class TLDMetaData implements DomainObjectInterface
         WhoisExposureEnum::validate($json['whoisExposure']);
         GDPRCategoryEnum::validate($json['gdprCategory']);
         PremiumSupportEnum::validate($json['premiumSupport']);
+        RenewOnTransferEnum::validate($json['renewalOnTransfer']);
 
         return new TLDMetaData(
             $json['createDomainPeriods'],
@@ -248,7 +266,11 @@ final class TLDMetaData implements DomainObjectInterface
             $json['premiumSupport'],
             $json['wdrpNotifications'],
             $json['errpNotifications'],
-            $json['transferLockDays'] ?? null
+            $json['transferLockDays'] ?? null,
+            $json['renewalOnTransfer'],
+            $json['registrationNotice'] ?? null,
+            $json['registrantChangeTransferLock'],
+            $json['restoreIncludesRenew'],
         );
     }
 
@@ -297,6 +319,10 @@ final class TLDMetaData implements DomainObjectInterface
             'techContacts' => $this->techContacts->toArray(),
             'contactProperties' => $this->contactProperties ? $this->contactProperties->toArray() : null,
             'launchPhases' => $this->launchPhases ? $this->launchPhases->toArray() : null,
+            'renewalOnTransfer' => $this->renewalOnTransfer,
+            'registrationNotice' => $this->registrationNotice,
+            'registrantChangeTransferLock' => $this->registrantChangeTransferLock,
+            'restoreIncludesRenew' => $this->restoreIncludesRenew,
         ], function ($x) {
             return ! is_null($x);
         });

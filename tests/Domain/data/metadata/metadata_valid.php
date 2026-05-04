@@ -32,4 +32,8 @@ return [
     'adminContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true],  // ContactsConstraint
     'billingContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true], // ContactsConstraint
     'techContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true], // ContactsConstraint
+    'renewalOnTransfer' => 'NO_CHANGE',
+    'registrationNotice' => 'Valid!',
+    'registrantChangeTransferLock' => true,
+    'restoreIncludesRenew' => false,
 ];

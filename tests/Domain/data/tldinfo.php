@@ -61,5 +61,8 @@ return [
         'techContacts' => include __DIR__ . '/contacts/contacts_constraint.php',
         'contactProperties' => [include __DIR__ . '/contacts/contact_property_valid.php'],
         'launchPhases' => [include __DIR__ . '/launch_phase.php'],
+        'renewalOnTransfer' => 'NO_CHANGE',
+        'registrantChangeTransferLock' => true,
+        'restoreIncludesRenew' => false,
     ],
 ];

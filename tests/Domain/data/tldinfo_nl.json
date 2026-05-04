@@ -125,7 +125,10 @@
         },
         "wdrpNotifications": false,
         "errpNotifications": true,
-        "transferLockDays": 0
+        "transferLockDays": 0,
+        "renewalOnTransfer": "RENEW_UNLESS_GRACE",
+        "registrantChangeTransferLock": false,
+        "restoreIncludesRenew": false
     },
     "provider": "Sidn",
     "applicableFor": [
