@@ -76,7 +76,7 @@ final class TLDMetaData implements DomainObjectInterface
 
     public string $gdprCategory;
 
-    public string $premiumSupport;
+    public ?string $premiumSupport;
 
     public DomainSyntax $domainSyntax;
 
@@ -94,9 +94,9 @@ final class TLDMetaData implements DomainObjectInterface
 
     public ?LaunchPhaseCollection $launchPhases;
 
-    public bool $wdrpNotifications;
+    public ?bool $wdrpNotifications;
 
-    public bool $errpNotifications;
+    public ?bool $errpNotifications;
 
     public ?int $transferLockDays;
 
@@ -139,9 +139,9 @@ final class TLDMetaData implements DomainObjectInterface
         ?string $jurisdiction,
         ?string $termsOfService,
         ?string $privacyPolicy,
-        string $premiumSupport,
-        bool $wdrpNotifications,
-        bool $errpNotifications,
+        ?string $premiumSupport,
+        ?bool $wdrpNotifications,
+        ?bool $errpNotifications,
         ?int $transferLockDays
     ) {
         $this->createDomainPeriods = $createDomainPeriods;
@@ -204,7 +204,10 @@ final class TLDMetaData implements DomainObjectInterface
         }
         WhoisExposureEnum::validate($json['whoisExposure']);
         GDPRCategoryEnum::validate($json['gdprCategory']);
-        PremiumSupportEnum::validate($json['premiumSupport']);
+
+        if (isset($json['premiumSupport'])) {
+            PremiumSupportEnum::validate($json['premiumSupport']);
+        }
 
         return new TLDMetaData(
             $json['createDomainPeriods'],
@@ -245,9 +248,9 @@ final class TLDMetaData implements DomainObjectInterface
             $json['jurisdiction'] ?? null,
             $json['termsOfService'] ?? null,
             $json['privacyPolicy'] ?? null,
-            $json['premiumSupport'],
-            $json['wdrpNotifications'],
-            $json['errpNotifications'],
+            $json['premiumSupport'] ?? null,
+            $json['wdrpNotifications'] ?? null,
+            $json['errpNotifications'] ?? null,
             $json['transferLockDays'] ?? null
         );
     }
