@@ -33,6 +33,22 @@ class TLDsApiInfoTest extends TestCase
         Assert::assertSame(113, $languageCodes->count());
     }
 
+    public function test_info_com_nullables(): void
+    {
+        $json = file_get_contents(__DIR__ . '/../../Domain/data/tldinfo_com-nullables.json');
+
+        assert(is_string($json));
+
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            $json,
+            MockedClientFactory::assertRoute('GET', 'v2/tlds/com/info', $this)
+        );
+
+        $response = $sdk->tlds->info('com');
+        $this->assertInstanceOf(TLDInfo::class, $response);
+    }
+
     public function test_info_nl(): void
     {
         $json = file_get_contents(__DIR__ . '/../../Domain/data/tldinfo_nl.json');
