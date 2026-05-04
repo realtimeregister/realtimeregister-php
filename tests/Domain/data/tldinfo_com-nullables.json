@@ -1,0 +1,89 @@
+{
+    "metadata": {
+        "renewDomainPeriods": [
+            12,
+            24,
+            36,
+            48,
+            60,
+            72,
+            84,
+            96,
+            108,
+            120
+        ],
+        "whoisExposure": "FULL",
+        "gdprCategory": "UNKNOWN",
+        "createDomainPeriods": [
+            12,
+            24,
+            36,
+            48,
+            60,
+            72,
+            84,
+            96,
+            108,
+            120
+        ],
+        "autoRenewDomainPeriods": [
+            12
+        ],
+        "registrant": {
+            "organizationRequired": false,
+            "organizationAllowed": true
+        },
+        "adjustableAuthCode": true,
+        "creationRequiresPreValidation": false,
+        "transferFOA": true,
+        "featuresAvailable": [
+            "RESTORE",
+            "CREATE",
+            "PRIVACY_PROTECT",
+            "RENEW",
+            "TRANSFER",
+            "UPDATE"
+        ],
+        "customAuthcodeSupport": true,
+        "adminContacts": {
+            "min": 1,
+            "max": 10,
+            "required": true,
+            "organizationRequired": false,
+            "organizationAllowed": true
+        },
+        "billingContacts": {
+            "min": 0,
+            "max": 10,
+            "required": false,
+            "organizationRequired": false,
+            "organizationAllowed": true
+        },
+        "techContacts": {
+            "min": 1,
+            "max": 10,
+            "required": true,
+            "organizationRequired": false,
+            "organizationAllowed": true
+        },
+        "nameservers": {
+            "min": 0,
+            "max": 10,
+            "required": false
+        },
+        "domainSyntax": {
+            "minLength": 3,
+            "maxLength": 63,
+            "idnType": "UTS46",
+            "idnSupport": true
+        },
+        "transferRequiresAuthcode": true,
+        "transferSupportsAuthcode": true,
+        "registrantChangeApprovalRequired": true
+    },
+    "provider": "Verisign",
+    "applicableFor": [
+        "com",
+        "net"
+    ]
+}
