@@ -79,7 +79,11 @@
         },
         "transferRequiresAuthcode": true,
         "transferSupportsAuthcode": true,
-        "registrantChangeApprovalRequired": true
+        "registrantChangeApprovalRequired": true,
+        "registrantChangeTransferLock": false,
+        "renewalOnTransfer": "NO_CHANGE",
+        "restoreIncludesRenew": false,
+        "premiumSupport": "NO"
     },
     "provider": "Verisign",
     "applicableFor": [
