@@ -23,8 +23,8 @@ return [
     'whoisExposure' => '',
     'gdprCategory' => '',
     'premiumSupport' => 'REGULAR',
-    'wdrpNotifications' => false,
-    'errpNotifications' => false,
+    'sendWdrpNotifications' => false,
+    'sendErrpNotifications' => false,
     'transferLockDays' => 0,
     'domainSyntax' => ['minLength' => 1, 'maxLength' => 64, 'idnSupport' => false], // DomainSyntax
     'nameservers' => ['min' => 0, 'max' => 13, 'required' => false], // Nameservers

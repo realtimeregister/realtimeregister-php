@@ -123,8 +123,8 @@
             "organizationRequired": false,
             "organizationAllowed": true
         },
-        "wdrpNotifications": false,
-        "errpNotifications": true,
+        "sendWdrpNotifications": false,
+        "sendErrpNotifications": true,
         "transferLockDays": 0,
         "renewalOnTransfer": "RENEW_UNLESS_GRACE",
         "registrantChangeTransferLock": false,

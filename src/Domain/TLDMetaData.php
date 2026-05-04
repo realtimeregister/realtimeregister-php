@@ -95,9 +95,9 @@ final class TLDMetaData implements DomainObjectInterface
 
     public ?LaunchPhaseCollection $launchPhases;
 
-    public bool $wdrpNotifications;
+    public ?bool $sendWdrpNotifications;
 
-    public bool $errpNotifications;
+    public ?bool $sendErrpNotifications;
 
     public ?int $transferLockDays;
 
@@ -149,8 +149,8 @@ final class TLDMetaData implements DomainObjectInterface
         ?string $termsOfService,
         ?string $privacyPolicy,
         string $premiumSupport,
-        bool $wdrpNotifications,
-        bool $errpNotifications,
+        ?bool $sendWdrpNotifications,
+        ?bool $sendErrpNotifications,
         ?int $transferLockDays,
         string $renewalOnTransfer,
         ?string $registrationNotice,
@@ -196,8 +196,8 @@ final class TLDMetaData implements DomainObjectInterface
         $this->termsOfService = $termsOfService;
         $this->privacyPolicy = $privacyPolicy;
         $this->premiumSupport = $premiumSupport;
-        $this->wdrpNotifications = $wdrpNotifications;
-        $this->errpNotifications = $errpNotifications;
+        $this->sendWdrpNotifications = $sendWdrpNotifications;
+        $this->sendErrpNotifications = $sendErrpNotifications;
         $this->transferLockDays = $transferLockDays;
         $this->renewalOnTransfer = $renewalOnTransfer;
         $this->registrationNotice = $registrationNotice;
@@ -264,8 +264,8 @@ final class TLDMetaData implements DomainObjectInterface
             $json['termsOfService'] ?? null,
             $json['privacyPolicy'] ?? null,
             $json['premiumSupport'],
-            $json['wdrpNotifications'],
-            $json['errpNotifications'],
+            $json['sendWdrpNotifications'],
+            $json['sendErrpNotifications'],
             $json['transferLockDays'] ?? null,
             $json['renewalOnTransfer'],
             $json['registrationNotice'] ?? null,
@@ -308,8 +308,8 @@ final class TLDMetaData implements DomainObjectInterface
             'whoisExposure' => $this->whoisExposure,
             'gdprCategory' => $this->gdprCategory,
             'premiumSupport' => $this->premiumSupport,
-            'wdrpNotifications' => $this->wdrpNotifications,
-            'errpNotifications' => $this->errpNotifications,
+            'sendWdrpNotifications' => $this->sendWdrpNotifications,
+            'sendErrpNotifications' => $this->sendErrpNotifications,
             'transferLockDays' => $this->transferLockDays,
             'domainSyntax' => $this->domainSyntax->toArray(),
             'nameservers' => $this->nameservers->toArray(),
