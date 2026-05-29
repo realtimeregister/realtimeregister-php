@@ -260,6 +260,8 @@ final class DomainsApi extends AbstractApi
      * @see https://dm.realtimeregister.com/docs/api/domains/update
      *
      * @throws Exception
+     *
+     * @param array|null $transferContacts Deprecated, obsolete.
      */
     public function transfer(
         string $domainName,
@@ -270,6 +272,7 @@ final class DomainsApi extends AbstractApi
         ?string $authcode = null,
         ?bool $autoRenew = null,
         ?array $ns = null,
+        /** @deprecated obsolete */
         ?array $transferContacts = null,
         ?string $designatedAgent = null,
         ?Zone $zone = null,
@@ -304,6 +307,7 @@ final class DomainsApi extends AbstractApi
         }
 
         if (is_array($transferContacts)) {
+            trigger_error('Parameter $transferContacts is deprecated, obsolete.', E_USER_DEPRECATED);
             $payload['transferContacts'] = $transferContacts;
         }
 
