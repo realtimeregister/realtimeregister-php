@@ -259,9 +259,9 @@ final class DomainsApi extends AbstractApi
     /**
      * @see https://dm.realtimeregister.com/docs/api/domains/update
      *
-     * @throws Exception
-     *
      * @param array|null $transferContacts Deprecated, obsolete.
+     *
+     * @throws Exception
      */
     public function transfer(
         string $domainName,
