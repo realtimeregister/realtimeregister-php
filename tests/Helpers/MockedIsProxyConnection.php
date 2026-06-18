@@ -55,6 +55,11 @@ class MockedIsProxyConnection extends IsProxyConnection
     public function connect(): bool
     {
         $this->connected = true;
+
+        if (! $this->upgradeToTls()) {
+            return false;
+        }
+
         return $this->login();
     }
 
@@ -80,5 +85,20 @@ class MockedIsProxyConnection extends IsProxyConnection
     public function isConnected(): bool
     {
         return $this->connected;
+    }
+
+    protected function upgradeToTls(): bool
+    {
+        if (! $this->write('STARTTLS')) {
+            return false;
+        }
+
+        $response = $this->read();
+
+        if ($response !== '100 OK') {
+            return true;
+        }
+
+        return true;
     }
 }
