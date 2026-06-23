@@ -195,18 +195,16 @@ class IsProxyConnectionTest extends TestCase
         $this->assertTrue($invalidDomain->isInvalid());
     }
 
-    public function test_check_fallback_without_starttls_support(): void
+    public function test_check_without_ssl_support(): void
     {
-        $connection = (new MockedIsProxyConnection('secret', $this))
-            ->expectWrite('STARTTLS')
-            ->expectRead('500 command not supported')
+        $connection = (new MockedIsProxyConnection('secret', $this, false))
             ->expectWrite('LOGIN secret')
             ->expectRead('100 Login ok')
             ->expectWrite('IS example.com')
             ->expectRead('example.com available')
             ->expectWrite('CLOSE');
 
-        $isProxy = new IsProxy('secret');
+        $isProxy = new IsProxy(apiKey:'secret', tls: false);
         $isProxy->setConnection($connection);
 
         $result = $isProxy->check('example', 'com');

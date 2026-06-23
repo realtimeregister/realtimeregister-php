@@ -14,11 +14,14 @@ class IsProxyConnection
     /** @var resource */
     protected $socket;
 
-    public function __construct(string $apiKey, string $host = 'is.yoursrs.com', int $port = 2001)
+    protected bool $tls;
+
+    public function __construct(string $apiKey, string $host = 'is.yoursrs.com', int $port = 2001, bool $tls = true)
     {
         $this->apiKey = $apiKey;
         $this->host = $host;
         $this->port = $port;
+        $this->tls = $tls;
     }
 
     public function __destruct()
@@ -35,8 +38,11 @@ class IsProxyConnection
 
         $this->socket = $socket;
 
-        if (! $this->upgradeToTls()) {
-            return false;
+        // Try to set up tls, if enabled;
+        if ($this->tls) {
+            if ($this->upgradeToTls() === false) {
+                return false;
+            }
         }
 
         return $this->login();
@@ -115,6 +121,6 @@ class IsProxyConnection
             $methods |= STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT;
         }
 
-        return @stream_socket_enable_crypto($this->socket, true, $methods) === true;
+        return stream_socket_enable_crypto($this->socket, true, $methods) === true;
     }
 }

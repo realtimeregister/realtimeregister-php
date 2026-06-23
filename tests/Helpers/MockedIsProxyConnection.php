@@ -19,9 +19,9 @@ class MockedIsProxyConnection extends IsProxyConnection
     /** @var bool */
     private $connected = false;
 
-    public function __construct(string $apiKey, TestCase $testCase)
+    public function __construct(string $apiKey, TestCase $testCase, bool $tls = true)
     {
-        parent::__construct($apiKey);
+        parent::__construct($apiKey, tls: $tls);
 
         $this->testCase = $testCase;
     }
@@ -56,8 +56,10 @@ class MockedIsProxyConnection extends IsProxyConnection
     {
         $this->connected = true;
 
-        if (! $this->upgradeToTls()) {
-            return false;
+        if ($this->tls) {
+            if ($this->upgradeToTls() === false) {
+                return false;
+            }
         }
 
         return $this->login();
@@ -96,7 +98,7 @@ class MockedIsProxyConnection extends IsProxyConnection
         $response = $this->read();
 
         if ($response !== '100 OK') {
-            return true;
+            return false;
         }
 
         return true;
