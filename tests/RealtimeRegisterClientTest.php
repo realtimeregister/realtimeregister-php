@@ -9,6 +9,7 @@ use RealtimeRegister\Api\DomainsApi;
 use RealtimeRegister\Api\NotificationsApi;
 use RealtimeRegister\Api\ProcessesApi;
 use RealtimeRegister\Api\ProvidersApi;
+use RealtimeRegister\Api\ValidationApi;
 use RealtimeRegister\RealtimeRegister;
 use RealtimeRegister\Support\AuthorizedClient;
 
@@ -28,5 +29,6 @@ class RealtimeRegisterClientTest extends TestCase
         $this->assertInstanceOf(NotificationsApi::class, $client->notifications, 'The notifications could not be instantiated.');
         $this->assertInstanceOf(ProvidersApi::class, $client->providers, 'The providers could not be instantiated.');
         $this->assertInstanceOf(ProcessesApi::class, $client->processes, 'The processes could not be instantiated.');
+        $this->assertInstanceOf(ValidationApi::class, $client->validation, 'The validation could not be instantiated.');
     }
 }
