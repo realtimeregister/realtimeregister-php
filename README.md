@@ -74,7 +74,7 @@ use RealtimeRegister\IsProxy;
 $isProxy = new IsProxy('my-secret-api-key');
 
 foreach ($isProxy->checkMany('example', ['nl', 'com', 'net', 'org']) as $result) {
-    echo $result->getDomain() . $result->isAvailable() ? ' ✅' : ' ❌';
+    echo $result->getDomain() . ($result->isAvailable() ? ' ✅' : ' ❌') . PHP_EOL;
 }
 // example.nl ✅
 // example.com ❌

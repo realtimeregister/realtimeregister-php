@@ -13,6 +13,8 @@ class IsProxyConnectionTest extends TestCase
     public function test_check(): void
     {
         $connection = (new MockedIsProxyConnection('secret', $this))
+            ->expectWrite('STARTTLS')
+            ->expectRead('100 OK')
             ->expectWrite('LOGIN secret')
             ->expectRead('100 Login ok')
             ->expectWrite('IS example.com')
@@ -33,6 +35,8 @@ class IsProxyConnectionTest extends TestCase
     public function test_connection_error(): void
     {
         $connection = (new MockedIsProxyConnection('secret', $this))
+            ->expectWrite('STARTTLS')
+            ->expectRead('100 OK')
             ->expectWrite('LOGIN secret')
             ->expectRead('400 Login failed');
 
@@ -46,6 +50,8 @@ class IsProxyConnectionTest extends TestCase
     public function test_check_wrong_answer(): void
     {
         $connection = (new MockedIsProxyConnection('secret', $this))
+            ->expectWrite('STARTTLS')
+            ->expectRead('100 OK')
             ->expectWrite('LOGIN secret')
             ->expectRead('100 Login ok')
             ->expectWrite('IS example.com')
@@ -63,6 +69,8 @@ class IsProxyConnectionTest extends TestCase
     public function test_check_many(): void
     {
         $connection = (new MockedIsProxyConnection('secret', $this))
+            ->expectWrite('STARTTLS')
+            ->expectRead('100 OK')
             ->expectWrite('LOGIN secret')
             ->expectRead('100 Login ok')
             ->expectWrite('IS example.com')
@@ -110,6 +118,8 @@ class IsProxyConnectionTest extends TestCase
     public function test_check_many_connection_fail(): void
     {
         $connection = (new MockedIsProxyConnection('secret', $this))
+            ->expectWrite('STARTTLS')
+            ->expectRead('100 OK')
             ->expectWrite('LOGIN secret')
             ->expectRead('400 Login failed');
 
@@ -123,6 +133,8 @@ class IsProxyConnectionTest extends TestCase
     public function test_check_premium(): void
     {
         $connection = (new MockedIsProxyConnection('secret', $this))
+            ->expectWrite('STARTTLS')
+            ->expectRead('100 OK')
             ->expectWrite('LOGIN secret')
             ->expectRead('100 Login ok')
             ->expectWrite('ENABLE premium')
@@ -181,5 +193,25 @@ class IsProxyConnectionTest extends TestCase
         $this->assertSame('example.org', $invalidDomain->getDomain());
         $this->assertEmpty($availableDomain->getExtras());
         $this->assertTrue($invalidDomain->isInvalid());
+    }
+
+    public function test_check_without_ssl_support(): void
+    {
+        $connection = (new MockedIsProxyConnection('secret', $this, false))
+            ->expectWrite('LOGIN secret')
+            ->expectRead('100 Login ok')
+            ->expectWrite('IS example.com')
+            ->expectRead('example.com available')
+            ->expectWrite('CLOSE');
+
+        $isProxy = new IsProxy(apiKey:'secret', tls: false);
+        $isProxy->setConnection($connection);
+
+        $result = $isProxy->check('example', 'com');
+
+        $this->assertInstanceOf(IsProxyDomain::class, $result);
+        $this->assertSame(IsProxyDomain::STATUS_AVAILABLE, $result->getStatus());
+        $this->assertSame('example.com', $result->getDomain());
+        $this->assertTrue($result->isAvailable());
     }
 }
