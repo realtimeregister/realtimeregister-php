@@ -23,6 +23,8 @@ use RealtimeRegister\Domain\PriceCollection;
 use RealtimeRegister\Domain\ProcessCollection;
 use RealtimeRegister\Domain\ProviderCollection;
 use RealtimeRegister\Domain\TemplateCollection;
+use RealtimeRegister\Domain\ValidationCategoryCollection;
+use RealtimeRegister\Domain\ValidationCategoryTermsCollection;
 
 /**
  * This TestCase is used to test all Domain Object Collections.
@@ -50,6 +52,8 @@ class DomainCollectionTest extends TestCase
             'key data collection' => [KeyDataCollection::class, include __DIR__ . '/data/key_data_valid.php'],
             'price collection' => [PriceCollection::class, include __DIR__ . '/data/price_valid.php'],
             'contact property collection' => [ContactPropertyCollection::class, include __DIR__ . '/data/contacts/contact_property_valid.php'],
+            'validation category collection' => [ValidationCategoryCollection::class, include __DIR__ . '/data/validation/category_valid.php'],
+            'validation category terms collection' => [ValidationCategoryTermsCollection::class, include __DIR__ . '/data/validation/category_terms_valid.php'],
             'launch phase collection' => [LaunchPhaseCollection::class, include __DIR__ . '/data/launch_phase.php'],
             'log collection' => [LogCollection::class, include __DIR__ . '/data/log.php'],
             'notification collection' => [NotificationCollection::class, include __DIR__ . '/data/notifications/notification_valid.php'],

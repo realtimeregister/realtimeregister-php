@@ -11,13 +11,13 @@ class ValidationCategoryTerms implements DomainObjectInterface
 
     public string $terms;
 
-    public ?DateTimeInterface $validTill;
+    public ?DateTimeInterface $validUntil;
 
-    private function __construct(int $version, string $terms, ?\DateTimeInterface $validTill)
+    private function __construct(int $version, string $terms, ?\DateTimeInterface $validUntil)
     {
         $this->version = $version;
         $this->terms = $terms;
-        $this->validTill = $validTill;
+        $this->validUntil = $validUntil;
     }
 
     /**
@@ -25,19 +25,23 @@ class ValidationCategoryTerms implements DomainObjectInterface
      */
     public static function fromArray(array $json): ValidationCategoryTerms
     {
+        $validUntil = $json['validUntil'] ?? null;
+
         return new ValidationCategoryTerms(
             $json['version'],
             $json['terms'],
-            $json['validTill'] ? new DateTimeImmutable($json['validTill']) : null
+            $validUntil ? new DateTimeImmutable($validUntil) : null
         );
     }
 
     public function toArray(): array
     {
-        return [
-            'version' => $this->version,
+        return array_filter([
             'terms' => $this->terms,
-            'validTill' => $this->validTill,
-        ];
+            'validUntil' => $this->validUntil?->format('Y-m-d\TH:i:s\Z'),
+            'version' => $this->version,
+        ], function ($x) {
+            return ! is_null($x);
+        });
     }
 }

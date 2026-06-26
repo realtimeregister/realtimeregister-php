@@ -17,6 +17,7 @@ use RealtimeRegister\Api\NotificationsApi;
 use RealtimeRegister\Api\ProcessesApi;
 use RealtimeRegister\Api\ProvidersApi;
 use RealtimeRegister\Api\TLDsApi;
+use RealtimeRegister\Api\ValidationApi;
 use RealtimeRegister\Support\AuthorizedClient;
 
 final class RealtimeRegister
@@ -51,6 +52,8 @@ final class RealtimeRegister
 
     public FinancialApi $financial;
 
+    public ValidationApi $validation;
+
     public function __construct(
         string $apiKey,
         ?string $baseUrl = null,
@@ -76,5 +79,6 @@ final class RealtimeRegister
         $this->dnszones = new DnsZonesApi($client);
         $this->tlds = new TLDsApi($client);
         $this->financial = new FinancialApi($client);
+        $this->validation = new ValidationApi($client);
     }
 }
