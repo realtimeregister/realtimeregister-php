@@ -13,7 +13,7 @@ class ValidationCategory implements DomainObjectInterface
 
     public ValidationCategoryTermsCollection $terms;
 
-    private function __construct(string $name, string $description, array $fields, array $terms)
+    private function __construct(string $name, string $description, ?array $fields, array $terms)
     {
         $this->name = $name;
         $this->description = $description;
@@ -33,11 +33,13 @@ class ValidationCategory implements DomainObjectInterface
 
     public function toArray(): array
     {
-        return [
+        return array_filter([
             'name' => $this->name,
             'description' => $this->description,
             'fields' => $this->fields,
-            'terms' => $this->terms,
-        ];
+            'terms' => $this->terms->toArray(),
+        ], function ($x) {
+            return ! is_null($x);
+        });
     }
 }

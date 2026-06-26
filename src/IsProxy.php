@@ -10,9 +10,9 @@ final class IsProxy
 {
     private IsProxyConnection $connection;
 
-    public function __construct(string $apiKey, string $host = 'is.yoursrs.com', int $port = 2001)
+    public function __construct(string $apiKey, string $host = 'is.yoursrs.com', int $port = 2001, bool $tls = true)
     {
-        $this->setConnection(new IsProxyConnection($apiKey, $host, $port));
+        $this->setConnection(new IsProxyConnection($apiKey, $host, $port, $tls));
     }
 
     public function setConnection(IsProxyConnection $connection): void

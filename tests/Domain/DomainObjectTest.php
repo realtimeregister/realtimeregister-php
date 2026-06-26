@@ -34,6 +34,8 @@ use RealtimeRegister\Domain\Registrant;
 use RealtimeRegister\Domain\Template;
 use RealtimeRegister\Domain\TemplatePreview;
 use RealtimeRegister\Domain\TLDInfo;
+use RealtimeRegister\Domain\ValidationCategory;
+use RealtimeRegister\Domain\ValidationCategoryTerms;
 use RealtimeRegister\Domain\Zone;
 use RealtimeRegister\Exceptions\InvalidArgumentException;
 use TypeError;
@@ -84,6 +86,22 @@ class DomainObjectTest extends TestCase
                 Contact::class,
                 include __DIR__ . '/data/contacts/contact_invalid_name.php',
                 TypeError::class,
+            ],
+            'valid validation category (all fields)' => [
+                ValidationCategory::class,
+                include __DIR__ . '/data/validation/category_valid.php',
+            ],
+            'valid validation category (only required)' => [
+                ValidationCategory::class,
+                include __DIR__ . '/data/validation/category_valid_only_required.php',
+            ],
+            'valid validation category (valid until)' => [
+                ValidationCategory::class,
+                include __DIR__ . '/data/validation/category_valid_with_valid_until.php',
+            ],
+            'valid validation category terms' => [
+                ValidationCategoryTerms::class,
+                include __DIR__ . '/data/validation/category_terms_valid.php',
             ],
             'valid country (all fields)' => [
                 Country::class,
