@@ -20,7 +20,7 @@ use RealtimeRegister\Api\TLDsApi;
 use RealtimeRegister\Api\ValidationApi;
 use RealtimeRegister\Support\AuthorizedClient;
 
-final class RealtimeRegister
+class RealtimeRegister
 {
     private const BASE_URL = 'https://api.yoursrs.com/';
 
