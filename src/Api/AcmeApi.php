@@ -43,7 +43,6 @@ final class AcmeApi extends AbstractApi
         ?string $postalCode = null,
         ?string $city = null,
         ?bool $autoRenew = null,
-        ?int $certValidity = null,
         ?Approver $approver = null,
         bool $isQuote = false
     ): AcmeSubscriptionResponse | DomainQuote {
@@ -59,7 +58,6 @@ final class AcmeApi extends AbstractApi
             'city' => $city,
             'autoRenew' => $autoRenew,
             'period' => $period,
-            'certValidity' => $certValidity,
             'approver' => $approver?->toArray(),
         ], fn ($value) => ! is_null($value));
 
