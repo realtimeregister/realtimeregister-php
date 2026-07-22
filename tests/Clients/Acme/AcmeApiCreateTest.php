@@ -43,7 +43,6 @@ class AcmeApiCreateTest extends TestCase
             '1234AB',
             'City',
             true,
-            199,
             Approver::fromArray(
                 ['firstName' => 'First Name',
                     'lastName' => 'Last Name',
