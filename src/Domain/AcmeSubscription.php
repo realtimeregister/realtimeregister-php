@@ -24,7 +24,6 @@ final class AcmeSubscription implements DomainObjectInterface
         public int $period,
         public string $directoryUrl,
         public bool $autoRenew,
-        public ?int $certValidity,
         public ?DateTime $orgValidUntil,
         public ?string $organizationId,
         public string $status
@@ -56,7 +55,6 @@ final class AcmeSubscription implements DomainObjectInterface
             $json['period'],
             $json['directoryUrl'],
             $json['autoRenew'] ?? null,
-            $json['certValidity'] ?? null,
             isset($json['orgValidUntil']) ? new DateTime($json['orgValidUntil']) : null,
             $json['organizationId'] ?? null,
             $json['status']
@@ -82,7 +80,6 @@ final class AcmeSubscription implements DomainObjectInterface
             'period' => $this->period,
             'directoryUrl' => $this->directoryUrl,
             'autoRenew' => $this->autoRenew,
-            'certValidity' => $this->certValidity,
             'orgValidUntil' => $this->orgValidUntil?->format('Y-m-d\TH:i:s\Z'),
             'organizationId' => $this->organizationId,
             'status' => $this->status,
