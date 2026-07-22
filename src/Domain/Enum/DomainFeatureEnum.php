@@ -13,6 +13,7 @@ class DomainFeatureEnum extends AbstractEnum
     const FEATURE_PUSH_TRANSFER = 'PUSH_TRANSFER';
     const FEATURE_LOCAL_CONTACT = 'LOCAL_CONTACT';
     const FEATURE_REGISTRY_LOCK = 'REGISTRY_LOCK';
+    const FEATURE_DELETE = 'DELETE';
 
     protected static array $values = [
         DomainFeatureEnum::FEATURE_CREATE,
@@ -24,6 +25,7 @@ class DomainFeatureEnum extends AbstractEnum
         DomainFeatureEnum::FEATURE_PUSH_TRANSFER,
         DomainFeatureEnum::FEATURE_LOCAL_CONTACT,
         DomainFeatureEnum::FEATURE_REGISTRY_LOCK,
+        DomainFeatureEnum::FEATURE_DELETE,
     ];
 
     /** @param string $value */

@@ -18,7 +18,7 @@ return [
     'transferSupportsAuthcode' => false,
     'transferRequiresAuthcode' => false,
     'creationRequiresPreValidation' => false,
-    'featuresAvailable' => ['CREATE', 'RENEW'],
+    'featuresAvailable' => ['CREATE', 'RENEW', 'DELETE'],
     'registrantChangeApprovalRequired' => false,
     'whoisExposure' => 'FULL',
     'gdprCategory' => 'EU_BASED',

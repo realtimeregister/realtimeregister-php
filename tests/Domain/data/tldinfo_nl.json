@@ -112,7 +112,8 @@
             "CREATE",
             "UPDATE",
             "RESTORE",
-            "TRANSFER"
+            "TRANSFER",
+            "DELETE"
         ],
         "jurisdiction": "NL",
         "termsOfService": "https://www.sidn.nl/a/about-sidn/general-terms-and-conditions",
