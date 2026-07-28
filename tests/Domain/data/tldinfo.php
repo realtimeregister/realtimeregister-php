@@ -41,6 +41,7 @@ return [
             'UPDATE',
             'PRIVACY_PROTECT',
             'PUSH_TRANSFER',
+            'DELETE',
         ],
         'registrantChangeApprovalRequired' => true,
         'allowDesignatedAgent' => 'OLD',

@@ -42,7 +42,8 @@
             "PRIVACY_PROTECT",
             "RENEW",
             "TRANSFER",
-            "UPDATE"
+            "UPDATE",
+            "DELETE"
         ],
         "customAuthcodeSupport": true,
         "adminContacts": {
