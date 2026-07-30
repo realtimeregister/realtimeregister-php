@@ -378,8 +378,11 @@ final class DomainsApi extends AbstractApi
     {
         $payload = [
             'period' => $period,
-            'expiryDate' => $expiryDate,
         ];
+
+        if ($expiryDate) {
+            $payload['expiryDate'] = $expiryDate;
+        }
 
         if ($billables instanceof BillableCollection) {
             $payload['billables'] = $billables->toArray();
