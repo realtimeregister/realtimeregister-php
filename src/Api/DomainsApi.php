@@ -370,15 +370,19 @@ final class DomainsApi extends AbstractApi
     }
 
     /**
-     * @see https://dm.realtimeregister.com/docs/api/domains/transferinfo
+     * @see https://dm.realtimeregister.com/docs/api/domains/renew
      *
      * @throws Exception
      */
-    public function renew(string $domain, int $period, ?BillableCollection $billables = null, ?bool $isQuote = null): DateTime|DomainQuote
+    public function renew(string $domain, int $period, ?BillableCollection $billables = null, ?bool $isQuote = null, ?DateTime $expiryDate = null): DateTime|DomainQuote
     {
         $payload = [
             'period' => $period,
         ];
+
+        if ($expiryDate) {
+            $payload['expiryDate'] = $expiryDate;
+        }
 
         if ($billables instanceof BillableCollection) {
             $payload['billables'] = $billables->toArray();
