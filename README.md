@@ -11,6 +11,7 @@ This SDK currently supports these APIs:
 
 * [Domains API](https://dm.realtimeregister.com/docs/api/domains)
 * [SSL Certificates API](https://dm.realtimeregister.com/docs/api/ssl)
+* [ACME Subscriptions API](https://dm.realtimeregister.com/docs/api/ssl/acme)
 * [Customers API](https://dm.realtimeregister.com/docs/api/customers)
 * [Hosts API](https://dm.realtimeregister.com/docs/api/hosts)
 * [Contacts API](https://dm.realtimeregister.com/docs/api/contacts)
