@@ -108,7 +108,7 @@ class IsProxyConnection
 
         $response = $this->read();
         if (! preg_match('#^100\sOK#', $response)) {
-            return true;
+            return false;
         }
 
         $methods = STREAM_CRYPTO_METHOD_TLS_CLIENT;
