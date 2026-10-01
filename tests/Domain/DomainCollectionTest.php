@@ -125,4 +125,21 @@ class DomainCollectionTest extends TestCase
         $item = $array[0];
         self::assertIsArray($item, 'Child of collection was not transformed to array');
     }
+
+    public function test_empty_pagination(): void
+    {
+        $collection = DomainDetailsCollection::fromArray([
+            'pagination' => [
+                'total'  => 10,
+                'offset' => 0,
+                'limit'  => 0,
+            ],
+        ]);
+        self::assertInstanceOf(DomainDetailsCollection::class, $collection);
+        self::assertCount(0, $collection);
+        self::assertSame(10, $collection->pagination->total);
+        self::assertSame(0, $collection->pagination->limit);
+        self::assertSame(0, $collection->pagination->offset);
+        self::assertSame([], $collection->toArray());
+    }
 }

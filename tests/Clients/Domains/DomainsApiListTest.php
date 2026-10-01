@@ -96,4 +96,28 @@ class DomainsApiListTest extends TestCase
         $response = $sdk->domains->list(3, 0, 'john', $parameters);
         $this->assertInstanceOf(DomainDetailsCollection::class, $response);
     }
+
+    public function test_list_with_zero_count(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            json_encode([
+                'pagination' => [
+                    'total'  => 42,
+                    'offset' => 0,
+                    'limit'  => 0,
+                ],
+            ]),
+            MockedClientFactory::assertRoute('GET', 'v2/domains', $this, [
+                'limit' => '0',
+            ])
+        );
+
+        $response = $sdk->domains->list(0);
+        $this->assertInstanceOf(DomainDetailsCollection::class, $response);
+        $this->assertCount(0, $response);
+        $this->assertSame(42, $response->pagination->total);
+        $this->assertSame(0, $response->pagination->limit);
+        $this->assertSame(0, $response->pagination->offset);
+    }
 }
