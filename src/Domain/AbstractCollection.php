@@ -59,8 +59,10 @@ abstract class AbstractCollection implements ArrayAccess, IteratorAggregate, Cou
     {
         // Extract entities
         if (array_key_exists('entities', $json)) {
-            Assert::isArray($json['entities']);
-            $entities = $json['entities'];
+            Assert::nullOrIsArray($json['entities']);
+            $entities = $json['entities'] ?? [];
+        } elseif (array_key_exists('pagination', $json)) {
+            $entities = [];
         } else {
             $entities = $json;
         }
