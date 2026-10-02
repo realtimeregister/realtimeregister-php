@@ -13,7 +13,7 @@ use RealtimeRegister\Exceptions\UnauthorizedException;
 
 class AuthorizedClient
 {
-    private const int MAX_LOG_BODY_LENGTH = 3000;
+    private const MAX_LOG_BODY_LENGTH = 3000;
 
     private string $apiKey;
 
