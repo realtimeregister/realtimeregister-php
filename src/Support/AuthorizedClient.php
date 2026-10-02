@@ -13,6 +13,8 @@ use RealtimeRegister\Exceptions\UnauthorizedException;
 
 class AuthorizedClient
 {
+    private const int MAX_LOG_BODY_LENGTH = 3000;
+
     private string $apiKey;
 
     private Client $client;
@@ -100,7 +102,7 @@ class AuthorizedClient
             sprintf(
                 'RealtimeRegister.RESPONSE: %s - BODY: %s',
                 $response->getStatusCode(),
-                (string) $response->getBody()
+                mb_substr($response->getBody()->getContents(), 0, self::MAX_LOG_BODY_LENGTH)
             ),
             [
                 'response_code' => $response->getStatusCode(),
