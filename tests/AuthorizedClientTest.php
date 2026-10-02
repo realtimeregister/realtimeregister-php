@@ -142,4 +142,31 @@ class AuthorizedClientTest extends TestCase
         self::assertSame(1, (int) $response->headers()['x-process-id'][0]);
         self::assertSame('application/json', $response->headers()['content-type'][0]);
     }
+
+    public function test_response_log_body_is_truncated(): void
+    {
+        $body = str_repeat('a', 3100);
+        $messages = [];
+
+        $logger = $this->createMock(LoggerInterface::class);
+        $logger->expects($this->exactly(2))
+            ->method('debug')
+            ->willReturnCallback(function (string $message, array $context) use (&$messages): void {
+                $messages[] = $message;
+            });
+
+        $client = MockedClientFactory::makeAuthorizedClient(
+            static fn (): Response => new Response(200, [], $body),
+            null,
+            $logger
+        );
+
+        $response = $client->get('test');
+
+        $this->assertSame(
+            'RealtimeRegister.RESPONSE: 200 - BODY: ' . str_repeat('a', 3000),
+            $messages[1]
+        );
+        $this->assertSame($body, $response->text());
+    }
 }
