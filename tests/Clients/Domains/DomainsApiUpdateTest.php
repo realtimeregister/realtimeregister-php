@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use RealtimeRegister\Domain\BillableCollection;
 use RealtimeRegister\Domain\DomainContactCollection;
 use RealtimeRegister\Domain\DomainQuote;
+use RealtimeRegister\Domain\DsDataCollection;
 use RealtimeRegister\Domain\Enum\BillableActionEnum;
 use RealtimeRegister\Domain\KeyDataCollection;
 use RealtimeRegister\Domain\Zone;
@@ -37,6 +38,8 @@ class DomainsApiUpdateTest extends TestCase
             keyData: KeyDataCollection::fromArray([include __DIR__ . '/../../Domain/data/key_data_valid.php']),
             billables: BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php']),
             isQuote: true,
+            autoRenewPeriod: 12,
+            dsData: DsDataCollection::fromArray([]),
         );
 
         $this->assertInstanceOf(DomainQuote::class, $response);
@@ -65,7 +68,76 @@ class DomainsApiUpdateTest extends TestCase
             Zone::fromArray(include __DIR__ . '/../../Domain/data/dns/zones/zone_valid.php'),
             DomainContactCollection::fromArray([include __DIR__ . '/../../Domain/data/contacts/contact_handle_valid.php']),
             KeyDataCollection::fromArray([include __DIR__ . '/../../Domain/data/key_data_valid.php']),
-            BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php'])
+            BillableCollection::fromArray([include __DIR__ . '/../../Domain/data/financial/billable_valid.php']),
+            false,
+            12,
+            DsDataCollection::fromArray([])
+        );
+    }
+
+    public function test_update_auto_renew_period(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/update', $this, expectedFields: [
+                'autoRenewPeriod' => 12,
+            ])
+        );
+
+        $sdk->domains->update(
+            domainName: 'example.com',
+            autoRenewPeriod: 12
+        );
+    }
+
+    public function test_update_without_auto_renew_period(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/update', $this, expectedFields: [
+                'registrant' => 'John Doe',
+            ])
+        );
+
+        $sdk->domains->update(
+            domainName: 'example.com',
+            registrant: 'John Doe',
+            autoRenewPeriod: null
+        );
+    }
+
+    public function test_update_ds_data(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/update', $this, expectedFields: [
+                'dsData' => [],
+            ])
+        );
+
+        $sdk->domains->update(
+            domainName: 'example.com',
+            dsData: DsDataCollection::fromArray([])
+        );
+    }
+
+    public function test_update_without_ds_data(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/domains/example.com/update', $this, expectedFields: [
+                'registrant' => 'John Doe',
+            ])
+        );
+
+        $sdk->domains->update(
+            domainName: 'example.com',
+            registrant: 'John Doe',
+            dsData: null
         );
     }
 
@@ -78,6 +150,7 @@ class DomainsApiUpdateTest extends TestCase
                 'authcode' => '',
                 'ns' => [],
                 'keyData' => [],
+                'dsData' => [],
             ])
         );
 
@@ -85,7 +158,8 @@ class DomainsApiUpdateTest extends TestCase
             domainName: 'example.com',
             authcode: '',
             ns: [],
-            keyData: KeyDataCollection::fromArray([])
+            keyData: KeyDataCollection::fromArray([]),
+            dsData: DsDataCollection::fromArray([])
         );
     }
 

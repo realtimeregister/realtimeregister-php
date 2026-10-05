@@ -14,6 +14,7 @@ use RealtimeRegister\Domain\DomainQuote;
 use RealtimeRegister\Domain\DomainRegistration;
 use RealtimeRegister\Domain\DomainTransferStatus;
 use RealtimeRegister\Domain\DomainZoneRecordCollection;
+use RealtimeRegister\Domain\DsDataCollection;
 use RealtimeRegister\Domain\Enum\DomainDesignatedAgentEnum;
 use RealtimeRegister\Domain\Enum\DomainStatusEnum;
 use RealtimeRegister\Domain\KeyDataCollection;
@@ -185,7 +186,9 @@ final class DomainsApi extends AbstractApi
         ?DomainContactCollection $contacts = null,
         ?KeyDataCollection $keyData = null,
         ?BillableCollection $billables = null,
-        bool $isQuote = false
+        bool $isQuote = false,
+        ?int $autoRenewPeriod = null,
+        ?DsDataCollection $dsData = null,
     ): DomainQuote|null {
         $payload = [];
 
@@ -211,6 +214,10 @@ final class DomainsApi extends AbstractApi
 
         if (is_bool($autoRenew)) {
             $payload['autoRenew'] = $autoRenew;
+        }
+
+        if (is_int($autoRenewPeriod)) {
+            $payload['autoRenewPeriod'] = $autoRenewPeriod;
         }
 
         if (is_array($ns)) {
@@ -239,6 +246,10 @@ final class DomainsApi extends AbstractApi
 
         if ($keyData instanceof KeyDataCollection) {
             $payload['keyData'] = $keyData->toArray();
+        }
+
+        if ($dsData instanceof DsDataCollection && $dsData->toArray() === []) {
+            $payload['dsData'] = $dsData->toArray();
         }
 
         if ($billables instanceof BillableCollection) {
