@@ -18,7 +18,7 @@ class CertificatesApiReissueCertificateTest extends TestCase
                 return new Response(
                     202,
                     [
-                        'x-process-id' => 30,
+                        'x-process-id' => '30',
                     ],
                     json_encode([
                         'commonName' => 'mail.com',

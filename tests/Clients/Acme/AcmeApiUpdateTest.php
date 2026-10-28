@@ -16,7 +16,7 @@ class AcmeApiUpdateTest extends TestCase
                 return new Response(
                     202,
                     [
-                        'x-process-id' => 20,
+                        'x-process-id' => '20',
                     ]
                 );
             },
