@@ -128,7 +128,7 @@ class AuthorizedClientTest extends TestCase
             static fn (): Response => new Response(
                 202,
                 [
-                    'x-process-id' => 1,
+                    'x-process-id' => '1',
                     'Content-Type' => 'application/json',
                 ]
             )

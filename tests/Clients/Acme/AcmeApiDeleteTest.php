@@ -15,7 +15,7 @@ class AcmeApiDeleteTest extends TestCase
                 return new Response(
                     202,
                     [
-                        'x-process-id' => 10,
+                        'x-process-id' => '10',
                     ]
                 );
             },

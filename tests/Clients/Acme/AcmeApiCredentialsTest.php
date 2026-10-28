@@ -20,7 +20,7 @@ class AcmeApiCredentialsTest extends TestCase
                 return new Response(
                     202,
                     [
-                        'x-process-id' => 20,
+                        'x-process-id' => '20',
                     ],
                     json_encode($response, JSON_THROW_ON_ERROR),
                 );
