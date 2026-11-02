@@ -31,6 +31,10 @@ return [
     'adminContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true],  // ContactsConstraint
     'billingContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true], // ContactsConstraint
     'techContacts' => ['min' => 0, 'max' => 10, 'required' => false, 'organizationRequired' => false, 'organizationAllowed' => true], // ContactsConstraint
+    'verificationRequirements' => [
+        ['claims' => ['NAME', 'ADDRESS'], 'methods' => ['EID_AUTH', 'PHYSICAL_DOCUMENT'], 'proofs' => ['ID_CARD', 'PASSPORT'], 'maxAge' => 'P1Y'],
+        ['claims' => ['EMAIL']],
+    ],
     'renewalOnTransfer' => 'NO_CHANGE',
     'registrationNotice' => 'Valid!',
     'registrantChangeTransferLock' => true,

@@ -2,11 +2,15 @@
 
 namespace RealtimeRegister\Api;
 
+use DateTimeInterface;
 use InvalidArgumentException;
 use RealtimeRegister\Domain\Contact;
 use RealtimeRegister\Domain\ContactCollection;
 use RealtimeRegister\Domain\Country;
 use RealtimeRegister\Domain\CountryCollection;
+use RealtimeRegister\Domain\Enum\VerificationClaimEnum;
+use RealtimeRegister\Domain\Enum\VerificationMethodEnum;
+use RealtimeRegister\Domain\Enum\VerificationProofEnum;
 use RealtimeRegister\Support\RealtimeRegisterResponse;
 
 final class ContactsApi extends AbstractApi
@@ -43,7 +47,15 @@ final class ContactsApi extends AbstractApi
     /**
      * @see https://dm.realtimeregister.com/docs/api/contacts/create
      *
-     * @param string[] $addressLine
+     * Each validation is an array with the keys category, termsVersion, validatedBy (IP address) and optionally
+     * validatedOn (DateTimeInterface|string). Passing validations requires the CONTACT_VALIDATION permission.
+     *
+     * Each verification is an array with the keys verificationDate (DateTimeInterface|string), method, proof,
+     * claims (string[]) and externalId. Passing verifications requires the CONTACT_VERIFICATION permission.
+     *
+     * @param string[]                   $addressLine
+     * @param array<array<string,mixed>> $validations
+     * @param array<array<string,mixed>> $verifications
      */
     public function create(
         string $customer,
@@ -59,7 +71,9 @@ final class ContactsApi extends AbstractApi
         ?string $organization = null,
         ?string $state = null,
         ?string $fax = null,
-        ?array $disclosedFields = null
+        ?array $disclosedFields = null,
+        ?array $validations = null,
+        ?array $verifications = null
     ): void {
         $payload = [
             'customer' => $customer,
@@ -87,6 +101,12 @@ final class ContactsApi extends AbstractApi
         if ($disclosedFields) {
             $payload['disclosedFields'] = $disclosedFields;
         }
+        if ($validations) {
+            $payload['validations'] = $this->processValidations($validations);
+        }
+        if ($verifications) {
+            $payload['verifications'] = $this->processVerifications($verifications);
+        }
 
         $this->client->post(sprintf('v2/customers/%s/contacts/%s', urlencode($customer), urlencode($handle)), $payload);
     }
@@ -94,7 +114,15 @@ final class ContactsApi extends AbstractApi
     /**
      * @see https://dm.realtimeregister.com/docs/api/contacts/create
      *
-     * @param string[] $addressLine
+     * Each validation is an array with the keys category, termsVersion, validatedBy (IP address) and optionally
+     * validatedOn (DateTimeInterface|string). Passing validations requires the CONTACT_VALIDATION permission.
+     *
+     * Each verification is an array with the keys verificationDate (DateTimeInterface|string), method, proof,
+     * claims (string[]) and externalId. Passing verifications requires the CONTACT_VERIFICATION permission.
+     *
+     * @param string[]                   $addressLine
+     * @param array<array<string,mixed>> $validations
+     * @param array<array<string,mixed>> $verifications
      */
     public function update(
         string $customer,
@@ -110,7 +138,9 @@ final class ContactsApi extends AbstractApi
         ?string $organization = null,
         ?string $state = null,
         ?string $fax = null,
-        ?array $disclosedFields = null
+        ?array $disclosedFields = null,
+        ?array $validations = null,
+        ?array $verifications = null
     ): RealtimeRegisterResponse {
         $payload = [
             'customer' => $customer,
@@ -152,6 +182,12 @@ final class ContactsApi extends AbstractApi
         }
         if ($disclosedFields) {
             $payload['disclosedFields'] = $disclosedFields;
+        }
+        if ($validations) {
+            $payload['validations'] = $this->processValidations($validations);
+        }
+        if ($verifications) {
+            $payload['verifications'] = $this->processVerifications($verifications);
         }
 
         return $this->client->post(sprintf('v2/customers/%s/contacts/%s/update', urlencode($customer), urlencode($handle)), $payload);
@@ -253,5 +289,64 @@ final class ContactsApi extends AbstractApi
 
         $response = $this->client->get('v2/countries', $query);
         return CountryCollection::fromArray($response->json());
+    }
+
+    private function processValidations(array $validations): array
+    {
+        return array_map(function (array $validation): array {
+            $this->assertRequiredFields('Validation', $validation, ['category', 'termsVersion', 'validatedBy']);
+
+            if (filter_var($validation['validatedBy'], FILTER_VALIDATE_IP) === false) {
+                throw new InvalidArgumentException("Validation validatedBy is not a valid IP address: {$validation['validatedBy']}");
+            }
+
+            $payload = [
+                'category' => $validation['category'],
+                'termsVersion' => (string) $validation['termsVersion'],
+                'validatedBy' => $validation['validatedBy'],
+            ];
+            if (isset($validation['validatedOn'])) {
+                $payload['validatedOn'] = $this->formatDate($validation['validatedOn']);
+            }
+
+            return $payload;
+        }, array_values($validations));
+    }
+
+    private function processVerifications(array $verifications): array
+    {
+        return array_map(function (array $verification): array {
+            $this->assertRequiredFields('Verification', $verification, ['verificationDate', 'method', 'proof', 'claims', 'externalId']);
+
+            VerificationMethodEnum::validate($verification['method']);
+            VerificationProofEnum::validate($verification['proof']);
+            foreach ($verification['claims'] as $claim) {
+                VerificationClaimEnum::validate($claim);
+            }
+
+            return [
+                'verificationDate' => $this->formatDate($verification['verificationDate']),
+                'method' => $verification['method'],
+                'proof' => $verification['proof'],
+                'claims' => $verification['claims'],
+                'externalId' => $verification['externalId'],
+            ];
+        }, array_values($verifications));
+    }
+
+    /** @param string[] $fields */
+    private function assertRequiredFields(string $type, array $data, array $fields): void
+    {
+        foreach ($fields as $field) {
+            if (! isset($data[$field])) {
+                throw new InvalidArgumentException("{$type} is missing required field: {$field}");
+            }
+        }
+    }
+
+    /** @param DateTimeInterface|string $date */
+    private function formatDate($date): string
+    {
+        return $date instanceof DateTimeInterface ? $date->format(DateTimeInterface::ATOM) : $date;
     }
 }

@@ -25,6 +25,8 @@ use RealtimeRegister\Domain\ProviderCollection;
 use RealtimeRegister\Domain\TemplateCollection;
 use RealtimeRegister\Domain\ValidationCategoryCollection;
 use RealtimeRegister\Domain\ValidationCategoryTermsCollection;
+use RealtimeRegister\Domain\VerificationCollection;
+use RealtimeRegister\Domain\VerificationRequirementCollection;
 
 /**
  * This TestCase is used to test all Domain Object Collections.
@@ -55,6 +57,8 @@ class DomainCollectionTest extends TestCase
             'validation category collection' => [ValidationCategoryCollection::class, include __DIR__ . '/data/validation/category_valid.php'],
             'validation category terms collection' => [ValidationCategoryTermsCollection::class, include __DIR__ . '/data/validation/category_terms_valid.php'],
             'launch phase collection' => [LaunchPhaseCollection::class, include __DIR__ . '/data/launch_phase.php'],
+            'verification collection' => [VerificationCollection::class, include __DIR__ . '/data/verification.php'],
+            'verification requirement collection' => [VerificationRequirementCollection::class, include __DIR__ . '/data/verification_requirement.php'],
             'log collection' => [LogCollection::class, include __DIR__ . '/data/log.php'],
             'notification collection' => [NotificationCollection::class, include __DIR__ . '/data/notifications/notification_valid.php'],
             'process collection' => [ProcessCollection::class, include __DIR__ . '/data/processes/process_valid_only_required.php'],
