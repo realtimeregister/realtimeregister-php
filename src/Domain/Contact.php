@@ -50,6 +50,8 @@ final class Contact implements DomainObjectInterface
 
     public ?ContactRegistryAccountCollection $registryAccounts;
 
+    public ?VerificationCollection $verifications;
+
     private function __construct(
         string $customer,
         string $handle,
@@ -70,7 +72,8 @@ final class Contact implements DomainObjectInterface
         ?DateTime $updatedDate = null,
         ?ValidationCollection $validations = null,
         ?ContactRegistryAccountCollection $registryAccounts = null,
-        ?array $disclosedFields = null
+        ?array $disclosedFields = null,
+        ?VerificationCollection $verifications = null
     ) {
         $this->customer = $customer;
         $this->handle = $handle;
@@ -92,6 +95,7 @@ final class Contact implements DomainObjectInterface
         $this->validations = $validations;
         $this->registryAccounts = $registryAccounts;
         $this->disclosedFields = $disclosedFields;
+        $this->verifications = $verifications;
     }
 
     public static function fromArray(array $json): Contact
@@ -124,7 +128,8 @@ final class Contact implements DomainObjectInterface
             $updatedDate,
             (isset($json['validations']) && is_array($json['validations'])) ? ValidationCollection::fromArray($json['validations']) : null,
             (isset($json['registryAccounts']) && is_array($json['registryAccounts'])) ? ContactRegistryAccountCollection::fromArray($json['registryAccounts']) : null,
-            (isset($json['disclosedFields']) && is_array($json['disclosedFields'])) ? $json['disclosedFields'] : null
+            (isset($json['disclosedFields']) && is_array($json['disclosedFields'])) ? $json['disclosedFields'] : null,
+            (isset($json['verifications']) && is_array($json['verifications'])) ? VerificationCollection::fromArray($json['verifications']) : null
         );
     }
 
@@ -151,6 +156,7 @@ final class Contact implements DomainObjectInterface
             'validations' => $this->validations?->toArray(),
             'registryAccounts' => $this->registryAccounts?->toArray(),
             'disclosedFields' => $this->disclosedFields,
+            'verifications' => $this->verifications?->toArray(),
         ], function ($x) {
             return ! is_null($x);
         });

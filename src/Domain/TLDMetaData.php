@@ -95,6 +95,8 @@ final class TLDMetaData implements DomainObjectInterface
 
     public ?LaunchPhaseCollection $launchPhases;
 
+    public ?VerificationRequirementCollection $verificationRequirements;
+
     public ?bool $sendWdrpNotifications;
 
     public ?bool $sendErrpNotifications;
@@ -155,7 +157,8 @@ final class TLDMetaData implements DomainObjectInterface
         string $renewalOnTransfer,
         ?string $registrationNotice,
         bool $registrantChangeTransferLock,
-        bool $restoreIncludesRenew
+        bool $restoreIncludesRenew,
+        ?VerificationRequirementCollection $verificationRequirements = null
     ) {
         $this->createDomainPeriods = $createDomainPeriods;
         $this->renewDomainPeriods = $renewDomainPeriods;
@@ -203,6 +206,7 @@ final class TLDMetaData implements DomainObjectInterface
         $this->registrationNotice = $registrationNotice;
         $this->registrantChangeTransferLock = $registrantChangeTransferLock;
         $this->restoreIncludesRenew = $restoreIncludesRenew;
+        $this->verificationRequirements = $verificationRequirements;
     }
 
     public static function fromArray(array $json): TLDMetaData
@@ -271,6 +275,7 @@ final class TLDMetaData implements DomainObjectInterface
             $json['registrationNotice'] ?? null,
             $json['registrantChangeTransferLock'],
             $json['restoreIncludesRenew'],
+            isset($json['verificationRequirements']) ? VerificationRequirementCollection::fromArray($json['verificationRequirements']) : null,
         );
     }
 
@@ -319,6 +324,7 @@ final class TLDMetaData implements DomainObjectInterface
             'techContacts' => $this->techContacts->toArray(),
             'contactProperties' => $this->contactProperties ? $this->contactProperties->toArray() : null,
             'launchPhases' => $this->launchPhases ? $this->launchPhases->toArray() : null,
+            'verificationRequirements' => $this->verificationRequirements ? $this->verificationRequirements->toArray() : null,
             'renewalOnTransfer' => $this->renewalOnTransfer,
             'registrationNotice' => $this->registrationNotice,
             'registrantChangeTransferLock' => $this->registrantChangeTransferLock,

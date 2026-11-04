@@ -36,6 +36,8 @@ use RealtimeRegister\Domain\TemplatePreview;
 use RealtimeRegister\Domain\TLDInfo;
 use RealtimeRegister\Domain\ValidationCategory;
 use RealtimeRegister\Domain\ValidationCategoryTerms;
+use RealtimeRegister\Domain\Verification;
+use RealtimeRegister\Domain\VerificationRequirement;
 use RealtimeRegister\Domain\Zone;
 use RealtimeRegister\Exceptions\InvalidArgumentException;
 use TypeError;
@@ -234,6 +236,22 @@ class DomainObjectTest extends TestCase
             'valid launch phase' => [
                 LaunchPhase::class,
                 include __DIR__ . '/data/launch_phase.php',
+            ],
+            'valid verification (all fields)' => [
+                Verification::class,
+                include __DIR__ . '/data/verification.php',
+            ],
+            'valid verification (required only)' => [
+                Verification::class,
+                include __DIR__ . '/data/verification_required.php',
+            ],
+            'valid verification requirement (all fields)' => [
+                VerificationRequirement::class,
+                include __DIR__ . '/data/verification_requirement.php',
+            ],
+            'valid verification requirement (required only)' => [
+                VerificationRequirement::class,
+                include __DIR__ . '/data/verification_requirement_required.php',
             ],
             'valid nameservers' => [
                 Nameservers::class,

@@ -2,6 +2,8 @@
 
 namespace RealtimeRegister\Tests\Clients\Contacts;
 
+use DateTimeImmutable;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use RealtimeRegister\Tests\Helpers\MockedClientFactory;
 
@@ -51,6 +53,196 @@ class ContactsApiCreateTest extends TestCase
             'TheoreticalState',
             '+31655555555',
             ['registryContactId', 'email', 'postalCode']
+        );
+    }
+
+    public function test_create_with_verifications(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/customers/johndoe/contacts/test', $this, expectedFields: [
+                'customer' => 'johndoe',
+                'handle' => 'test',
+                'name' => 'John Doe',
+                'addressLine' => ['Theoreticalstreet 1'],
+                'postalCode' => '1234AB',
+                'city' => 'TheoreticalCity',
+                'country' => 'NL',
+                'email' => 'test@example.com',
+                'voice' => '+31655555555',
+                'verifications' => [
+                    [
+                        'verificationDate' => '2026-01-05T10:00:00+00:00',
+                        'method' => 'EID_AUTH',
+                        'proof' => 'ID_CARD',
+                        'claims' => ['NAME', 'ADDRESS'],
+                        'externalId' => 'ext-123',
+                    ],
+                    [
+                        'verificationDate' => '2026-01-06T10:00:00Z',
+                        'method' => 'REACHABILITY',
+                        'proof' => 'LOG_RECORD',
+                        'claims' => ['EMAIL'],
+                        'externalId' => 'ext-456',
+                    ],
+                ],
+            ])
+        );
+
+        $sdk->contacts->create(
+            customer: 'johndoe',
+            handle: 'test',
+            name: 'John Doe',
+            addressLine: ['Theoreticalstreet 1'],
+            postalCode: '1234AB',
+            city: 'TheoreticalCity',
+            country: 'NL',
+            email: 'test@example.com',
+            voice: '+31655555555',
+            verifications: [
+                [
+                    'verificationDate' => new DateTimeImmutable('2026-01-05T10:00:00+00:00'),
+                    'method' => 'EID_AUTH',
+                    'proof' => 'ID_CARD',
+                    'claims' => ['NAME', 'ADDRESS'],
+                    'externalId' => 'ext-123',
+                ],
+                [
+                    'verificationDate' => '2026-01-06T10:00:00Z',
+                    'method' => 'REACHABILITY',
+                    'proof' => 'LOG_RECORD',
+                    'claims' => ['EMAIL'],
+                    'externalId' => 'ext-456',
+                ],
+            ],
+        );
+    }
+
+    public function test_create_with_incomplete_verification(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(200, '');
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Verification is missing required field: externalId');
+
+        $sdk->contacts->create(
+            customer: 'johndoe',
+            handle: 'test',
+            name: 'John Doe',
+            addressLine: ['Theoreticalstreet 1'],
+            postalCode: '1234AB',
+            city: 'TheoreticalCity',
+            country: 'NL',
+            email: 'test@example.com',
+            voice: '+31655555555',
+            verifications: [
+                [
+                    'verificationDate' => '2026-01-06T10:00:00Z',
+                    'method' => 'REACHABILITY',
+                    'proof' => 'LOG_RECORD',
+                    'claims' => ['EMAIL'],
+                ],
+            ],
+        );
+    }
+
+    public function test_create_with_validations(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(
+            200,
+            '',
+            MockedClientFactory::assertRoute('POST', 'v2/customers/johndoe/contacts/test', $this, expectedFields: [
+                'customer' => 'johndoe',
+                'handle' => 'test',
+                'name' => 'John Doe',
+                'addressLine' => ['Theoreticalstreet 1'],
+                'postalCode' => '1234AB',
+                'city' => 'TheoreticalCity',
+                'country' => 'NL',
+                'email' => 'test@example.com',
+                'voice' => '+31655555555',
+                'validations' => [
+                    [
+                        'category' => 'General',
+                        'termsVersion' => '1',
+                        'validatedBy' => '192.0.2.1',
+                        'validatedOn' => '2026-01-05T10:00:00+00:00',
+                    ],
+                    [
+                        'category' => 'IisSe',
+                        'termsVersion' => '5',
+                        'validatedBy' => '2001:db8::1',
+                    ],
+                ],
+            ])
+        );
+
+        $sdk->contacts->create(
+            customer: 'johndoe',
+            handle: 'test',
+            name: 'John Doe',
+            addressLine: ['Theoreticalstreet 1'],
+            postalCode: '1234AB',
+            city: 'TheoreticalCity',
+            country: 'NL',
+            email: 'test@example.com',
+            voice: '+31655555555',
+            validations: [
+                [
+                    'category' => 'General',
+                    'termsVersion' => 1,
+                    'validatedBy' => '192.0.2.1',
+                    'validatedOn' => new DateTimeImmutable('2026-01-05T10:00:00+00:00'),
+                ],
+                [
+                    'category' => 'IisSe',
+                    'termsVersion' => '5',
+                    'validatedBy' => '2001:db8::1',
+                ],
+            ],
+        );
+    }
+
+    public function test_create_with_incomplete_validation(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(200, '');
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Validation is missing required field: validatedBy');
+
+        $sdk->contacts->create(
+            customer: 'johndoe',
+            handle: 'test',
+            name: 'John Doe',
+            addressLine: ['Theoreticalstreet 1'],
+            postalCode: '1234AB',
+            city: 'TheoreticalCity',
+            country: 'NL',
+            email: 'test@example.com',
+            voice: '+31655555555',
+            validations: [['category' => 'General', 'termsVersion' => '1']],
+        );
+    }
+
+    public function test_create_with_invalid_validated_by(): void
+    {
+        $sdk = MockedClientFactory::makeSdk(200, '');
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Validation validatedBy is not a valid IP address: not-an-ip');
+
+        $sdk->contacts->create(
+            customer: 'johndoe',
+            handle: 'test',
+            name: 'John Doe',
+            addressLine: ['Theoreticalstreet 1'],
+            postalCode: '1234AB',
+            city: 'TheoreticalCity',
+            country: 'NL',
+            email: 'test@example.com',
+            voice: '+31655555555',
+            validations: [['category' => 'General', 'termsVersion' => '1', 'validatedBy' => 'not-an-ip']],
         );
     }
 }
